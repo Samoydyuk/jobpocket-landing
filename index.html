@@ -19,14 +19,22 @@
             --primary: #7C3AED;
             --primary-dark: #6D28D9;
             --primary-light: #A78BFA;
+            --blue: #2563EB;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --purple: #8B5CF6;
             --text: #111827;
-            --text-light: #6B7280;
+            --text-secondary: #6B7280;
+            --text-light: #9CA3AF;
             --bg: #FAFAFA;
+            --bg-secondary: #F3F4F6;
             --white: #FFFFFF;
+            --border: #E5E7EB;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             color: var(--text);
             line-height: 1.6;
             background: var(--bg);
@@ -63,10 +71,7 @@
             font-size: 1.25rem;
         }
 
-        .nav-logo svg {
-            width: 36px;
-            height: 36px;
-        }
+        .nav-logo svg { width: 36px; height: 36px; }
 
         .nav-links {
             display: flex;
@@ -75,22 +80,20 @@
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         .nav-cta {
             background: var(--primary);
             color: white !important;
             padding: 10px 20px;
             border-radius: 10px;
-            transition: background 0.2s, transform 0.2s !important;
+            transition: all 0.2s !important;
         }
 
         .nav-cta:hover {
@@ -98,7 +101,7 @@
             transform: translateY(-1px);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -129,7 +132,7 @@
 
         .hero-content p {
             font-size: 1.25rem;
-            color: var(--text-light);
+            color: var(--text-secondary);
             margin-bottom: 32px;
             max-width: 500px;
         }
@@ -161,23 +164,18 @@
             box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
         }
 
-        .btn-primary svg {
-            width: 24px;
-            height: 24px;
-        }
+        .btn-primary svg { width: 24px; height: 24px; }
 
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             background: white;
             color: var(--text);
             padding: 16px 32px;
             border-radius: 14px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            border: 2px solid #E5E7EB;
+            border: 2px solid var(--border);
             transition: all 0.2s;
         }
 
@@ -186,147 +184,378 @@
             color: var(--primary);
         }
 
-        .hero-image {
-            position: relative;
+        /* Phone Mockups */
+        .phones-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            perspective: 1000px;
         }
 
-        .phone-mockup {
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .phone-frame {
+        .phone {
+            width: 260px;
             background: #1F2937;
-            border-radius: 50px;
-            padding: 12px;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.25);
+            border-radius: 36px;
+            padding: 8px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .phone.secondary {
+            transform: translateY(40px) rotateY(-5deg);
+            opacity: 0.9;
         }
 
         .phone-screen {
-            background: var(--primary);
-            border-radius: 40px;
-            aspect-ratio: 9/19.5;
+            background: var(--bg);
+            border-radius: 30px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            aspect-ratio: 9/19.5;
         }
 
         .phone-notch {
-            width: 120px;
-            height: 28px;
+            width: 100px;
+            height: 24px;
             background: #1F2937;
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 16px 16px;
             margin: 0 auto;
         }
 
-        .phone-content {
-            flex: 1;
-            background: white;
-            margin: 8px;
-            border-radius: 32px;
-            padding: 20px;
+        .screen-content {
+            padding: 12px;
+        }
+
+        /* Dashboard Screen */
+        .dash-header {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
         }
 
-        .screen-header {
-            text-align: center;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #F3F4F6;
-            margin-bottom: 16px;
+        .dash-greeting {
+            font-size: 11px;
+            color: var(--text-secondary);
         }
 
-        .screen-header h3 {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-
-        .screen-header h2 {
-            font-size: 1.5rem;
+        .dash-name {
+            font-size: 18px;
+            font-weight: 700;
             color: var(--text);
         }
 
-        .screen-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
+        .dash-icons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dash-icon {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
         .stat-card {
-            background: #F9FAFB;
-            padding: 12px;
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .stat-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        .stat-icon.green { background: rgba(16, 185, 129, 0.1); }
+        .stat-icon.blue { background: rgba(37, 99, 235, 0.1); }
+
+        .stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .alert-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .alert-card {
+            flex: 1;
+            padding: 10px;
             border-radius: 12px;
         }
 
-        .stat-card .label {
-            font-size: 0.65rem;
-            color: var(--text-light);
-            margin-bottom: 4px;
+        .alert-card.warning { background: rgba(245, 158, 11, 0.1); }
+        .alert-card.error { background: rgba(239, 68, 68, 0.1); }
+
+        .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 2px;
         }
 
-        .stat-card .value {
-            font-size: 1.1rem;
+        .alert-header.warning { color: var(--warning); }
+        .alert-header.error { color: var(--error); }
+
+        .alert-value {
+            font-size: 12px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--text);
         }
 
-        .stat-card .value.green {
-            color: #10B981;
-        }
-
-        .screen-jobs {
-            flex: 1;
-        }
-
-        .screen-jobs h4 {
-            font-size: 0.7rem;
-            color: var(--text-light);
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
             margin-bottom: 8px;
-            text-transform: uppercase;
         }
 
-        .job-item {
-            background: #F9FAFB;
-            padding: 10px 12px;
-            border-radius: 10px;
+        .job-card {
+            background: white;
+            border-radius: 12px;
+            padding: 10px;
             margin-bottom: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .job-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 4px;
         }
 
-        .job-item .title {
-            font-size: 0.75rem;
+        .job-time {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .job-price {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .job-title {
+            font-size: 13px;
             font-weight: 600;
             color: var(--text);
         }
 
-        .job-item .client {
-            font-size: 0.65rem;
-            color: var(--text-light);
+        .job-client {
+            font-size: 11px;
+            color: var(--text-secondary);
         }
 
-        .job-item .status {
-            font-size: 0.6rem;
-            padding: 4px 8px;
-            border-radius: 6px;
+        .job-address {
+            font-size: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-top: 2px;
+        }
+
+        .job-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+        }
+
+        .job-action {
+            flex: 1;
+            padding: 6px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 10px;
             font-weight: 600;
         }
 
-        .status.scheduled {
-            background: #DBEAFE;
-            color: #1D4ED8;
+        .job-action.call { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .job-action.sms { background: rgba(37, 99, 235, 0.1); color: var(--blue); }
+        .job-action.route { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+
+        .quick-actions {
+            display: flex;
+            gap: 8px;
         }
 
-        .status.progress {
-            background: #FEF3C7;
-            color: #D97706;
+        .quick-action {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* Features Section */
+        .quick-action-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 6px;
+            font-size: 14px;
+        }
+
+        .quick-action-icon.blue { background: rgba(37, 99, 235, 0.1); }
+        .quick-action-icon.green { background: rgba(16, 185, 129, 0.1); }
+
+        .quick-action-label {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Jobs List Screen */
+        .jobs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 8px;
+        }
+
+        .jobs-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .search-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 3px;
+            margin-bottom: 12px;
+        }
+
+        .filter-tab {
+            flex: 1;
+            padding: 6px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .filter-tab.active {
+            background: white;
+            color: var(--text);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .job-list-item {
+            background: white;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .job-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 9px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .job-status.draft { background: var(--bg-secondary); color: var(--text-secondary); }
+        .job-status.sent { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .job-status.approved { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .job-status.progress { background: rgba(37, 99, 235, 0.1); color: var(--blue); }
+        .job-status.invoiced { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
+
+        .job-list-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .job-list-client {
+            font-size: 11px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .job-list-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+        }
+
+        .job-list-total {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .job-list-date {
+            font-size: 10px;
+            color: var(--text-light);
+        }
+
+        /* Features */
         .features {
             padding: 100px 24px;
             background: white;
@@ -350,7 +579,7 @@
 
         .section-header p {
             font-size: 1.2rem;
-            color: var(--text-light);
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -391,14 +620,50 @@
         }
 
         .feature-card p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             font-size: 0.95rem;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, var(--bg) 0%, #F5F3FF 100%);
+            overflow: hidden;
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .screenshot-phone {
+            width: 220px;
+            background: #1F2937;
+            border-radius: 32px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-screen {
+            background: var(--bg);
+            border-radius: 26px;
+            overflow: hidden;
+            aspect-ratio: 9/19.5;
+        }
+
+        .screenshot-label {
+            text-align: center;
+            margin-top: 16px;
+            font-weight: 600;
+            color: var(--text);
         }
 
         /* How It Works */
         .how-it-works {
             padding: 100px 24px;
-            background: linear-gradient(180deg, var(--bg) 0%, #F5F3FF 100%);
+            background: white;
         }
 
         .steps {
@@ -411,7 +676,6 @@
 
         .step {
             text-align: center;
-            position: relative;
         }
 
         .step-number {
@@ -434,14 +698,14 @@
         }
 
         .step p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        /* For Who Section */
+        /* For Who */
         .for-who {
             padding: 100px 24px;
-            background: white;
+            background: var(--bg);
         }
 
         .trades-grid {
@@ -454,13 +718,14 @@
         }
 
         .trade-tag {
-            background: var(--bg);
+            background: white;
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: 500;
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: all 0.2s;
         }
 
@@ -469,7 +734,7 @@
             transform: scale(1.05);
         }
 
-        /* CTA Section */
+        /* CTA */
         .cta {
             padding: 100px 24px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -500,7 +765,6 @@
 
         .cta .btn-primary:hover {
             background: #F5F3FF;
-            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -526,7 +790,6 @@
         .footer-brand p {
             color: #9CA3AF;
             font-size: 0.95rem;
-            margin-bottom: 20px;
         }
 
         .footer-column h4 {
@@ -545,9 +808,7 @@
             transition: color 0.2s;
         }
 
-        .footer-column a:hover {
-            color: var(--primary-light);
-        }
+        .footer-column a:hover { color: var(--primary-light); }
 
         .footer-bottom {
             max-width: 1200px;
@@ -556,74 +817,30 @@
             border-top: 1px solid #374151;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             color: #9CA3AF;
             font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .phone-mockup {
-                max-width: 280px;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .steps {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content p { margin: 0 auto 32px; }
+            .hero-buttons { justify-content: center; }
+            .phones-container { order: -1; margin-bottom: 40px; }
+            .phone.secondary { display: none; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-            }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .screenshots-scroll { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding: 0 20px; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
@@ -643,14 +860,14 @@
             </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#screenshots">Screenshots</a>
                 <a href="support.html">Support</a>
                 <a href="https://apps.apple.com/app/id6757860497" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -666,42 +883,133 @@
                     <a href="#features" class="btn-secondary">Learn More</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="phone-mockup">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <div class="phone-notch"></div>
-                            <div class="phone-content">
-                                <div class="screen-header">
-                                    <h3>Good morning,</h3>
-                                    <h2>Alex!</h2>
+
+            <!-- Phone Mockups -->
+            <div class="phones-container">
+                <!-- Dashboard Screen -->
+                <div class="phone">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="screen-content">
+                            <div class="dash-header">
+                                <div>
+                                    <div class="dash-greeting">Good morning,</div>
+                                    <div class="dash-name">Alex!</div>
                                 </div>
-                                <div class="screen-stats">
-                                    <div class="stat-card">
-                                        <div class="label">This Month</div>
-                                        <div class="value green">$12,450</div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="label">Outstanding</div>
-                                        <div class="value">$3,200</div>
-                                    </div>
+                                <div class="dash-icons">
+                                    <div class="dash-icon">⚙️</div>
+                                    <div class="dash-icon">🔔</div>
                                 </div>
-                                <div class="screen-jobs">
-                                    <h4>Today's Jobs</h4>
-                                    <div class="job-item">
-                                        <div>
-                                            <div class="title">Kitchen Remodel</div>
-                                            <div class="client">Sarah Johnson</div>
-                                        </div>
-                                        <div class="status scheduled">9:00 AM</div>
-                                    </div>
-                                    <div class="job-item">
-                                        <div>
-                                            <div class="title">Bathroom Plumbing</div>
-                                            <div class="client">Mike Chen</div>
-                                        </div>
-                                        <div class="status progress">2:00 PM</div>
-                                    </div>
+                            </div>
+
+                            <div class="stats-row">
+                                <div class="stat-card">
+                                    <div class="stat-icon green">💵</div>
+                                    <div class="stat-value">$4,850</div>
+                                    <div class="stat-label">This week</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon blue">💼</div>
+                                    <div class="stat-value">8</div>
+                                    <div class="stat-label">Open jobs</div>
+                                </div>
+                            </div>
+
+                            <div class="alert-row">
+                                <div class="alert-card warning">
+                                    <div class="alert-header warning">🧾 3 Unpaid</div>
+                                    <div class="alert-value">$2,150</div>
+                                </div>
+                                <div class="alert-card error">
+                                    <div class="alert-header error">⚠️ 1 Overdue</div>
+                                    <div class="alert-value">$450</div>
+                                </div>
+                            </div>
+
+                            <div class="section-title">Today's Schedule</div>
+                            <div class="job-card">
+                                <div class="job-header">
+                                    <div class="job-time">🕐 9:00 AM</div>
+                                    <div class="job-price">$1,200</div>
+                                </div>
+                                <div class="job-title">Kitchen Remodel</div>
+                                <div class="job-client">Sarah Johnson</div>
+                                <div class="job-address">📍 123 Oak Street, Austin</div>
+                                <div class="job-actions">
+                                    <div class="job-action call">📞 Call</div>
+                                    <div class="job-action sms">💬 SMS</div>
+                                    <div class="job-action route">🧭 Route</div>
+                                </div>
+                            </div>
+
+                            <div class="section-title">Quick Actions</div>
+                            <div class="quick-actions">
+                                <div class="quick-action">
+                                    <div class="quick-action-icon blue">📄</div>
+                                    <div class="quick-action-label">New Estimate</div>
+                                </div>
+                                <div class="quick-action">
+                                    <div class="quick-action-icon green">👤</div>
+                                    <div class="quick-action-label">Add Client</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs List Screen -->
+                <div class="phone secondary">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="screen-content">
+                            <div class="jobs-header">
+                                <div class="jobs-title">Jobs</div>
+                                <div class="search-icon">🔍</div>
+                            </div>
+
+                            <div class="filter-tabs">
+                                <div class="filter-tab active">Active</div>
+                                <div class="filter-tab">Completed</div>
+                                <div class="filter-tab">All</div>
+                            </div>
+
+                            <div class="job-list-item">
+                                <div class="job-status sent">ESTIMATE SENT</div>
+                                <div class="job-list-title">Bathroom Renovation</div>
+                                <div class="job-list-client">👤 Mike Chen</div>
+                                <div class="job-list-footer">
+                                    <div class="job-list-total">$3,500</div>
+                                    <div class="job-list-date">Jan 18</div>
+                                </div>
+                            </div>
+
+                            <div class="job-list-item">
+                                <div class="job-status progress">IN PROGRESS</div>
+                                <div class="job-list-title">Electrical Repair</div>
+                                <div class="job-list-client">👤 Emily Davis</div>
+                                <div class="job-list-footer">
+                                    <div class="job-list-total">$850</div>
+                                    <div class="job-list-date">Jan 15</div>
+                                </div>
+                            </div>
+
+                            <div class="job-list-item">
+                                <div class="job-status invoiced">INVOICED</div>
+                                <div class="job-list-title">HVAC Installation</div>
+                                <div class="job-list-client">👤 Tom Wilson</div>
+                                <div class="job-list-footer">
+                                    <div class="job-list-total">$4,200</div>
+                                    <div class="job-list-date">Jan 12</div>
+                                </div>
+                            </div>
+
+                            <div class="job-list-item">
+                                <div class="job-status approved">APPROVED</div>
+                                <div class="job-list-title">Deck Building</div>
+                                <div class="job-list-client">👤 Lisa Brown</div>
+                                <div class="job-list-footer">
+                                    <div class="job-list-total">$6,800</div>
+                                    <div class="job-list-date">Jan 20</div>
                                 </div>
                             </div>
                         </div>
@@ -711,7 +1019,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features -->
     <section class="features" id="features">
         <div class="features-container">
             <div class="section-header">
@@ -722,27 +1030,27 @@
                 <div class="feature-card">
                     <div class="feature-icon">📋</div>
                     <h3>Professional Estimates</h3>
-                    <p>Create detailed estimates with line items, photos, and your branding. Send as PDF with one tap.</p>
+                    <p>Create detailed estimates with line items, tax calculations, and your branding. Send as PDF with one tap.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3>Easy Invoicing</h3>
-                    <p>Convert estimates to invoices instantly. Track payments and send reminders automatically.</p>
+                    <p>Convert estimates to invoices instantly. Track payments and outstanding balances automatically.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
                     <h3>Client Management</h3>
-                    <p>Keep all client info, job history, and notes organized in one place.</p>
+                    <p>Keep all client info, job history, revenue stats, and contact details organized in one place.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📅</div>
                     <h3>Calendar Sync</h3>
-                    <p>Sync scheduled jobs with Google Calendar or Apple Calendar automatically.</p>
+                    <p>Sync scheduled jobs with Google Calendar or Apple Calendar. Never miss an appointment.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3>Business Reports</h3>
-                    <p>Track revenue, completed jobs, and outstanding payments at a glance.</p>
+                    <h3>Business Dashboard</h3>
+                    <p>Track weekly revenue, open jobs, unpaid invoices, and overdue payments at a glance.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
@@ -768,22 +1076,22 @@
             <div class="step">
                 <div class="step-number">2</div>
                 <h3>Add Your Clients</h3>
-                <p>Import contacts or add them manually</p>
+                <p>Add clients with name, phone, email, and address</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <h3>Create Jobs</h3>
-                <p>Add job details, schedule dates, and assign to clients</p>
+                <p>Add job details, line items, schedule dates</p>
             </div>
             <div class="step">
                 <div class="step-number">4</div>
                 <h3>Get Paid</h3>
-                <p>Send estimates, invoices, and track payments</p>
+                <p>Send estimates, invoices, and collect payments</p>
             </div>
         </div>
     </section>
 
-    <!-- For Who Section -->
+    <!-- For Who -->
     <section class="for-who">
         <div class="section-header">
             <h2>Built for Contractors Like You</h2>
@@ -798,17 +1106,15 @@
             <div class="trade-tag">🌳 Landscapers</div>
             <div class="trade-tag">🧹 Cleaning Services</div>
             <div class="trade-tag">🔨 Handymen</div>
-            <div class="trade-tag">🚿 Roofers</div>
-            <div class="trade-tag">🪟 Window Installers</div>
             <div class="trade-tag">🏗️ Remodelers</div>
             <div class="trade-tag">🔩 Appliance Repair</div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA -->
     <section class="cta">
         <h2>Ready to Simplify Your Business?</h2>
-        <p>Join thousands of contractors who manage their business with JobPocket</p>
+        <p>Join contractors who manage their business with JobPocket</p>
         <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
             <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
