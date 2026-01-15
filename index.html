@@ -5,165 +5,846 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JobPocket - Business Management for Contractors</title>
     <meta name="description" content="All-in-one business management app for contractors. Create estimates, invoices, manage clients, and track jobs from your phone.">
+    <meta name="keywords" content="contractor app, invoice app, estimate app, job management, plumber, electrician, handyman, business app">
+    <meta property="og:title" content="JobPocket - Business Management for Contractors">
+    <meta property="og:description" content="Run your contracting business from your phone. Create estimates, invoices, manage clients, and track payments.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jobpocket.app">
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
-            min-height: 100vh;
-            color: #111827;
+
+        :root {
+            --primary: #7C3AED;
+            --primary-dark: #6D28D9;
+            --primary-light: #A78BFA;
+            --text: #111827;
+            --text-light: #6B7280;
+            --bg: #FAFAFA;
+            --white: #FFFFFF;
         }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
+            padding: 120px 24px 80px;
+            background: linear-gradient(180deg, #F5F3FF 0%, var(--bg) 100%);
         }
-        .logo {
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .logo svg {
-            width: 80px;
-            height: 80px;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .tagline {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
-        .features {
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
-        .feature {
-            background: rgba(255,255,255,0.15);
-            padding: 20px;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .feature h3 {
-            font-size: 1rem;
-            margin-bottom: 8px;
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 500px;
         }
-        .feature p {
-            font-size: 0.875rem;
-            opacity: 0.85;
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-        .app-store-btn {
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            background: black;
+            gap: 8px;
+            background: var(--primary);
             color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
             text-decoration: none;
-            font-weight: 500;
-            gap: 10px;
-            transition: transform 0.2s;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
         }
-        .app-store-btn:hover {
-            transform: scale(1.05);
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
         }
-        .app-store-btn svg {
+
+        .btn-primary svg {
             width: 24px;
             height: 24px;
         }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--text);
+            padding: 16px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid #E5E7EB;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .phone-frame {
+            background: #1F2937;
+            border-radius: 50px;
+            padding: 12px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.25);
+        }
+
+        .phone-screen {
+            background: var(--primary);
+            border-radius: 40px;
+            aspect-ratio: 9/19.5;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-notch {
+            width: 120px;
+            height: 28px;
+            background: #1F2937;
+            border-radius: 0 0 20px 20px;
+            margin: 0 auto;
+        }
+
+        .phone-content {
+            flex: 1;
+            background: white;
+            margin: 8px;
+            border-radius: 32px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen-header {
+            text-align: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F3F4F6;
+            margin-bottom: 16px;
+        }
+
+        .screen-header h3 {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .screen-header h2 {
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .screen-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: #F9FAFB;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .stat-card .label {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .stat-card .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-card .value.green {
+            color: #10B981;
+        }
+
+        .screen-jobs {
+            flex: 1;
+        }
+
+        .screen-jobs h4 {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .job-item {
+            background: #F9FAFB;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-item .title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .job-item .client {
+            font-size: 0.65rem;
+            color: var(--text-light);
+        }
+
+        .job-item .status {
+            font-size: 0.6rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .status.scheduled {
+            background: #DBEAFE;
+            color: #1D4ED8;
+        }
+
+        .status.progress {
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 24px;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            padding: 32px;
+            border-radius: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.75rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, var(--bg) 0%, #F5F3FF 100%);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* For Who Section */
+        .for-who {
+            padding: 100px 24px;
+            background: white;
+        }
+
+        .trades-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .trade-tag {
+            background: var(--bg);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .trade-tag:hover {
+            background: #F5F3FF;
+            transform: scale(1.05);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+
+        .cta .btn-primary:hover {
+            background: #F5F3FF;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
         footer {
             background: #111827;
             color: white;
-            padding: 40px 20px;
-            text-align: center;
+            padding: 60px 24px 30px;
         }
-        footer a {
-            color: #A78BFA;
-            text-decoration: none;
-            margin: 0 15px;
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
         }
-        footer a:hover {
-            text-decoration: underline;
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
         }
-        .footer-links {
+
+        .footer-brand p {
+            color: #9CA3AF;
+            font-size: 0.95rem;
             margin-bottom: 20px;
         }
-        .copyright {
-            opacity: 0.6;
-            font-size: 0.875rem;
+
+        .footer-column h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            color: #9CA3AF;
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .features { grid-template-columns: 1fr; }
+
+        .footer-column a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 48px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9CA3AF;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .phone-mockup {
+                max-width: 280px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <svg viewBox="0 0 36 36" fill="none">
+                    <rect width="36" height="36" rx="8" fill="#7C3AED"/>
+                    <path d="M0 18 L36 18 L36 28 Q36 36 28 36 L8 36 Q0 36 0 28 Z" fill="#6D28D9"/>
+                    <path d="M4 18 Q18 25 32 18" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <rect x="10" y="6" width="7" height="12" rx="2" fill="white"/>
+                    <rect x="19" y="8" width="7" height="10" rx="2" fill="white" opacity="0.8"/>
+                </svg>
+                JobPocket
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="support.html">Support</a>
+                <a href="https://apps.apple.com/app/id6757860497" class="nav-cta">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="logo">
-            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="80" height="80" rx="16" fill="#7C3AED"/>
-                <path d="M0 40 L80 40 L80 64 Q80 80 64 80 L16 80 Q0 80 0 64 Z" fill="#6D28D9"/>
-                <path d="M8 40 Q40 56 72 40" stroke="#A78BFA" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <rect x="22" y="12" width="14" height="28" rx="3" fill="white"/>
-                <rect x="44" y="18" width="14" height="22" rx="3" fill="white" opacity="0.8"/>
-            </svg>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Run Your Business From Your Pocket</h1>
+                <p>The all-in-one app for contractors. Create professional estimates, send invoices, manage clients, and track payments — all from your phone.</p>
+                <div class="hero-buttons">
+                    <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download for iOS
+                    </a>
+                    <a href="#features" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="phone-notch"></div>
+                            <div class="phone-content">
+                                <div class="screen-header">
+                                    <h3>Good morning,</h3>
+                                    <h2>Alex!</h2>
+                                </div>
+                                <div class="screen-stats">
+                                    <div class="stat-card">
+                                        <div class="label">This Month</div>
+                                        <div class="value green">$12,450</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="label">Outstanding</div>
+                                        <div class="value">$3,200</div>
+                                    </div>
+                                </div>
+                                <div class="screen-jobs">
+                                    <h4>Today's Jobs</h4>
+                                    <div class="job-item">
+                                        <div>
+                                            <div class="title">Kitchen Remodel</div>
+                                            <div class="client">Sarah Johnson</div>
+                                        </div>
+                                        <div class="status scheduled">9:00 AM</div>
+                                    </div>
+                                    <div class="job-item">
+                                        <div>
+                                            <div class="title">Bathroom Plumbing</div>
+                                            <div class="client">Mike Chen</div>
+                                        </div>
+                                        <div class="status progress">2:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h1>JobPocket</h1>
-        <p class="tagline">Business management for contractors</p>
+    </section>
 
-        <div class="features">
-            <div class="feature">
-                <h3>📋 Estimates & Invoices</h3>
-                <p>Create professional PDFs in seconds</p>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Everything You Need to Run Your Business</h2>
+                <p>Stop juggling paperwork. JobPocket handles estimates, invoices, scheduling, and client management in one simple app.</p>
             </div>
-            <div class="feature">
-                <h3>👥 Client Management</h3>
-                <p>Keep all your clients organized</p>
-            </div>
-            <div class="feature">
-                <h3>📅 Calendar Sync</h3>
-                <p>Sync jobs with Google/Apple Calendar</p>
-            </div>
-            <div class="feature">
-                <h3>💰 Payment Tracking</h3>
-                <p>Track payments and balances</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Professional Estimates</h3>
+                    <p>Create detailed estimates with line items, photos, and your branding. Send as PDF with one tap.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Easy Invoicing</h3>
+                    <p>Convert estimates to invoices instantly. Track payments and send reminders automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Client Management</h3>
+                    <p>Keep all client info, job history, and notes organized in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Calendar Sync</h3>
+                    <p>Sync scheduled jobs with Google Calendar or Apple Calendar automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Business Reports</h3>
+                    <p>Track revenue, completed jobs, and outstanding payments at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Branding</h3>
+                    <p>Add your logo and company colors to all documents for a professional look.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <a href="https://apps.apple.com/app/id6757860497" class="app-store-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <h2>Simple to Use, Powerful Results</h2>
+            <p>Get started in minutes, not hours</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create Account</h3>
+                <p>Sign up with your phone number in seconds</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Add Your Clients</h3>
+                <p>Import contacts or add them manually</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Create Jobs</h3>
+                <p>Add job details, schedule dates, and assign to clients</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Get Paid</h3>
+                <p>Send estimates, invoices, and track payments</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Who Section -->
+    <section class="for-who">
+        <div class="section-header">
+            <h2>Built for Contractors Like You</h2>
+            <p>Whether you're a one-person operation or a growing team</p>
+        </div>
+        <div class="trades-grid">
+            <div class="trade-tag">🔧 Plumbers</div>
+            <div class="trade-tag">⚡ Electricians</div>
+            <div class="trade-tag">❄️ HVAC Technicians</div>
+            <div class="trade-tag">🏠 General Contractors</div>
+            <div class="trade-tag">🎨 Painters</div>
+            <div class="trade-tag">🌳 Landscapers</div>
+            <div class="trade-tag">🧹 Cleaning Services</div>
+            <div class="trade-tag">🔨 Handymen</div>
+            <div class="trade-tag">🚿 Roofers</div>
+            <div class="trade-tag">🪟 Window Installers</div>
+            <div class="trade-tag">🏗️ Remodelers</div>
+            <div class="trade-tag">🔩 Appliance Repair</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Simplify Your Business?</h2>
+        <p>Join thousands of contractors who manage their business with JobPocket</p>
+        <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            Download on App Store
+            Download Free on App Store
         </a>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-            <a href="mailto:support@jobpocket.app">Contact Support</a>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>JobPocket</h3>
+                <p>The simplest way to manage your contracting business. Create estimates, send invoices, and get paid faster.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="https://apps.apple.com/app/id6757860497">Download</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="support.html">Help Center</a>
+                <a href="mailto:support@jobpocket.app">Contact Us</a>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
         </div>
-        <p class="copyright">© 2026 JobPocket. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p>© 2026 JobPocket. All rights reserved.</p>
+            <p>Made with ❤️ for contractors</p>
+        </div>
     </footer>
 </body>
 </html>
