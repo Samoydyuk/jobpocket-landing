@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobPocket - Business Management for Contractors</title>
+    <meta name="description" content="All-in-one business management app for contractors. Create estimates, invoices, manage clients, and track jobs from your phone.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+            min-height: 100vh;
+            color: #111827;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .logo svg {
+            width: 80px;
+            height: 80px;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        .feature {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .feature h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .feature p {
+            font-size: 0.875rem;
+            opacity: 0.85;
+        }
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            background: black;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            gap: 10px;
+            transition: transform 0.2s;
+        }
+        .app-store-btn:hover {
+            transform: scale(1.05);
+        }
+        .app-store-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        footer {
+            background: #111827;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #A78BFA;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.875rem;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="logo">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="80" height="80" rx="16" fill="#7C3AED"/>
+                <path d="M0 40 L80 40 L80 64 Q80 80 64 80 L16 80 Q0 80 0 64 Z" fill="#6D28D9"/>
+                <path d="M8 40 Q40 56 72 40" stroke="#A78BFA" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <rect x="22" y="12" width="14" height="28" rx="3" fill="white"/>
+                <rect x="44" y="18" width="14" height="22" rx="3" fill="white" opacity="0.8"/>
+            </svg>
+        </div>
+        <h1>JobPocket</h1>
+        <p class="tagline">Business management for contractors</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>📋 Estimates & Invoices</h3>
+                <p>Create professional PDFs in seconds</p>
+            </div>
+            <div class="feature">
+                <h3>👥 Client Management</h3>
+                <p>Keep all your clients organized</p>
+            </div>
+            <div class="feature">
+                <h3>📅 Calendar Sync</h3>
+                <p>Sync jobs with Google/Apple Calendar</p>
+            </div>
+            <div class="feature">
+                <h3>💰 Payment Tracking</h3>
+                <p>Track payments and balances</p>
+            </div>
+        </div>
+
+        <a href="https://apps.apple.com/app/id6757860497" class="app-store-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Download on App Store
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="mailto:support@jobpocket.app">Contact Support</a>
+        </div>
+        <p class="copyright">© 2026 JobPocket. All rights reserved.</p>
+    </footer>
+</body>
+</html>
