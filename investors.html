@@ -69,7 +69,7 @@ h3{font-size:1.3rem;font-weight:600;margin-bottom:12px;color:var(--white)}
 .stat-label{font-size:.85rem;color:var(--text2);margin-top:4px}
 
 /* TABLE */
-.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-top:20px}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-top:20px;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:.85rem}
 th{background:var(--bg3);padding:12px 16px;text-align:left;font-weight:600;color:var(--purple-light);white-space:nowrap;border-bottom:1px solid var(--border)}
 td{padding:10px 16px;border-bottom:1px solid rgba(42,42,74,.5);white-space:nowrap}
@@ -140,16 +140,75 @@ td.dim{color:var(--text3)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .animate{animation:fadeUp .8s ease forwards}
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  .slide{padding:80px 20px}
-  .two-col{grid-template-columns:1fr}
-  .nav{padding:12px 20px}
+/* RESPONSIVE — iPad landscape */
+@media(max-width:1024px){
+  .slide{padding:80px 32px}
+  h1{font-size:clamp(2rem,4vw,3.5rem)}
+  h2{font-size:clamp(1.5rem,2.5vw,2.2rem)}
+  .two-col{gap:28px}
+  .card-grid-4{grid-template-columns:repeat(2,1fr)}
+}
+
+/* iPad portrait */
+@media(max-width:834px){
+  .slide{padding:80px 24px;min-height:auto;padding-top:90px;padding-bottom:60px}
+  html{scroll-snap-type:none}
+  .two-col{grid-template-columns:1fr;gap:32px}
+  .card-grid-3{grid-template-columns:repeat(2,1fr)}
+  .card-grid-4{grid-template-columns:repeat(2,1fr)}
+  .table-wrap{font-size:.8rem}
+  .nav-dots{display:none}
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .slide{padding:70px 16px 48px}
+  .nav{padding:10px 16px}
+  .nav-brand{font-size:1rem}
+  .lang-btn{padding:3px 8px;font-size:.65rem}
+  h1{font-size:1.7rem}
+  h2{font-size:1.3rem}
+  h3{font-size:1.1rem}
+  .subtitle{font-size:.95rem}
+  .slide-num{font-size:.65rem;letter-spacing:2px}
+  .two-col{grid-template-columns:1fr;gap:24px}
   .flow{flex-direction:column;align-items:stretch}
   .flow-arrow{display:none}
-  .card-grid-3,.card-grid-4{grid-template-columns:1fr}
-  h1{font-size:2rem}
-  .stat-value{font-size:2rem}
+  .flow-step{padding:10px 14px;font-size:.8rem}
+  .card-grid-2,.card-grid-3,.card-grid-4{grid-template-columns:1fr}
+  .card{padding:20px}
+  .stat-value{font-size:1.8rem}
+  .stat{padding:16px}
+  .metric-row{flex-direction:column;gap:4px;padding:10px 0}
+  .metric-val{font-size:.95rem}
+  .pill-row{gap:6px}
+  .pill{padding:6px 12px;font-size:.7rem}
+  .waterfall{margin:16px 0}
+  .wf-row{padding:10px 14px;gap:10px;margin-left:12px}
+  .wf-label{font-size:.8rem}
+  .wf-amount{font-size:.85rem}
+  .table-wrap{margin-top:12px}
+  table{font-size:.7rem}
+  th{padding:8px 10px}
+  td{padding:7px 10px}
+  .comp-bar-track{height:6px}
+  .chart-bars{height:140px;gap:2px}
+  .chart-labels span{font-size:.5rem}
+  pre{font-size:.65rem !important}
+  .badge{font-size:.65rem;padding:3px 8px}
+  .sep{width:40px;margin-bottom:16px}
+  .footer{padding:24px 16px;font-size:.7rem}
+}
+
+/* Small phones */
+@media(max-width:380px){
+  h1{font-size:1.4rem}
+  h2{font-size:1.15rem}
+  .stat-value{font-size:1.5rem}
+  .slide{padding:64px 12px 40px}
+  .card{padding:16px}
+  table{font-size:.6rem}
+  th,td{padding:6px 6px}
 }
 </style>
 </head>
