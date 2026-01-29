@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobPocket — Investor Presentation</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#12121a;
+  --bg3:#1a1a2e;
+  --card:#16162a;
+  --border:#2a2a4a;
+  --purple:#7C3AED;
+  --purple-light:#A78BFA;
+  --purple-glow:rgba(124,58,237,.15);
+  --blue:#3B82F6;
+  --green:#10B981;
+  --green-light:#34D399;
+  --amber:#F59E0B;
+  --red:#EF4444;
+  --text:#E2E8F0;
+  --text2:#94A3B8;
+  --text3:#64748B;
+  --white:#fff;
+}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* SLIDE SYSTEM */
+.slide{min-height:100vh;padding:80px 40px;display:flex;align-items:center;justify-content:center;position:relative;scroll-snap-align:start}
+.slide-inner{max-width:1200px;width:100%;margin:0 auto}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,15,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-size:1.2rem;font-weight:700;color:var(--white);display:flex;align-items:center;gap:10px}
+.nav-brand span{background:linear-gradient(135deg,var(--purple),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-dots{display:flex;gap:6px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:.3s}
+.nav-dot.active,.nav-dot:hover{background:var(--purple)}
+.nav-label{font-size:.7rem;color:var(--text3);display:none}
+
+/* TYPOGRAPHY */
+.slide-num{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--purple-light);margin-bottom:16px;font-weight:600}
+h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:24px}
+h1 .gradient{background:linear-gradient(135deg,var(--purple-light),var(--blue),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;margin-bottom:16px;line-height:1.2}
+h3{font-size:1.3rem;font-weight:600;margin-bottom:12px;color:var(--white)}
+.subtitle{font-size:clamp(1rem,1.5vw,1.3rem);color:var(--text2);max-width:700px;margin-bottom:40px}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:.3s}
+.card:hover{border-color:var(--purple);transform:translateY(-2px)}
+.card-grid{display:grid;gap:20px}
+.card-grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card-grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card-grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+/* STAT */
+.stat{text-align:center;padding:24px}
+.stat-value{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:.85rem;color:var(--text2);margin-top:4px}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-top:20px}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:var(--bg3);padding:12px 16px;text-align:left;font-weight:600;color:var(--purple-light);white-space:nowrap;border-bottom:1px solid var(--border)}
+td{padding:10px 16px;border-bottom:1px solid rgba(42,42,74,.5);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(124,58,237,.05)}
+.highlight-row td{background:rgba(124,58,237,.1);font-weight:600;color:var(--white)}
+td.positive{color:var(--green-light)}
+td.negative{color:var(--red)}
+td.dim{color:var(--text3)}
+
+/* BADGE */
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600}
+.badge-purple{background:rgba(124,58,237,.15);color:var(--purple-light)}
+.badge-green{background:rgba(16,185,129,.15);color:var(--green-light)}
+.badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+.badge-amber{background:rgba(245,158,11,.15);color:var(--amber)}
+
+/* PILL */
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.pill{padding:8px 16px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);font-size:.8rem;color:var(--text2)}
+
+/* FLOW */
+.flow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0}
+.flow-step{display:flex;align-items:center;gap:8px;padding:12px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;font-size:.9rem}
+.flow-step .num{width:28px;height:28px;border-radius:50%;background:var(--purple);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
+.flow-arrow{color:var(--text3);font-size:1.2rem}
+
+/* WATERFALL */
+.waterfall{margin:24px 0}
+.wf-row{display:flex;align-items:center;gap:16px;padding:12px 20px;border-left:3px solid var(--border);margin-left:20px}
+.wf-row.wf-in{border-color:var(--green)}
+.wf-row.wf-out{border-color:var(--red)}
+.wf-row.wf-net{border-color:var(--purple);background:var(--bg3);border-radius:0 12px 12px 0}
+.wf-label{flex:1;font-size:.9rem}
+.wf-amount{font-weight:700;font-size:1rem}
+
+/* COMPARISON BAR */
+.comp-bar{margin:8px 0}
+.comp-bar-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px}
+.comp-bar-track{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.comp-bar-fill{height:100%;border-radius:4px;transition:width 1s ease}
+
+/* METRIC ROW */
+.metric-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(42,42,74,.3)}
+.metric-row:last-child{border:none}
+.metric-key{color:var(--text2);font-size:.9rem}
+.metric-val{font-weight:700;color:var(--white)}
+
+/* TWO COL LAYOUT */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* SEPARATOR */
+.sep{width:60px;height:3px;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:2px;margin-bottom:24px}
+
+/* CHART BAR (simple CSS) */
+.chart-bars{display:flex;align-items:flex-end;gap:4px;height:200px;padding:20px 0}
+.chart-bar{flex:1;background:linear-gradient(180deg,var(--purple),var(--blue));border-radius:4px 4px 0 0;position:relative;min-width:8px;transition:height 1s ease}
+.chart-bar:hover{opacity:.8}
+.chart-bar .chart-tip{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-size:.65rem;color:var(--text2);white-space:nowrap;opacity:0;transition:.2s}
+.chart-bar:hover .chart-tip{opacity:1}
+.chart-labels{display:flex;gap:4px;margin-top:8px}
+.chart-labels span{flex:1;text-align:center;font-size:.6rem;color:var(--text3)}
+
+/* FOOTER */
+.footer{padding:40px;text-align:center;color:var(--text3);font-size:.8rem;border-top:1px solid var(--border)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeUp .8s ease forwards}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .slide{padding:80px 20px}
+  .two-col{grid-template-columns:1fr}
+  .nav{padding:12px 20px}
+  .flow{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .card-grid-3,.card-grid-4{grid-template-columns:1fr}
+  h1{font-size:2rem}
+  .stat-value{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand"><span>JobPocket</span> &mdash; Investor Deck</div>
+  <div class="nav-dots" id="navDots"></div>
+</nav>
+
+<!-- ===================== SLIDE 1: HERO ===================== -->
+<section class="slide" id="s1" style="background:radial-gradient(ellipse at 30% 50%,rgba(124,58,237,.12),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(59,130,246,.08),transparent 50%)">
+<div class="slide-inner" style="text-align:center">
+  <div class="slide-num">Investor Presentation 2026</div>
+  <h1>Run Your Trade Business<br>From Your <span class="gradient">iPhone</span></h1>
+  <p class="subtitle" style="margin:0 auto 48px">All-in-one mobile app for independent contractors. Estimates, payments, clients, jobs, reports &mdash; powered by Tap to Pay and AI.</p>
+  <div class="card-grid card-grid-4" style="max-width:800px;margin:0 auto">
+    <div class="stat"><div class="stat-value">67</div><div class="stat-label">Screens Built</div></div>
+    <div class="stat"><div class="stat-value">9</div><div class="stat-label">Verticals</div></div>
+    <div class="stat"><div class="stat-value">v1.1</div><div class="stat-label">Current Build</div></div>
+    <div class="stat"><div class="stat-value">$29</div><div class="stat-label">/month</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 2: PROBLEM ===================== -->
+<section class="slide" id="s2">
+<div class="slide-inner">
+  <div class="slide-num">01 &mdash; The Problem</div>
+  <div class="two-col">
+    <div>
+      <h2>6.5M contractors manage their business with <span style="color:var(--amber)">paper & WhatsApp</span></h2>
+      <div class="sep"></div>
+      <div class="metric-row"><span class="metric-key">Lost to late/missed payments</span><span class="metric-val" style="color:var(--red)">$17,500/year</span></div>
+      <div class="metric-row"><span class="metric-key">Avg days to get paid (check)</span><span class="metric-val" style="color:var(--amber)">28 days</span></div>
+      <div class="metric-row"><span class="metric-key">Consumers preferring cards</span><span class="metric-val">65%+</span></div>
+      <div class="metric-row"><span class="metric-key">Contractors accepting cards</span><span class="metric-val" style="color:var(--red)">~50%</span></div>
+    </div>
+    <div>
+      <h3>Existing solutions fail them</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Solution</th><th>Price</th><th>Problem</th></tr>
+          <tr><td>ServiceTitan</td><td style="color:var(--red)">$500+/mo</td><td class="dim">Enterprise, overkill</td></tr>
+          <tr><td>Housecall Pro</td><td style="color:var(--amber)">$65+/mo</td><td class="dim">Expensive, complex</td></tr>
+          <tr><td>Jobber</td><td style="color:var(--amber)">$49+/mo</td><td class="dim">Desktop-first</td></tr>
+          <tr><td>Invoice Simple</td><td>$10/mo</td><td class="dim">Invoicing only</td></tr>
+          <tr class="highlight-row"><td>JobPocket</td><td style="color:var(--green-light)">$29/mo</td><td>All-in-one, mobile-first</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 3: SOLUTION ===================== -->
+<section class="slide" id="s3" style="background:radial-gradient(ellipse at 70% 30%,rgba(16,185,129,.08),transparent 50%)">
+<div class="slide-inner">
+  <div class="slide-num">02 &mdash; The Solution</div>
+  <h2>Estimate &rarr; Job &rarr; Payment &rarr; Receipt<br><span style="color:var(--green-light)">in 60 seconds</span></h2>
+  <div class="sep"></div>
+  <div class="flow">
+    <div class="flow-step"><span class="num">1</span>Create estimate on-site</div><span class="flow-arrow">&rarr;</span>
+    <div class="flow-step"><span class="num">2</span>Customer signs digitally</div><span class="flow-arrow">&rarr;</span>
+    <div class="flow-step"><span class="num">3</span>Track job + photos</div><span class="flow-arrow">&rarr;</span>
+    <div class="flow-step"><span class="num">4</span>Tap to Pay (NFC)</div><span class="flow-arrow">&rarr;</span>
+    <div class="flow-step"><span class="num">5</span>Receipt via SMS</div>
+  </div>
+  <p style="color:var(--text2);margin-top:24px;font-size:1.1rem"><strong style="color:var(--white)">No hardware. No desktop. No office staff.</strong></p>
+
+  <div class="card-grid card-grid-3" style="margin-top:40px">
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#128179;</div>
+      <h3>Tap to Pay</h3>
+      <p style="color:var(--text2);font-size:.85rem">Accept cards via iPhone NFC. No reader hardware needed. Works on iPhone 7+ with iOS 15+.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#129302;</div>
+      <h3>AI Parts Finder</h3>
+      <p style="color:var(--text2);font-size:.85rem">Enter brand + model + symptom. Hybrid scraping + Claude AI returns real parts with purchase links.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#128241;</div>
+      <h3>Offline Mode</h3>
+      <p style="color:var(--text2);font-size:.85rem">Work without internet. All data syncs automatically when connection is restored.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#128101;</div>
+      <h3>Team Management</h3>
+      <p style="color:var(--text2);font-size:.85rem">Owner / Manager / Worker roles. Assign jobs, track time, manage permissions.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#128200;</div>
+      <h3>Reports & Tax</h3>
+      <p style="color:var(--text2);font-size:.85rem">Revenue analytics, expense tracking, receipt OCR, QuickBooks export. Tax-ready.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#128197;</div>
+      <h3>Calendar Sync</h3>
+      <p style="color:var(--text2);font-size:.85rem">Google Calendar + device calendar integration. Recurring jobs auto-schedule.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 4: MARKET ===================== -->
+<section class="slide" id="s4">
+<div class="slide-inner">
+  <div class="slide-num">03 &mdash; Market Opportunity</div>
+  <div class="two-col">
+    <div>
+      <h2>$280B+ combined market</h2>
+      <div class="sep"></div>
+      <div class="metric-row"><span class="metric-key">US HVAC market (2026)</span><span class="metric-val">$156.2B</span></div>
+      <div class="metric-row"><span class="metric-key">US plumbing market</span><span class="metric-val">$126.4B</span></div>
+      <div class="metric-row"><span class="metric-key">Establishments</span><span class="metric-val">990,000</span></div>
+      <div class="metric-row"><span class="metric-key">Industry CAGR</span><span class="metric-val" style="color:var(--green-light)">2.5&ndash;7.4%</span></div>
+      <div class="metric-row"><span class="metric-key">Solo contractor revenue</span><span class="metric-val">$150K&ndash;$300K/yr</span></div>
+      <div class="metric-row"><span class="metric-key">Avg service calls/day</span><span class="metric-val">2&ndash;4</span></div>
+      <div class="metric-row"><span class="metric-key">Avg ticket size</span><span class="metric-val">$200&ndash;$450</span></div>
+    </div>
+    <div>
+      <h3>TAM / SAM / SOM</h3>
+      <div class="card" style="margin-bottom:16px;border-left:3px solid var(--purple)">
+        <div style="font-size:.75rem;color:var(--purple-light);font-weight:600;letter-spacing:1px">TAM</div>
+        <div style="font-size:1.8rem;font-weight:800;color:var(--white)">6.5M contractors</div>
+        <div style="color:var(--text2);font-size:.85rem">$60B+ annual payment volume</div>
+      </div>
+      <div class="card" style="margin-bottom:16px;border-left:3px solid var(--blue)">
+        <div style="font-size:.75rem;color:var(--blue);font-weight:600;letter-spacing:1px">SAM</div>
+        <div style="font-size:1.8rem;font-weight:800;color:var(--white)">2M in target verticals</div>
+        <div style="color:var(--text2);font-size:.85rem">$24B annual payment volume</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--green)">
+        <div style="font-size:.75rem;color:var(--green-light);font-weight:600;letter-spacing:1px">SOM &mdash; YEAR 3</div>
+        <div style="font-size:1.8rem;font-weight:800;color:var(--white)">17,000 paying users</div>
+        <div style="color:var(--text2);font-size:.85rem">$28.7M ARR</div>
+      </div>
+      <div class="pill-row" style="margin-top:20px">
+        <span class="pill">Plumbing</span><span class="pill">HVAC</span><span class="pill">Electrical</span>
+        <span class="pill">Appliance Repair</span><span class="pill">General Contractor</span>
+        <span class="pill">Landscaping</span><span class="pill">Pest Control</span><span class="pill">Locksmith</span><span class="pill">Auto Repair</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 5: BUSINESS MODEL ===================== -->
+<section class="slide" id="s5" style="background:radial-gradient(ellipse at 30% 70%,rgba(124,58,237,.1),transparent 50%)">
+<div class="slide-inner">
+  <div class="slide-num">04 &mdash; Business Model</div>
+  <h2>Dual Revenue Engine: <span class="gradient">SaaS + Payments</span></h2>
+  <div class="sep"></div>
+  <div class="two-col">
+    <div>
+      <h3>Stream 1: SaaS Subscriptions</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Plan</th><th>Price</th><th>Target</th></tr>
+          <tr><td><span class="badge badge-green">FREE</span></td><td>$0/mo</td><td class="dim">Lead generation</td></tr>
+          <tr><td><span class="badge badge-purple">PRO</span></td><td>$29/mo</td><td>Solo contractors</td></tr>
+          <tr><td><span class="badge badge-blue">BUSINESS</span></td><td>$49/mo</td><td>Crews (3 users)</td></tr>
+        </table>
+      </div>
+
+      <h3 style="margin-top:32px">Stream 2: Payment Processing</h3>
+      <p style="color:var(--text2);font-size:.9rem;margin-bottom:16px"><strong style="color:var(--white)">1.5% platform fee</strong> on every Stripe transaction</p>
+
+      <div class="waterfall">
+        <div class="wf-row wf-in"><span class="wf-label">Customer pays</span><span class="wf-amount" style="color:var(--white)">$350.00</span></div>
+        <div class="wf-row wf-out"><span class="wf-label">Stripe processing (2.9% + $0.30)</span><span class="wf-amount" style="color:var(--red)">&minus;$10.45</span></div>
+        <div class="wf-row wf-out" style="border-color:var(--purple);background:var(--purple-glow)"><span class="wf-label"><strong>JobPocket platform fee (1.5%)</strong></span><span class="wf-amount" style="color:var(--purple-light)">&minus;$5.25</span></div>
+        <div class="wf-row wf-out"><span class="wf-label">Stripe payout (0.25%)</span><span class="wf-amount" style="color:var(--red)">&minus;$0.88</span></div>
+        <div class="wf-row wf-net"><span class="wf-label">Contractor receives</span><span class="wf-amount" style="color:var(--green-light)">$333.42</span></div>
+      </div>
+    </div>
+    <div>
+      <h3>Per-User Revenue (Monthly)</h3>
+      <div class="card" style="margin-bottom:20px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span style="color:var(--text2)">Subscription</span>
+          <span style="font-size:1.3rem;font-weight:700">$35</span>
+        </div>
+        <div class="comp-bar">
+          <div class="comp-bar-track"><div class="comp-bar-fill" style="width:23%;background:var(--purple)"></div></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0">
+          <span style="color:var(--text2)">Platform fee (1.5% of Stripe vol)</span>
+          <span style="font-size:1.3rem;font-weight:700">$118</span>
+        </div>
+        <div class="comp-bar">
+          <div class="comp-bar-track"><div class="comp-bar-fill" style="width:77%;background:linear-gradient(90deg,var(--purple),var(--blue))"></div></div>
+        </div>
+        <div style="border-top:1px solid var(--border);margin-top:16px;padding-top:16px;display:flex;justify-content:space-between">
+          <span style="font-weight:600">Total per user</span>
+          <span style="font-size:1.5rem;font-weight:800;color:var(--green-light)">$153/mo</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Platform fee is 3.4x subscription</h3>
+        <p style="color:var(--text2);font-size:.85rem;margin-top:8px">Based on real data: solo contractor does ~50 jobs/month at ~$350 avg ticket = $17,500 gross. 45% flows through Stripe.</p>
+        <p style="color:var(--purple-light);font-size:.85rem;margin-top:12px;font-weight:600">Apple IAP does NOT apply to payment processing revenue.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 6: UNIT ECONOMICS ===================== -->
+<section class="slide" id="s6">
+<div class="slide-inner">
+  <div class="slide-num">05 &mdash; Unit Economics</div>
+  <h2>LTV:CAC = <span style="color:var(--green-light)">68:1</span></h2>
+  <div class="sep"></div>
+  <div class="card-grid card-grid-4" style="margin-bottom:40px">
+    <div class="stat card"><div class="stat-value">$27</div><div class="stat-label">Blended CAC</div></div>
+    <div class="stat card"><div class="stat-value">$1,838</div><div class="stat-label">LTV (24-month)</div></div>
+    <div class="stat card"><div class="stat-value">&lt;1mo</div><div class="stat-label">Payback Period</div></div>
+    <div class="stat card"><div class="stat-value">68:1</div><div class="stat-label">LTV:CAC</div></div>
+  </div>
+  <div class="two-col">
+    <div>
+      <h3>Acquisition Channels</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Channel</th><th>CAC</th><th>% Mix</th><th>Weighted</th></tr>
+          <tr><td>Organic (ASO, WOM)</td><td style="color:var(--green-light)">$0</td><td>40%</td><td>$0</td></tr>
+          <tr><td>Referral program</td><td>$15</td><td>25%</td><td>$3.75</td></tr>
+          <tr><td>Paid ads (Meta/Google)</td><td>$80</td><td>20%</td><td>$16.00</td></tr>
+          <tr><td>Supply house partnerships</td><td>$50</td><td>15%</td><td>$7.50</td></tr>
+          <tr class="highlight-row"><td>Blended</td><td></td><td>100%</td><td>$27.25</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Churn Sensitivity</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Scenario</th><th>Churn/mo</th><th>Lifetime</th><th>LTV</th><th>LTV:CAC</th></tr>
+          <tr><td><span class="badge badge-green">Optimistic</span></td><td>3%</td><td>33 mo</td><td class="positive">$5,049</td><td>187:1</td></tr>
+          <tr><td><span class="badge badge-blue">Base</span></td><td>5%</td><td>20 mo</td><td>$3,060</td><td>113:1</td></tr>
+          <tr><td><span class="badge badge-amber">Pessimistic</span></td><td>8%</td><td>12.5 mo</td><td>$1,913</td><td>71:1</td></tr>
+        </table>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem;margin-top:16px"><strong style="color:var(--white)">Even worst-case LTV:CAC is 71:1</strong> &mdash; the unit economics work across all scenarios.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 7: FINANCIAL PROJECTIONS ===================== -->
+<section class="slide" id="s7" style="background:radial-gradient(ellipse at 50% 50%,rgba(124,58,237,.08),transparent 60%)">
+<div class="slide-inner">
+  <div class="slide-num">06 &mdash; 3-Year Financial Projections</div>
+  <h2>Path to <span class="gradient">$28.7M ARR</span></h2>
+  <div class="sep"></div>
+
+  <div class="card-grid card-grid-3" style="margin-bottom:40px">
+    <div class="card" style="text-align:center">
+      <div style="font-size:.75rem;color:var(--text3);margin-bottom:8px">YEAR 1</div>
+      <div style="font-size:2rem;font-weight:800;color:var(--white)">$334K</div>
+      <div style="font-size:.85rem;color:var(--text2)">revenue</div>
+      <div style="margin-top:12px;font-size:1.1rem;font-weight:700;color:var(--green-light)">$151K EBITDA</div>
+      <div style="font-size:.75rem;color:var(--text3)">45% margin</div>
+      <div style="margin-top:12px;font-size:.85rem;color:var(--text2)">787 paying users</div>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:.75rem;color:var(--text3);margin-bottom:8px">YEAR 2</div>
+      <div style="font-size:2rem;font-weight:800;color:var(--white)">$3.6M</div>
+      <div style="font-size:.85rem;color:var(--text2)">revenue</div>
+      <div style="margin-top:12px;font-size:1.1rem;font-weight:700;color:var(--green-light)">$2.8M EBITDA</div>
+      <div style="font-size:.75rem;color:var(--text3)">76% margin</div>
+      <div style="margin-top:12px;font-size:.85rem;color:var(--text2)">5,001 paying users</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--purple)">
+      <div style="font-size:.75rem;color:var(--purple-light);margin-bottom:8px">YEAR 3</div>
+      <div style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent">$17.7M</div>
+      <div style="font-size:.85rem;color:var(--text2)">revenue</div>
+      <div style="margin-top:12px;font-size:1.1rem;font-weight:700;color:var(--green-light)">$14.8M EBITDA</div>
+      <div style="font-size:.75rem;color:var(--text3)">84% margin</div>
+      <div style="margin-top:12px;font-size:.85rem;color:var(--text2)">16,700 paying users</div>
+    </div>
+  </div>
+
+  <!-- Revenue chart bars -->
+  <h3>Monthly Revenue Growth (36 months)</h3>
+  <div class="chart-bars" id="revenueChart"></div>
+  <div class="chart-labels" id="revenueLabels"></div>
+
+  <div class="two-col" style="margin-top:40px">
+    <div>
+      <h3>Revenue Breakdown</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th></th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Total</th></tr>
+          <tr><td>Subscriptions (net)</td><td>$87K</td><td>$793K</td><td>$3.5M</td><td>$4.4M</td></tr>
+          <tr><td>Platform fees (1.5%)</td><td>$247K</td><td>$2.7M</td><td>$13.6M</td><td>$16.5M</td></tr>
+          <tr><td>Ancillary</td><td class="dim">$0</td><td>$120K</td><td>$581K</td><td>$701K</td></tr>
+          <tr class="highlight-row"><td>Total Revenue</td><td>$334K</td><td>$3.6M</td><td>$17.7M</td><td>$21.6M</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Revenue Mix (Year 3)</h3>
+      <div style="margin-top:16px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.85rem">Platform Fees</span><span style="font-weight:700">77%</span></div>
+        <div class="comp-bar-track" style="height:24px;border-radius:12px;margin-bottom:12px">
+          <div class="comp-bar-fill" style="width:77%;background:linear-gradient(90deg,var(--purple),var(--blue));height:100%;border-radius:12px"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.85rem">Subscriptions</span><span style="font-weight:700">20%</span></div>
+        <div class="comp-bar-track" style="height:24px;border-radius:12px;margin-bottom:12px">
+          <div class="comp-bar-fill" style="width:20%;background:var(--green);height:100%;border-radius:12px"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.85rem">Ancillary</span><span style="font-weight:700">3%</span></div>
+        <div class="comp-bar-track" style="height:24px;border-radius:12px">
+          <div class="comp-bar-fill" style="width:3%;background:var(--amber);height:100%;border-radius:12px"></div>
+        </div>
+      </div>
+      <p style="color:var(--purple-light);font-size:.85rem;margin-top:20px;font-weight:600">This is a payments business with a SaaS acquisition layer.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 8: P&L ===================== -->
+<section class="slide" id="s8">
+<div class="slide-inner">
+  <div class="slide-num">07 &mdash; Profitability</div>
+  <h2>EBITDA Positive <span style="color:var(--green-light)">Month 5</span></h2>
+  <div class="sep"></div>
+  <div class="two-col">
+    <div>
+      <h3>Annual P&L</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th></th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
+          <tr class="highlight-row"><td>Revenue</td><td>$334K</td><td>$3.6M</td><td>$17.7M</td></tr>
+          <tr><td>COGS</td><td class="negative">($13K)</td><td class="negative">($49K)</td><td class="negative">($126K)</td></tr>
+          <tr><td><strong>Gross Profit</strong></td><td>$321K</td><td>$3.6M</td><td>$17.5M</td></tr>
+          <tr><td class="dim">Gross Margin</td><td>96%</td><td>99%</td><td>99%</td></tr>
+          <tr><td>Engineering</td><td class="negative">($60K)</td><td class="negative">($149K)</td><td class="negative">($318K)</td></tr>
+          <tr><td>Marketing</td><td class="negative">($61K)</td><td class="negative">($282K)</td><td class="negative">($810K)</td></tr>
+          <tr><td>Ops/Legal</td><td class="negative">($12K)</td><td class="negative">($43K)</td><td class="negative">($133K)</td></tr>
+          <tr><td>Apple IAP (30%)</td><td class="negative">($37K)</td><td class="negative">($330K)</td><td class="negative">($1.5M)</td></tr>
+          <tr class="highlight-row"><td>EBITDA</td><td class="positive">$151K</td><td class="positive">$2.8M</td><td class="positive">$14.8M</td></tr>
+          <tr><td class="dim">EBITDA Margin</td><td>45%</td><td>76%</td><td>84%</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Key Milestones</h3>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span>Monthly EBITDA breakeven</span><span class="badge badge-green">Month 5</span></div></div>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span>Cumulative cash breakeven</span><span class="badge badge-green">Month 8</span></div></div>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span>$100K monthly revenue</span><span class="badge badge-blue">Month 13</span></div></div>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span>$1M cumulative EBITDA</span><span class="badge badge-purple">Month 19</span></div></div>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span>$1M monthly revenue</span><span class="badge badge-purple">Month 27</span></div></div>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span>$10M cumulative EBITDA</span><span class="badge badge-amber">Month 32</span></div></div>
+      <div class="card"><div style="display:flex;justify-content:space-between"><span>$2M monthly revenue</span><span class="badge badge-amber">Month 34</span></div></div>
+
+      <h3 style="margin-top:32px">Cash Position ($200K pre-seed)</h3>
+      <div class="metric-row"><span class="metric-key">Minimum cash (Month 4)</span><span class="metric-val">$180,599</span></div>
+      <div class="metric-row"><span class="metric-key">Cash at Month 12</span><span class="metric-val" style="color:var(--green-light)">$350,974</span></div>
+      <div class="metric-row"><span class="metric-key">Cash at Month 24</span><span class="metric-val" style="color:var(--green-light)">$3.12M</span></div>
+      <div class="metric-row"><span class="metric-key">Cash at Month 36</span><span class="metric-val" style="color:var(--green-light)">$17.89M</span></div>
+      <p style="color:var(--text3);font-size:.8rem;margin-top:12px">Company never needs the full $200K. Only $19K burned before profitability.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 9: 36-MONTH TABLE ===================== -->
+<section class="slide" id="s9" style="background:radial-gradient(ellipse at 80% 20%,rgba(59,130,246,.06),transparent 50%)">
+<div class="slide-inner">
+  <div class="slide-num">08 &mdash; 36-Month Model (Selected Months)</div>
+  <h2>Monthly P&L Detail</h2>
+  <div class="sep"></div>
+  <div class="table-wrap">
+    <table style="font-size:.8rem">
+      <tr>
+        <th>Month</th><th>Paying Users</th><th>Sub MRR</th><th>Platform Fee</th><th>Ancillary</th>
+        <th>Total Revenue</th><th>COGS</th><th>OpEx</th><th>EBITDA</th><th>EBITDA %</th><th>Cumul EBITDA</th>
+      </tr>
+      <tr><td>M1</td><td>20</td><td>$434</td><td>$900</td><td class="dim">$0</td><td>$1,334</td><td class="negative">$300</td><td class="negative">$8,186</td><td class="negative">($7,152)</td><td class="negative">-536%</td><td class="negative">($7K)</td></tr>
+      <tr><td>M3</td><td>84</td><td>$1,817</td><td>$4,224</td><td class="dim">$0</td><td>$6,041</td><td class="negative">$520</td><td class="negative">$9,779</td><td class="negative">($4,258)</td><td class="negative">-70%</td><td class="negative">($17K)</td></tr>
+      <tr class="highlight-row"><td>M5</td><td>179</td><td>$3,886</td><td>$9,894</td><td>$0</td><td>$13,780</td><td>$800</td><td>$11,665</td><td class="positive">$1,315</td><td>10%</td><td>($18K)</td></tr>
+      <tr><td>M6</td><td>241</td><td>$5,158</td><td>$13,965</td><td class="dim">$0</td><td>$19,123</td><td class="negative">$1,000</td><td class="negative">$13,211</td><td class="positive">$4,912</td><td>26%</td><td>($13K)</td></tr>
+      <tr class="highlight-row"><td>M8</td><td>382</td><td>$8,329</td><td>$23,754</td><td>$0</td><td>$32,083</td><td>$1,300</td><td>$15,569</td><td class="positive">$15,214</td><td>47%</td><td class="positive">$12K</td></tr>
+      <tr><td>M12</td><td>787</td><td>$18,524</td><td>$55,755</td><td class="dim">$0</td><td>$74,279</td><td class="negative">$1,950</td><td class="negative">$21,939</td><td class="positive">$50,390</td><td>68%</td><td class="positive">$151K</td></tr>
+      <tr><td>M15</td><td>1,337</td><td>$32,419</td><td>$103,566</td><td>$4,000</td><td>$139,985</td><td class="negative">$2,750</td><td class="negative">$37,894</td><td class="positive">$99,341</td><td>71%</td><td class="positive">$390K</td></tr>
+      <tr><td>M18</td><td>2,175</td><td>$54,163</td><td>$180,936</td><td>$8,000</td><td>$243,099</td><td class="negative">$3,800</td><td class="negative">$58,213</td><td class="positive">$181,086</td><td>74%</td><td class="positive">$835K</td></tr>
+      <tr><td>M21</td><td>3,387</td><td>$86,914</td><td>$299,720</td><td>$14,000</td><td>$400,634</td><td class="negative">$4,900</td><td class="negative">$84,249</td><td class="positive">$311,485</td><td>78%</td><td class="positive">$1.6M</td></tr>
+      <tr><td>M24</td><td>5,001</td><td>$131,354</td><td>$469,931</td><td>$22,000</td><td>$623,285</td><td class="negative">$6,400</td><td class="negative">$115,295</td><td class="positive">$501,590</td><td>81%</td><td class="positive">$2.9M</td></tr>
+      <tr><td>M27</td><td>7,121</td><td>$190,770</td><td>$713,024</td><td>$32,000</td><td>$935,794</td><td class="negative">$8,100</td><td class="negative">$161,759</td><td class="positive">$765,935</td><td>82%</td><td class="positive">$4.9M</td></tr>
+      <tr><td>M30</td><td>9,766</td><td>$266,094</td><td>$1,034,008</td><td>$45,000</td><td>$1,345,102</td><td class="negative">$10,100</td><td class="negative">$214,040</td><td class="positive">$1,120,962</td><td>83%</td><td class="positive">$7.9M</td></tr>
+      <tr><td>M33</td><td>12,971</td><td>$359,225</td><td>$1,406,401</td><td>$60,000</td><td>$1,825,626</td><td class="negative">$12,100</td><td class="negative">$273,954</td><td class="positive">$1,539,572</td><td>84%</td><td class="positive">$12.1M</td></tr>
+      <tr class="highlight-row"><td>M36</td><td>16,700</td><td>$469,210</td><td>$1,843,680</td><td>$75,000</td><td>$2,387,890</td><td>$14,400</td><td>$341,090</td><td class="positive">$2,032,400</td><td>85%</td><td class="positive">$17.7M</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 10: PAYMENT VOLUME ===================== -->
+<section class="slide" id="s10">
+<div class="slide-inner">
+  <div class="slide-num">09 &mdash; Payment Volume</div>
+  <h2>$122.9M monthly volume by <span style="color:var(--green-light)">Month 36</span></h2>
+  <div class="sep"></div>
+  <div class="two-col">
+    <div>
+      <h3>Transaction Economics</h3>
+      <div class="card">
+        <pre style="font-family:monospace;font-size:.8rem;line-height:1.8;color:var(--text2);overflow-x:auto">
+Customer pays:                     $350.00
+  Stripe processing (2.9%+$0.30):  -$10.45  &rarr; Stripe
+  <span style="color:var(--purple-light);font-weight:700">JobPocket platform fee (1.5%):     -$5.25  &rarr; JobPocket</span>
+  Stripe payout (0.25%):            -$0.88  &rarr; Stripe
+Contractor receives:               $333.42
+
+Total fee on contractor:            $16.58 (4.74%)
+<span style="color:var(--purple-light)">JobPocket keeps:                     $5.25 (1.50%)</span>
+Stripe keeps:                       $11.33 (3.24%)</pre>
+      </div>
+      <h3 style="margin-top:24px">Why Contractors Accept Fees</h3>
+      <div class="metric-row"><span class="metric-key">Get paid instantly vs 28-day check wait</span><span class="metric-val" style="color:var(--green-light)">&#10003;</span></div>
+      <div class="metric-row"><span class="metric-key">65% of homeowners prefer cards</span><span class="metric-val" style="color:var(--green-light)">&#10003;</span></div>
+      <div class="metric-row"><span class="metric-key">$0 hardware (vs $50-300 Square reader)</span><span class="metric-val" style="color:var(--green-light)">&#10003;</span></div>
+      <div class="metric-row"><span class="metric-key">Auto invoice tracking & tax reports</span><span class="metric-val" style="color:var(--green-light)">&#10003;</span></div>
+    </div>
+    <div>
+      <h3>Volume Growth</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Month</th><th>Users on Stripe</th><th>Monthly Volume</th><th>Platform Fee</th></tr>
+          <tr><td>M1</td><td>10</td><td>$60K</td><td>$900</td></tr>
+          <tr><td>M6</td><td>133</td><td>$931K</td><td>$14K</td></tr>
+          <tr><td>M12</td><td>472</td><td>$3.7M</td><td>$56K</td></tr>
+          <tr><td>M18</td><td>1,436</td><td>$12.1M</td><td>$181K</td></tr>
+          <tr><td>M24</td><td>3,601</td><td>$31.3M</td><td>$470K</td></tr>
+          <tr><td>M30</td><td>7,617</td><td>$68.9M</td><td>$1.03M</td></tr>
+          <tr class="highlight-row"><td>M36</td><td>13,360</td><td>$122.9M</td><td>$1.84M</td></tr>
+        </table>
+      </div>
+
+      <h3 style="margin-top:24px">Stripe Adoption Sensitivity (Y3)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Adoption</th><th>Volume/mo</th><th>Fee ARR</th></tr>
+          <tr><td>25%</td><td>$38.4M</td><td>$6.9M</td></tr>
+          <tr><td>45%</td><td>$69.1M</td><td>$12.4M</td></tr>
+          <tr><td>60%</td><td>$92.2M</td><td>$16.6M</td></tr>
+          <tr class="highlight-row"><td>80% (base)</td><td>$122.9M</td><td>$22.1M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 11: SENSITIVITY ===================== -->
+<section class="slide" id="s11" style="background:radial-gradient(ellipse at 20% 80%,rgba(16,185,129,.06),transparent 50%)">
+<div class="slide-inner">
+  <div class="slide-num">10 &mdash; Sensitivity Analysis</div>
+  <h2>Scenarios & Benchmarks</h2>
+  <div class="sep"></div>
+  <div class="two-col">
+    <div>
+      <h3>Bear / Base / Bull (Year 3)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Metric</th><th>Bear (-50%)</th><th>Base</th><th>Bull (+75%)</th></tr>
+          <tr><td>Paying users</td><td>8,350</td><td>16,700</td><td>29,225</td></tr>
+          <tr><td>MRR</td><td>$1.19M</td><td>$2.39M</td><td>$4.18M</td></tr>
+          <tr><td>ARR run-rate</td><td>$14.3M</td><td>$28.7M</td><td>$50.2M</td></tr>
+          <tr><td>Y3 EBITDA</td><td>$5.8M</td><td class="positive">$14.8M</td><td class="positive">$27.9M</td></tr>
+          <tr><td>3Y cumul EBITDA</td><td>$7.1M</td><td class="positive">$17.7M</td><td class="positive">$33.5M</td></tr>
+        </table>
+      </div>
+
+      <h3 style="margin-top:32px">Key Levers (+10% improvement)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Lever</th><th>Change</th><th>Y3 ARR Impact</th></tr>
+          <tr><td>Free&rarr;Paid conversion</td><td>43%&rarr;47%</td><td class="positive">+$2.6M</td></tr>
+          <tr><td>Monthly churn</td><td>5%&rarr;4.5%</td><td class="positive">+$3.1M</td></tr>
+          <tr><td>Avg ticket size</td><td>$350&rarr;$385</td><td class="positive">+$2.2M</td></tr>
+          <tr><td>Stripe adoption</td><td>45%&rarr;50%</td><td class="positive">+$2.5M</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>vs SaaS Benchmarks</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Metric</th><th>JobPocket</th><th>Top SaaS</th></tr>
+          <tr><td>Gross margin</td><td class="positive">96&ndash;99%</td><td>70&ndash;85%</td></tr>
+          <tr><td>LTV:CAC</td><td class="positive">68:1</td><td>3&ndash;5:1</td></tr>
+          <tr><td>Payback</td><td class="positive">&lt;1 month</td><td>12&ndash;18 mo</td></tr>
+          <tr><td>EBITDA margin (Y3)</td><td class="positive">84%</td><td>20&ndash;30%</td></tr>
+          <tr><td>Rev/employee (Y3)</td><td class="positive">$2.2M</td><td>$200&ndash;400K</td></tr>
+          <tr><td>Time to $1M ARR</td><td class="positive">Month 12</td><td>18&ndash;36 mo</td></tr>
+          <tr><td>Time to $10M ARR</td><td class="positive">Month 26</td><td>48&ndash;72 mo</td></tr>
+        </table>
+      </div>
+      <div class="card" style="margin-top:24px;border-color:var(--green);background:rgba(16,185,129,.05)">
+        <h3 style="color:var(--green-light)">Why Margins Are So High</h3>
+        <p style="color:var(--text2);font-size:.85rem">Payment processing revenue (77% of total) has near-zero marginal cost. Stripe handles all payment infrastructure. JobPocket simply collects a 1.5% platform fee on existing transaction flow.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 12: RISKS ===================== -->
+<section class="slide" id="s12">
+<div class="slide-inner">
+  <div class="slide-num">11 &mdash; Risks & Mitigations</div>
+  <h2>We See the Risks</h2>
+  <div class="sep"></div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Low Stripe Adoption</h3>
+        <span class="badge badge-amber">Medium</span>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem">Contractors may prefer cash/check to avoid fees.</p>
+      <p style="color:var(--green-light);font-size:.85rem;margin-top:8px"><strong>Mitigation:</strong> Tap to Pay UX is frictionless. Auto payment links to customers. BNPL incentivizes card usage.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Platform Bypass</h3>
+        <span class="badge badge-amber">High</span>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem">Contractors create estimates but accept payment outside.</p>
+      <p style="color:var(--green-light);font-size:.85rem;margin-top:8px"><strong>Mitigation:</strong> Reports/tax only work with tracked payments. Job status tied to payment confirmation.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Apple IAP (30%)</h3>
+        <span class="badge badge-green">Low</span>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem">Apple takes 30% of subscription revenue.</p>
+      <p style="color:var(--green-light);font-size:.85rem;margin-top:8px"><strong>Mitigation:</strong> Only affects 20% of revenue. Push web billing. Platform fees are exempt from IAP.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">High Churn (&gt;8%)</h3>
+        <span class="badge badge-amber">Medium</span>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem">Users abandon after initial usage.</p>
+      <p style="color:var(--green-light);font-size:.85rem;margin-top:8px"><strong>Mitigation:</strong> Data lock-in (client/payment history). Team features. Recurring jobs. Even at 8% churn, LTV:CAC is 71:1.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Competitor Price War</h3>
+        <span class="badge badge-amber">Medium</span>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem">Housecall Pro or Jobber drops prices.</p>
+      <p style="color:var(--green-light);font-size:.85rem;margin-top:8px"><strong>Mitigation:</strong> 77% of revenue is payment processing &mdash; independent of subscription pricing.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Stripe Connect Changes</h3>
+        <span class="badge badge-green">Low</span>
+      </div>
+      <p style="color:var(--text2);font-size:.85rem">Stripe modifies platform fee structure.</p>
+      <p style="color:var(--green-light);font-size:.85rem;margin-top:8px"><strong>Mitigation:</strong> Diversify to Adyen/Square. Negotiate volume pricing at scale.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 13: WHY NOW ===================== -->
+<section class="slide" id="s13" style="background:radial-gradient(ellipse at 60% 40%,rgba(124,58,237,.1),transparent 50%)">
+<div class="slide-inner" style="text-align:center">
+  <div class="slide-num">12 &mdash; Why Now</div>
+  <h2>Perfect Timing</h2>
+  <div class="sep" style="margin:0 auto 40px"></div>
+  <div class="card-grid card-grid-2" style="max-width:900px;margin:0 auto">
+    <div class="card" style="text-align:left">
+      <div style="font-size:2rem;margin-bottom:12px">&#128244;</div>
+      <h3>Tap to Pay on iPhone</h3>
+      <p style="color:var(--text2);font-size:.85rem">Apple opened NFC for payments. Contractors can accept cards without hardware for the first time. This is a game-changer for the field.</p>
+    </div>
+    <div class="card" style="text-align:left">
+      <div style="font-size:2rem;margin-bottom:12px">&#129302;</div>
+      <h3>AI Maturity</h3>
+      <p style="color:var(--text2);font-size:.85rem">Claude and GPT enable smart parts search and photo diagnosis that was impossible 2 years ago. Real competitive advantage.</p>
+    </div>
+    <div class="card" style="text-align:left">
+      <div style="font-size:2rem;margin-bottom:12px">&#128241;</div>
+      <h3>Post-COVID Digital Shift</h3>
+      <p style="color:var(--text2);font-size:.85rem">Even resistant contractors now expect mobile-first tools. The market is ready for a modern, affordable solution.</p>
+    </div>
+    <div class="card" style="text-align:left">
+      <div style="font-size:2rem;margin-bottom:12px">&#128548;</div>
+      <h3>Competitor Fatigue</h3>
+      <p style="color:var(--text2);font-size:.85rem">ServiceTitan's complexity and price increases push small contractors to seek alternatives. Gap in the market is widening.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SLIDE 14: THE ASK ===================== -->
+<section class="slide" id="s14">
+<div class="slide-inner">
+  <div class="slide-num">13 &mdash; The Ask</div>
+  <div class="two-col">
+    <div>
+      <h2>Pre-Seed: <span class="gradient">$150&ndash;250K</span></h2>
+      <div class="sep"></div>
+      <div class="card" style="margin-bottom:24px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
+          <span>Launch & Marketing</span><span style="font-weight:700">40% &mdash; $80K</span>
+        </div>
+        <div class="comp-bar-track" style="height:12px;border-radius:6px;margin-bottom:16px"><div class="comp-bar-fill" style="width:40%;background:var(--purple);height:100%;border-radius:6px"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
+          <span>Engineering</span><span style="font-weight:700">30% &mdash; $60K</span>
+        </div>
+        <div class="comp-bar-track" style="height:12px;border-radius:6px;margin-bottom:16px"><div class="comp-bar-fill" style="width:30%;background:var(--blue);height:100%;border-radius:6px"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
+          <span>Sales</span><span style="font-weight:700">20% &mdash; $40K</span>
+        </div>
+        <div class="comp-bar-track" style="height:12px;border-radius:6px;margin-bottom:16px"><div class="comp-bar-fill" style="width:20%;background:var(--green);height:100%;border-radius:6px"></div></div>
+        <div style="display:flex;justify-content:space-between">
+          <span>Operations</span><span style="font-weight:700">10% &mdash; $20K</span>
+        </div>
+        <div class="comp-bar-track" style="height:12px;border-radius:6px;margin-top:16px"><div class="comp-bar-fill" style="width:10%;background:var(--amber);height:100%;border-radius:6px"></div></div>
+      </div>
+
+      <h3>Seed Milestones (Month 12)</h3>
+      <div class="metric-row"><span class="metric-key">App Store + Play Store</span><span class="metric-val" style="color:var(--green-light)">Live</span></div>
+      <div class="metric-row"><span class="metric-key">Paying users</span><span class="metric-val">787</span></div>
+      <div class="metric-row"><span class="metric-key">MRR</span><span class="metric-val">$74K</span></div>
+      <div class="metric-row"><span class="metric-key">Monthly payment volume</span><span class="metric-val">$3.7M</span></div>
+      <div class="metric-row"><span class="metric-key">EBITDA positive</span><span class="metric-val" style="color:var(--green-light)">Since M5</span></div>
+    </div>
+    <div>
+      <h3>Comparable Valuations</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Company</th><th>Valuation</th><th>Multiple</th></tr>
+          <tr><td>ServiceTitan (IPO '24)</td><td>$9.5B</td><td>~15x ARR</td></tr>
+          <tr><td>Housecall Pro (acq.)</td><td>$500M+</td><td>~12x ARR</td></tr>
+          <tr><td>Jobber (Series D)</td><td>$600M</td><td>~10x ARR</td></tr>
+          <tr class="highlight-row"><td>JobPocket Y3 @ 10x</td><td class="positive">$310M</td><td>10x ARR</td></tr>
+        </table>
+      </div>
+
+      <h3 style="margin-top:32px">Team</h3>
+      <div class="card">
+        <p style="color:var(--text2);font-size:.9rem">Solo technical founder &mdash; designed, built, and shipped the entire product:</p>
+        <div class="pill-row">
+          <span class="pill">67 screens</span>
+          <span class="pill">24 API routes</span>
+          <span class="pill">17+ DB models</span>
+          <span class="pill">Stripe Terminal</span>
+          <span class="pill">Claude AI</span>
+          <span class="pill">Offline-first</span>
+        </div>
+        <p style="color:var(--purple-light);font-size:.85rem;margin-top:12px;font-weight:600">Deep integration of payments, AI, and mobile-native features &mdash; difficult to replicate quickly.</p>
+      </div>
+
+      <div class="card" style="margin-top:16px;border-color:var(--purple);background:var(--purple-glow);text-align:center">
+        <div style="font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px">jobpocket.app</div>
+        <div style="color:var(--text2);font-size:.85rem">Ready to discuss. Let's build the future of contractor tools.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="footer">
+  JobPocket &copy; 2026 &mdash; Confidential Investor Materials &mdash; jobpocket.app
+</div>
+
+<script>
+// Nav dots
+const slides = document.querySelectorAll('.slide');
+const navDots = document.getElementById('navDots');
+const slideNames = ['Intro','Problem','Solution','Market','Model','Unit Econ','Revenue','P&L','36-Mo','Volume','Sensitivity','Risks','Why Now','Ask'];
+slides.forEach((s, i) => {
+  const d = document.createElement('div');
+  d.className = 'nav-dot';
+  d.title = slideNames[i] || '';
+  d.onclick = () => s.scrollIntoView({behavior:'smooth'});
+  navDots.appendChild(d);
+});
+
+// Active dot on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = [...slides].indexOf(e.target);
+      document.querySelectorAll('.nav-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, {threshold: 0.4});
+slides.forEach(s => observer.observe(s));
+
+// Revenue chart
+const monthlyRevenue = [1.3,3.3,6,9.4,13.8,19.1,25,32.1,40.2,49.6,59.5,74.3,93.2,114.7,140,168.4,202,243.1,290.3,342.6,400.6,465.7,537.8,623.3,719,821.5,935.8,1059.5,1195.7,1345.1,1492.6,1658.7,1825.6,2012.8,2198.8,2387.9];
+const maxRev = Math.max(...monthlyRevenue);
+const chartEl = document.getElementById('revenueChart');
+const labelsEl = document.getElementById('revenueLabels');
+monthlyRevenue.forEach((v, i) => {
+  const bar = document.createElement('div');
+  bar.className = 'chart-bar';
+  bar.style.height = (v / maxRev * 100) + '%';
+  if (i === 4) bar.style.background = 'var(--green)'; // breakeven
+  const tip = document.createElement('div');
+  tip.className = 'chart-tip';
+  tip.textContent = '$' + (v >= 1000 ? (v/1000).toFixed(1) + 'M' : v.toFixed(0) + 'K');
+  bar.appendChild(tip);
+  chartEl.appendChild(bar);
+
+  const lbl = document.createElement('span');
+  lbl.textContent = (i % 6 === 0) ? 'M' + (i+1) : '';
+  labelsEl.appendChild(lbl);
+});
+</script>
+</body>
+</html>
