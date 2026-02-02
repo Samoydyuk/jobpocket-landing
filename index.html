@@ -16,28 +16,45 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #7C3AED;
-            --primary-dark: #6D28D9;
-            --primary-light: #A78BFA;
-            --blue: #2563EB;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --error: #EF4444;
-            --purple: #8B5CF6;
-            --text: #111827;
-            --text-secondary: #6B7280;
-            --text-light: #9CA3AF;
-            --bg: #FAFAFA;
-            --bg-secondary: #F3F4F6;
-            --white: #FFFFFF;
-            --border: #E5E7EB;
+            --bg-dark: #0d0d14;
+            --bg-mid: #14141e;
+            --bg-light: #1c1c28;
+            --bg-card: #22222e;
+            --bg-card-light: #2a2a36;
+            --bg-elevated: #262632;
+            --purple: #7B6CF6;
+            --purple-glow: #9B8AFF;
+            --purple-light: #BBA8FF;
+            --purple-muted: #5B4CC6;
+            --success: #34D399;
+            --success-glow: #5EEAD4;
+            --warning: #FBBF24;
+            --warning-glow: #FDE68A;
+            --error: #F06B6B;
+            --error-glow: #FCA5A5;
+            --info: #3B82F6;
+            --info-glow: #60A5FA;
+            --text-primary: #F0F0F5;
+            --text-secondary: rgba(240, 240, 245, 0.78);
+            --text-gray: rgba(240, 240, 245, 0.62);
+            --text-muted: rgba(240, 240, 245, 0.55);
+            --text-caption: rgba(240, 240, 245, 0.45);
+            --border: rgba(255, 255, 255, 0.1);
+            --border-light: rgba(255, 255, 255, 0.06);
+            --glass: rgba(20, 20, 30, 0.4);
+            --glass-light: rgba(30, 30, 45, 0.25);
+            --glass-medium: rgba(20, 20, 30, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
+            color: var(--text-primary);
             line-height: 1.6;
-            background: var(--bg);
+            background: var(--bg-dark);
+            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -46,11 +63,12 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(13, 13, 20, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 100;
             padding: 16px 24px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .nav-container {
@@ -66,7 +84,7 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-primary);
             font-weight: 700;
             font-size: 1.25rem;
         }
@@ -80,25 +98,27 @@
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-gray);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover { color: var(--purple-light); }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
+            background: var(--purple);
+            color: var(--text-primary) !important;
             padding: 10px 20px;
             border-radius: 10px;
             transition: all 0.2s !important;
+            box-shadow: 0 0 20px rgba(123, 108, 246, 0.3);
         }
 
         .nav-cta:hover {
-            background: var(--primary-dark);
+            background: var(--purple-glow);
             transform: translateY(-1px);
+            box-shadow: 0 0 30px rgba(123, 108, 246, 0.5);
         }
 
         /* Hero */
@@ -107,7 +127,32 @@
             display: flex;
             align-items: center;
             padding: 120px 24px 80px;
-            background: linear-gradient(180deg, #F5F3FF 0%, var(--bg) 100%);
+            background: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(123, 108, 246, 0.15) 0%, rgba(123, 108, 246, 0.05) 40%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 60%;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-container {
@@ -117,6 +162,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
@@ -124,7 +171,7 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple) 50%, var(--purple-glow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -147,21 +194,21 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--primary);
+            background: var(--purple);
             color: white;
             padding: 16px 32px;
             border-radius: 14px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.2s;
-            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(123, 108, 246, 0.4);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: var(--purple-glow);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+            box-shadow: 0 0 40px rgba(123, 108, 246, 0.6);
         }
 
         .btn-primary svg { width: 24px; height: 24px; }
@@ -169,19 +216,20 @@
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            background: white;
-            color: var(--text);
+            background: transparent;
+            color: var(--text-secondary);
             padding: 16px 32px;
             border-radius: 14px;
             text-decoration: none;
             font-weight: 600;
-            border: 2px solid var(--border);
-            transition: all 0.2s;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
         }
 
         .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
+            border-color: var(--purple);
+            color: var(--purple-light);
+            background: rgba(123, 108, 246, 0.08);
         }
 
         /* Phone Mockups */
@@ -194,19 +242,20 @@
 
         .phone {
             width: 260px;
-            background: #1F2937;
+            background: var(--bg-light);
             border-radius: 36px;
             padding: 8px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(123, 108, 246, 0.1);
+            border: 1px solid var(--glass-border);
         }
 
         .phone.secondary {
             transform: translateY(40px) rotateY(-5deg);
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         .phone-screen {
-            background: var(--bg);
+            background: var(--bg-mid);
             border-radius: 30px;
             overflow: hidden;
             aspect-ratio: 9/19.5;
@@ -215,7 +264,7 @@
         .phone-notch {
             width: 100px;
             height: 24px;
-            background: #1F2937;
+            background: var(--bg-light);
             border-radius: 0 0 16px 16px;
             margin: 0 auto;
         }
@@ -234,13 +283,13 @@
 
         .dash-greeting {
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .dash-name {
             font-size: 18px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .dash-icons {
@@ -251,13 +300,13 @@
         .dash-icon {
             width: 28px;
             height: 28px;
-            background: white;
+            background: var(--bg-card);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--glass-border);
         }
 
         .stats-row {
@@ -268,10 +317,10 @@
 
         .stat-card {
             flex: 1;
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 10px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--glass-border);
         }
 
         .stat-icon {
@@ -285,18 +334,18 @@
             margin-bottom: 6px;
         }
 
-        .stat-icon.green { background: rgba(16, 185, 129, 0.1); }
-        .stat-icon.blue { background: rgba(37, 99, 235, 0.1); }
+        .stat-icon.green { background: rgba(52, 211, 153, 0.15); }
+        .stat-icon.blue { background: rgba(59, 130, 246, 0.15); }
 
         .stat-value {
             font-size: 16px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .stat-label {
             font-size: 10px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .alert-row {
@@ -309,10 +358,11 @@
             flex: 1;
             padding: 10px;
             border-radius: 12px;
+            border: 1px solid var(--glass-border);
         }
 
-        .alert-card.warning { background: rgba(245, 158, 11, 0.1); }
-        .alert-card.error { background: rgba(239, 68, 68, 0.1); }
+        .alert-card.warning { background: rgba(251, 191, 36, 0.08); }
+        .alert-card.error { background: rgba(240, 107, 107, 0.08); }
 
         .alert-header {
             display: flex;
@@ -329,22 +379,22 @@
         .alert-value {
             font-size: 12px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
-        .section-title {
+        .section-title-phone {
             font-size: 13px;
             font-weight: 600;
-            color: var(--text);
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
         .job-card {
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 10px;
             margin-bottom: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--glass-border);
         }
 
         .job-header {
@@ -357,7 +407,7 @@
         .job-time {
             font-size: 11px;
             font-weight: 600;
-            color: var(--blue);
+            color: var(--info);
             display: flex;
             align-items: center;
             gap: 3px;
@@ -366,23 +416,23 @@
         .job-price {
             font-size: 12px;
             font-weight: 700;
-            color: var(--blue);
+            color: var(--purple-glow);
         }
 
         .job-title {
             font-size: 13px;
             font-weight: 600;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .job-client {
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .job-address {
             font-size: 10px;
-            color: var(--text-secondary);
+            color: var(--text-caption);
             display: flex;
             align-items: center;
             gap: 3px;
@@ -394,7 +444,7 @@
             gap: 6px;
             margin-top: 8px;
             padding-top: 8px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--border-light);
         }
 
         .job-action {
@@ -409,9 +459,9 @@
             font-weight: 600;
         }
 
-        .job-action.call { background: rgba(16, 185, 129, 0.1); color: var(--success); }
-        .job-action.sms { background: rgba(37, 99, 235, 0.1); color: var(--blue); }
-        .job-action.route { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .job-action.call { background: rgba(52, 211, 153, 0.1); color: var(--success); }
+        .job-action.sms { background: rgba(59, 130, 246, 0.1); color: var(--info); }
+        .job-action.route { background: rgba(251, 191, 36, 0.1); color: var(--warning); }
 
         .quick-actions {
             display: flex;
@@ -420,11 +470,11 @@
 
         .quick-action {
             flex: 1;
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 12px 8px;
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--glass-border);
         }
 
         .quick-action-icon {
@@ -438,13 +488,13 @@
             font-size: 14px;
         }
 
-        .quick-action-icon.blue { background: rgba(37, 99, 235, 0.1); }
-        .quick-action-icon.green { background: rgba(16, 185, 129, 0.1); }
+        .quick-action-icon.blue { background: rgba(59, 130, 246, 0.15); }
+        .quick-action-icon.green { background: rgba(52, 211, 153, 0.15); }
 
         .quick-action-label {
             font-size: 10px;
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-secondary);
         }
 
         /* Jobs List Screen */
@@ -453,20 +503,20 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-light);
             margin-bottom: 8px;
         }
 
         .jobs-title {
             font-size: 18px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .search-icon {
             width: 28px;
             height: 28px;
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -476,7 +526,7 @@
 
         .filter-tabs {
             display: flex;
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border-radius: 10px;
             padding: 3px;
             margin-bottom: 12px;
@@ -489,21 +539,20 @@
             text-align: center;
             font-size: 11px;
             font-weight: 500;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .filter-tab.active {
-            background: white;
-            color: var(--text);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--purple);
+            color: var(--text-primary);
         }
 
         .job-list-item {
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 10px;
             margin-bottom: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--glass-border);
         }
 
         .job-status {
@@ -515,21 +564,21 @@
             margin-bottom: 6px;
         }
 
-        .job-status.draft { background: var(--bg-secondary); color: var(--text-secondary); }
-        .job-status.sent { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
-        .job-status.approved { background: rgba(16, 185, 129, 0.1); color: var(--success); }
-        .job-status.progress { background: rgba(37, 99, 235, 0.1); color: var(--blue); }
-        .job-status.invoiced { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
+        .job-status.draft { background: rgba(107, 114, 128, 0.15); color: #6B7280; }
+        .job-status.sent { background: rgba(59, 130, 246, 0.15); color: var(--info); }
+        .job-status.approved { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+        .job-status.progress { background: rgba(251, 191, 36, 0.15); color: var(--warning); }
+        .job-status.invoiced { background: rgba(123, 108, 246, 0.15); color: var(--purple-glow); }
 
         .job-list-title {
             font-size: 13px;
             font-weight: 600;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .job-list-client {
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             display: flex;
             align-items: center;
             gap: 4px;
@@ -541,24 +590,35 @@
             align-items: center;
             margin-top: 8px;
             padding-top: 8px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--border-light);
         }
 
         .job-list-total {
             font-size: 14px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .job-list-date {
             font-size: 10px;
-            color: var(--text-light);
+            color: var(--text-caption);
         }
 
         /* Features */
         .features {
             padding: 100px 24px;
-            background: white;
+            background: var(--bg-mid);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
 
         .features-container {
@@ -575,11 +635,12 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 16px;
+            color: var(--text-primary);
         }
 
         .section-header p {
             font-size: 1.2rem;
-            color: var(--text-secondary);
+            color: var(--text-gray);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -587,83 +648,70 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 24px;
         }
 
         .feature-card {
-            background: var(--bg);
+            background: var(--bg-card);
             padding: 32px;
             border-radius: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--glass-border);
         }
 
         .feature-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(123, 108, 246, 0.08);
+            border-color: rgba(123, 108, 246, 0.2);
         }
 
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-muted) 100%);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            font-size: 1.75rem;
+            box-shadow: 0 0 20px rgba(123, 108, 246, 0.3);
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: white;
+            stroke-width: 1.5;
+            fill: none;
         }
 
         .feature-card h3 {
             font-size: 1.25rem;
             margin-bottom: 12px;
+            color: var(--text-primary);
         }
 
         .feature-card p {
-            color: var(--text-secondary);
+            color: var(--text-gray);
             font-size: 0.95rem;
-        }
-
-        /* Screenshots Section */
-        .screenshots {
-            padding: 100px 24px;
-            background: linear-gradient(180deg, var(--bg) 0%, #F5F3FF 100%);
-            overflow: hidden;
-        }
-
-        .screenshots-scroll {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .screenshot-phone {
-            width: 220px;
-            background: #1F2937;
-            border-radius: 32px;
-            padding: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .screenshot-screen {
-            background: var(--bg);
-            border-radius: 26px;
-            overflow: hidden;
-            aspect-ratio: 9/19.5;
-        }
-
-        .screenshot-label {
-            text-align: center;
-            margin-top: 16px;
-            font-weight: 600;
-            color: var(--text);
+            line-height: 1.6;
         }
 
         /* How It Works */
         .how-it-works {
             padding: 100px 24px;
-            background: white;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
 
         .steps {
@@ -679,99 +727,136 @@
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            background: var(--bg-card);
+            color: var(--purple-glow);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             font-size: 1.25rem;
             margin: 0 auto 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 20px rgba(123, 108, 246, 0.15);
         }
 
         .step h3 {
             font-size: 1.1rem;
             margin-bottom: 8px;
+            color: var(--text-primary);
         }
 
         .step p {
-            color: var(--text-secondary);
+            color: var(--text-gray);
             font-size: 0.9rem;
         }
 
         /* For Who */
         .for-who {
             padding: 100px 24px;
-            background: var(--bg);
+            background: var(--bg-mid);
+            position: relative;
+        }
+
+        .for-who::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
 
         .trades-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .trade-tag {
-            background: white;
+            background: var(--bg-card);
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: 500;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: all 0.2s;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+            color: var(--text-secondary);
         }
 
         .trade-tag:hover {
-            background: #F5F3FF;
+            background: rgba(123, 108, 246, 0.1);
+            border-color: rgba(123, 108, 246, 0.3);
             transform: scale(1.05);
+            color: var(--purple-light);
         }
 
         /* CTA */
         .cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--bg-dark);
             text-align: center;
-            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(123, 108, 246, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 64px 48px;
+            box-shadow: 0 0 60px rgba(123, 108, 246, 0.1);
         }
 
         .cta h2 {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .cta p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            color: var(--text-gray);
             margin-bottom: 32px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta .btn-primary {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-        }
-
-        .cta .btn-primary:hover {
-            background: #F5F3FF;
-        }
-
         /* Footer */
         footer {
-            background: #111827;
-            color: white;
+            background: var(--bg-mid);
+            color: var(--text-primary);
             padding: 60px 24px 30px;
+            border-top: 1px solid var(--border-light);
         }
 
         .footer-container {
@@ -788,7 +873,7 @@
         }
 
         .footer-brand p {
-            color: #9CA3AF;
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
@@ -797,27 +882,27 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 16px;
-            color: #9CA3AF;
+            color: var(--text-caption);
         }
 
         .footer-column a {
             display: block;
-            color: white;
+            color: var(--text-gray);
             text-decoration: none;
             margin-bottom: 12px;
             transition: color 0.2s;
         }
 
-        .footer-column a:hover { color: var(--primary-light); }
+        .footer-column a:hover { color: var(--purple-light); }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 48px auto 0;
             padding-top: 24px;
-            border-top: 1px solid #374151;
+            border-top: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
-            color: #9CA3AF;
+            color: var(--text-caption);
             font-size: 0.9rem;
         }
 
@@ -839,7 +924,7 @@
             display: block;
             width: 100%;
             height: 2px;
-            background: var(--text);
+            background: var(--text-primary);
             border-radius: 2px;
             transition: all 0.3s;
         }
@@ -850,12 +935,15 @@
             top: 68px;
             left: 0;
             right: 0;
-            background: white;
+            background: rgba(13, 13, 20, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 20px 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             z-index: 99;
             flex-direction: column;
             gap: 16px;
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .mobile-menu.active {
@@ -863,12 +951,12 @@
         }
 
         .mobile-menu a {
-            color: var(--text);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
             padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .mobile-menu a:last-child {
@@ -876,7 +964,7 @@
         }
 
         .mobile-menu .nav-cta {
-            background: var(--primary);
+            background: var(--purple);
             color: white;
             text-align: center;
             padding: 14px 20px;
@@ -948,17 +1036,11 @@
 
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
 
             .feature-card {
                 padding: 24px;
-            }
-
-            .feature-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 1.5rem;
             }
 
             .how-it-works {
@@ -987,25 +1069,17 @@
                 padding: 60px 20px;
             }
 
+            .cta-inner {
+                padding: 40px 24px;
+                border-radius: 24px;
+            }
+
             .cta h2 {
                 font-size: 1.75rem;
             }
 
             .cta p {
                 font-size: 1rem;
-            }
-
-            .screenshots-scroll {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                justify-content: flex-start;
-                padding: 0 20px;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .screenshot-phone {
-                flex-shrink: 0;
-                width: 180px;
             }
 
             footer {
@@ -1101,8 +1175,8 @@
             }
 
             .step-number {
-                width: 40px;
-                height: 40px;
+                width: 48px;
+                height: 48px;
                 font-size: 1.1rem;
             }
 
@@ -1137,9 +1211,9 @@
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <svg viewBox="0 0 36 36" fill="none">
-                    <rect width="36" height="36" rx="8" fill="#7C3AED"/>
-                    <path d="M0 18 L36 18 L36 28 Q36 36 28 36 L8 36 Q0 36 0 28 Z" fill="#6D28D9"/>
-                    <path d="M4 18 Q18 25 32 18" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <rect width="36" height="36" rx="8" fill="#7B6CF6"/>
+                    <path d="M0 18 L36 18 L36 28 Q36 36 28 36 L8 36 Q0 36 0 28 Z" fill="#5B4CC6"/>
+                    <path d="M4 18 Q18 25 32 18" stroke="#9B8AFF" stroke-width="2" stroke-linecap="round" fill="none"/>
                     <rect x="10" y="6" width="7" height="12" rx="2" fill="white"/>
                     <rect x="19" y="8" width="7" height="10" rx="2" fill="white" opacity="0.8"/>
                 </svg>
@@ -1197,19 +1271,19 @@
                                     <div class="dash-name">Alex!</div>
                                 </div>
                                 <div class="dash-icons">
-                                    <div class="dash-icon">⚙️</div>
-                                    <div class="dash-icon">🔔</div>
+                                    <div class="dash-icon">&#9881;</div>
+                                    <div class="dash-icon">&#128276;</div>
                                 </div>
                             </div>
 
                             <div class="stats-row">
                                 <div class="stat-card">
-                                    <div class="stat-icon green">💵</div>
+                                    <div class="stat-icon green">&#128181;</div>
                                     <div class="stat-value">$4,850</div>
                                     <div class="stat-label">This week</div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-icon blue">💼</div>
+                                    <div class="stat-icon blue">&#128188;</div>
                                     <div class="stat-value">8</div>
                                     <div class="stat-label">Open jobs</div>
                                 </div>
@@ -1217,39 +1291,39 @@
 
                             <div class="alert-row">
                                 <div class="alert-card warning">
-                                    <div class="alert-header warning">🧾 3 Unpaid</div>
+                                    <div class="alert-header warning">&#129534; 3 Unpaid</div>
                                     <div class="alert-value">$2,150</div>
                                 </div>
                                 <div class="alert-card error">
-                                    <div class="alert-header error">⚠️ 1 Overdue</div>
+                                    <div class="alert-header error">&#9888; 1 Overdue</div>
                                     <div class="alert-value">$450</div>
                                 </div>
                             </div>
 
-                            <div class="section-title">Today's Schedule</div>
+                            <div class="section-title-phone">Today's Schedule</div>
                             <div class="job-card">
                                 <div class="job-header">
-                                    <div class="job-time">🕐 9:00 AM</div>
+                                    <div class="job-time">&#128336; 9:00 AM</div>
                                     <div class="job-price">$1,200</div>
                                 </div>
                                 <div class="job-title">Kitchen Remodel</div>
                                 <div class="job-client">Sarah Johnson</div>
-                                <div class="job-address">📍 123 Oak Street, Austin</div>
+                                <div class="job-address">&#128205; 123 Oak Street, Austin</div>
                                 <div class="job-actions">
-                                    <div class="job-action call">📞 Call</div>
-                                    <div class="job-action sms">💬 SMS</div>
-                                    <div class="job-action route">🧭 Route</div>
+                                    <div class="job-action call">&#128222; Call</div>
+                                    <div class="job-action sms">&#128172; SMS</div>
+                                    <div class="job-action route">&#129517; Route</div>
                                 </div>
                             </div>
 
-                            <div class="section-title">Quick Actions</div>
+                            <div class="section-title-phone">Quick Actions</div>
                             <div class="quick-actions">
                                 <div class="quick-action">
-                                    <div class="quick-action-icon blue">📄</div>
+                                    <div class="quick-action-icon blue">&#128196;</div>
                                     <div class="quick-action-label">New Estimate</div>
                                 </div>
                                 <div class="quick-action">
-                                    <div class="quick-action-icon green">👤</div>
+                                    <div class="quick-action-icon green">&#128100;</div>
                                     <div class="quick-action-label">Add Client</div>
                                 </div>
                             </div>
@@ -1264,7 +1338,7 @@
                         <div class="screen-content">
                             <div class="jobs-header">
                                 <div class="jobs-title">Jobs</div>
-                                <div class="search-icon">🔍</div>
+                                <div class="search-icon">&#128269;</div>
                             </div>
 
                             <div class="filter-tabs">
@@ -1276,7 +1350,7 @@
                             <div class="job-list-item">
                                 <div class="job-status sent">ESTIMATE SENT</div>
                                 <div class="job-list-title">Bathroom Renovation</div>
-                                <div class="job-list-client">👤 Mike Chen</div>
+                                <div class="job-list-client">&#128100; Mike Chen</div>
                                 <div class="job-list-footer">
                                     <div class="job-list-total">$3,500</div>
                                     <div class="job-list-date">Jan 18</div>
@@ -1286,7 +1360,7 @@
                             <div class="job-list-item">
                                 <div class="job-status progress">IN PROGRESS</div>
                                 <div class="job-list-title">Electrical Repair</div>
-                                <div class="job-list-client">👤 Emily Davis</div>
+                                <div class="job-list-client">&#128100; Emily Davis</div>
                                 <div class="job-list-footer">
                                     <div class="job-list-total">$850</div>
                                     <div class="job-list-date">Jan 15</div>
@@ -1296,7 +1370,7 @@
                             <div class="job-list-item">
                                 <div class="job-status invoiced">INVOICED</div>
                                 <div class="job-list-title">HVAC Installation</div>
-                                <div class="job-list-client">👤 Tom Wilson</div>
+                                <div class="job-list-client">&#128100; Tom Wilson</div>
                                 <div class="job-list-footer">
                                     <div class="job-list-total">$4,200</div>
                                     <div class="job-list-date">Jan 12</div>
@@ -1306,7 +1380,7 @@
                             <div class="job-list-item">
                                 <div class="job-status approved">APPROVED</div>
                                 <div class="job-list-title">Deck Building</div>
-                                <div class="job-list-client">👤 Lisa Brown</div>
+                                <div class="job-list-client">&#128100; Lisa Brown</div>
                                 <div class="job-list-footer">
                                     <div class="job-list-total">$6,800</div>
                                     <div class="job-list-date">Jan 20</div>
@@ -1328,32 +1402,69 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">📄</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
                     <h3>PDF Estimates in 30 Seconds</h3>
                     <p>Create professional estimates with your logo, line items, and taxes. Send via email or text with one tap. Clients love it.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💸</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
                     <h3>Never Forget Who Owes You</h3>
                     <p>See unpaid and overdue invoices on your dashboard. Know exactly who owes what, and send payment reminders instantly.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📞</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
                     <h3>Call, Text, Navigate — One Tap</h3>
                     <p>Running late? Tap to call. Need directions? Tap to navigate. Send "On my way" text. All from the job card.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📅</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
                     <h3>Auto-Sync to Your Calendar</h3>
                     <p>Jobs automatically appear in Google or Apple Calendar with reminders. Your wife knows your schedule. You never double-book.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
                     <h3>Know Your Numbers</h3>
                     <p>Weekly revenue, jobs completed, average ticket — see how your business is doing at a glance. Make smarter decisions.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                            <path d="M2 2l7.586 7.586"></path>
+                            <circle cx="11" cy="11" r="2"></circle>
+                        </svg>
+                    </div>
                     <h3>Look Like a Pro</h3>
                     <p>Your logo, your colors, your company name on every estimate and invoice. Clients take you seriously when you look professional.</p>
                 </div>
@@ -1398,31 +1509,33 @@
             <p>If you spend more time on the job than in an office, this app is for you.</p>
         </div>
         <div class="trades-grid">
-            <div class="trade-tag">🔧 Plumbers</div>
-            <div class="trade-tag">⚡ Electricians</div>
-            <div class="trade-tag">❄️ HVAC Techs</div>
-            <div class="trade-tag">🏠 General Contractors</div>
-            <div class="trade-tag">🎨 Painters</div>
-            <div class="trade-tag">🌳 Landscapers</div>
-            <div class="trade-tag">🧹 Cleaners</div>
-            <div class="trade-tag">🔨 Handymen</div>
-            <div class="trade-tag">🏗️ Remodelers</div>
-            <div class="trade-tag">🔩 Appliance Repair</div>
-            <div class="trade-tag">🚿 Roofers</div>
-            <div class="trade-tag">🪟 Window Installers</div>
+            <div class="trade-tag">&#128295; Plumbers</div>
+            <div class="trade-tag">&#9889; Electricians</div>
+            <div class="trade-tag">&#10052; HVAC Techs</div>
+            <div class="trade-tag">&#127968; General Contractors</div>
+            <div class="trade-tag">&#127912; Painters</div>
+            <div class="trade-tag">&#127795; Landscapers</div>
+            <div class="trade-tag">&#129529; Cleaners</div>
+            <div class="trade-tag">&#128296; Handymen</div>
+            <div class="trade-tag">&#127959; Remodelers</div>
+            <div class="trade-tag">&#128297; Appliance Repair</div>
+            <div class="trade-tag">&#128703; Roofers</div>
+            <div class="trade-tag">&#129695; Window Installers</div>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta">
-        <h2>Stop Chasing Payments. Start Getting Paid.</h2>
-        <p>Free to download. No credit card required. See why contractors love JobPocket.</p>
-        <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-            </svg>
-            Download Free on App Store
-        </a>
+        <div class="cta-inner">
+            <h2>Stop Chasing Payments. Start Getting Paid.</h2>
+            <p>Free to download. No credit card required. See why contractors love JobPocket.</p>
+            <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Download Free on App Store
+            </a>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -1450,8 +1563,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 JobPocket. All rights reserved.</p>
-            <p>Made with ❤️ for contractors</p>
+            <p>&copy; 2026 JobPocket. All rights reserved.</p>
+            <p>Made with &#10084; for contractors</p>
         </div>
     </footer>
 
