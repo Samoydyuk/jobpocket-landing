@@ -16,1151 +16,666 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-dark: #0d0d14;
-            --bg-mid: #14141e;
-            --bg-light: #1c1c28;
-            --bg-card: #22222e;
-            --bg-card-light: #2a2a36;
-            --bg-elevated: #262632;
-            --purple: #7B6CF6;
-            --purple-glow: #9B8AFF;
-            --purple-light: #BBA8FF;
-            --purple-muted: #5B4CC6;
-            --success: #34D399;
-            --success-glow: #5EEAD4;
-            --warning: #FBBF24;
-            --warning-glow: #FDE68A;
-            --error: #F06B6B;
-            --error-glow: #FCA5A5;
-            --info: #3B82F6;
-            --info-glow: #60A5FA;
-            --text-primary: #F0F0F5;
-            --text-secondary: rgba(240, 240, 245, 0.78);
-            --text-gray: rgba(240, 240, 245, 0.62);
-            --text-muted: rgba(240, 240, 245, 0.55);
-            --text-caption: rgba(240, 240, 245, 0.45);
-            --border: rgba(255, 255, 255, 0.1);
-            --border-light: rgba(255, 255, 255, 0.06);
-            --glass: rgba(20, 20, 30, 0.4);
-            --glass-light: rgba(30, 30, 45, 0.25);
-            --glass-medium: rgba(20, 20, 30, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg: #F7F8FA;
+            --bg-white: #FFFFFF;
+            --bg-alt: #FBFCFE;
+            --bg-tertiary: #F1F3F6;
+            --accent: #2F6FED;
+            --accent-light: #4C7DFF;
+            --accent-hover: #2560D4;
+            --accent-bg: #EAF0FF;
+            --success: #2EAA65;
+            --success-bg: #E9F7EF;
+            --warning: #E6A23C;
+            --warning-bg: #FFF4E0;
+            --danger: #E05252;
+            --danger-bg: #FDE8E8;
+            --info: #4C7DFF;
+            --info-bg: #EAF0FF;
+            --text: #111318;
+            --text-secondary: #5B6472;
+            --text-tertiary: #8B95A5;
+            --stroke: #E7EAF0;
+            --stroke-soft: #EEF1F6;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-            background: var(--bg-dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Nav */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(13, 13, 20, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 100;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--stroke);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 980px;
             margin: 0 auto;
+            padding: 0 22px;
+            height: 52px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 700;
-            font-size: 1.25rem;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
         }
 
-        .nav-logo svg { width: 36px; height: 36px; }
+        .nav-logo svg { width: 30px; height: 30px; }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-gray);
+            color: var(--text-secondary);
             text-decoration: none;
+            font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover { color: var(--purple-light); }
+        .nav-links a:hover { color: var(--text); }
 
         .nav-cta {
-            background: var(--purple);
-            color: var(--text-primary) !important;
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: all 0.2s !important;
-            box-shadow: 0 0 20px rgba(123, 108, 246, 0.3);
+            background: var(--accent);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            transition: background 0.2s !important;
         }
 
-        .nav-cta:hover {
-            background: var(--purple-glow);
-            transform: translateY(-1px);
-            box-shadow: 0 0 30px rgba(123, 108, 246, 0.5);
-        }
+        .nav-cta:hover { background: var(--accent-hover); }
 
         /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 24px 80px;
-            background: var(--bg-dark);
-            position: relative;
-            overflow: hidden;
+            padding: 160px 24px 80px;
+            text-align: center;
+            background: var(--bg-white);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(123, 108, 246, 0.15) 0%, rgba(123, 108, 246, 0.05) 40%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 60%;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-container {
-            max-width: 1200px;
+        .hero-inner {
+            max-width: 720px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple) 50%, var(--purple-glow) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-eyebrow {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
-        .hero-content p {
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
             font-size: 1.25rem;
+            line-height: 1.55;
             color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 500px;
+            max-width: 520px;
+            margin: 0 auto 36px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 72px;
         }
 
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--purple);
+            background: var(--accent);
             color: white;
-            padding: 16px 32px;
-            border-radius: 14px;
+            padding: 14px 28px;
+            border-radius: 999px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(123, 108, 246, 0.4);
+            font-size: 1rem;
+            transition: background 0.2s;
+            box-shadow: 0 4px 16px rgba(47, 111, 237, 0.25);
         }
 
-        .btn-primary:hover {
-            background: var(--purple-glow);
-            transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(123, 108, 246, 0.6);
-        }
-
-        .btn-primary svg { width: 24px; height: 24px; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-primary svg { width: 20px; height: 20px; }
 
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            background: transparent;
-            color: var(--text-secondary);
-            padding: 16px 32px;
-            border-radius: 14px;
+            color: var(--accent);
+            padding: 14px 28px;
+            border-radius: 999px;
             text-decoration: none;
             font-weight: 600;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
+            font-size: 1rem;
+            transition: color 0.2s;
         }
 
-        .btn-secondary:hover {
-            border-color: var(--purple);
-            color: var(--purple-light);
-            background: rgba(123, 108, 246, 0.08);
-        }
+        .btn-secondary:hover { color: var(--accent-hover); }
 
-        /* Phone Mockups */
-        .phones-container {
+        /* Phone in Hero */
+        .hero-phone-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            perspective: 1000px;
+            perspective: 1200px;
         }
 
         .phone {
-            width: 260px;
-            background: var(--bg-light);
-            border-radius: 36px;
+            width: 272px;
+            background: #1c1c28;
+            border-radius: 38px;
             padding: 8px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(123, 108, 246, 0.1);
-            border: 1px solid var(--glass-border);
+            box-shadow: 0 32px 64px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.05);
         }
 
         .phone.secondary {
-            transform: translateY(40px) rotateY(-5deg);
-            opacity: 0.85;
+            transform: translateY(28px) rotateY(-4deg);
+            opacity: 0.8;
         }
 
         .phone-screen {
-            background: var(--bg-mid);
-            border-radius: 30px;
+            background: #14141e;
+            border-radius: 32px;
             overflow: hidden;
             aspect-ratio: 9/19.5;
         }
 
         .phone-notch {
-            width: 100px;
-            height: 24px;
-            background: var(--bg-light);
-            border-radius: 0 0 16px 16px;
+            width: 88px;
+            height: 22px;
+            background: #1c1c28;
+            border-radius: 0 0 14px 14px;
             margin: 0 auto;
         }
 
-        .screen-content {
-            padding: 12px;
-        }
+        .screen-content { padding: 12px; }
 
-        /* Dashboard Screen */
-        .dash-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .dash-greeting {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .dash-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .dash-icons {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dash-icon {
-            width: 28px;
-            height: 28px;
-            background: var(--bg-card);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .stats-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .stat-card {
-            flex: 1;
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 10px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .stat-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            margin-bottom: 6px;
-        }
-
+        /* Dashboard screen (dark, matches app dark mode for contrast) */
+        .dash-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .dash-greeting { font-size: 11px; color: rgba(240,240,245,0.55); }
+        .dash-name { font-size: 18px; font-weight: 700; color: #F0F0F5; }
+        .dash-icons { display: flex; gap: 6px; }
+        .dash-icon { width: 28px; height: 28px; background: #22222e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #F0F0F5; }
+        .stats-row { display: flex; gap: 8px; margin-bottom: 8px; }
+        .stat-card { flex: 1; background: #22222e; border-radius: 12px; padding: 10px; }
+        .stat-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; margin-bottom: 6px; }
         .stat-icon.green { background: rgba(52, 211, 153, 0.15); }
         .stat-icon.blue { background: rgba(59, 130, 246, 0.15); }
+        .stat-value { font-size: 16px; font-weight: 700; color: #F0F0F5; }
+        .stat-label { font-size: 10px; color: rgba(240,240,245,0.55); }
+        .alert-row { display: flex; gap: 8px; margin-bottom: 12px; }
+        .alert-card { flex: 1; padding: 10px; border-radius: 12px; }
+        .alert-card.warning { background: rgba(251, 191, 36, 0.06); }
+        .alert-card.error { background: rgba(240, 107, 107, 0.06); }
+        .alert-header { display: flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; margin-bottom: 2px; }
+        .alert-header.warning { color: #FBBF24; }
+        .alert-header.error { color: #F06B6B; }
+        .alert-value { font-size: 12px; font-weight: 700; color: #F0F0F5; }
+        .section-title-phone { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #F0F0F5; }
+        .job-card { background: #22222e; border-radius: 12px; padding: 10px; margin-bottom: 8px; }
+        .job-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .job-time { font-size: 11px; font-weight: 600; color: #3B82F6; display: flex; align-items: center; gap: 3px; }
+        .job-price { font-size: 12px; font-weight: 700; color: #9B8AFF; }
+        .job-title { font-size: 13px; font-weight: 600; color: #F0F0F5; }
+        .job-client { font-size: 11px; color: rgba(240,240,245,0.55); }
+        .job-address { font-size: 10px; color: rgba(240,240,245,0.45); display: flex; align-items: center; gap: 3px; margin-top: 2px; }
+        .job-actions { display: flex; gap: 6px; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .job-action { flex: 1; padding: 6px; border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 10px; font-weight: 600; }
+        .job-action.call { background: rgba(52, 211, 153, 0.08); color: #34D399; }
+        .job-action.sms { background: rgba(59, 130, 246, 0.08); color: #3B82F6; }
+        .job-action.route { background: rgba(251, 191, 36, 0.08); color: #FBBF24; }
+        .quick-actions { display: flex; gap: 8px; }
+        .quick-action { flex: 1; background: #22222e; border-radius: 12px; padding: 12px 8px; text-align: center; }
+        .quick-action-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; font-size: 14px; }
+        .quick-action-icon.blue { background: rgba(59, 130, 246, 0.12); }
+        .quick-action-icon.green { background: rgba(52, 211, 153, 0.12); }
+        .quick-action-label { font-size: 10px; font-weight: 500; color: rgba(240,240,245,0.78); }
 
-        .stat-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
+        /* Jobs list screen */
+        .jobs-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px; }
+        .jobs-title { font-size: 18px; font-weight: 700; color: #F0F0F5; }
+        .search-icon { width: 28px; height: 28px; background: #22222e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #F0F0F5; }
+        .filter-tabs { display: flex; background: #22222e; border-radius: 10px; padding: 3px; margin-bottom: 12px; }
+        .filter-tab { flex: 1; padding: 6px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 500; color: rgba(240,240,245,0.55); }
+        .filter-tab.active { background: #7B6CF6; color: white; }
+        .job-list-item { background: #22222e; border-radius: 12px; padding: 10px; margin-bottom: 8px; }
+        .job-status { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 9px; font-weight: 600; margin-bottom: 6px; }
+        .job-status.sent { background: rgba(59,130,246,0.12); color: #3B82F6; }
+        .job-status.approved { background: rgba(52,211,153,0.12); color: #34D399; }
+        .job-status.progress { background: rgba(251,191,36,0.12); color: #FBBF24; }
+        .job-status.invoiced { background: rgba(123,108,246,0.12); color: #9B8AFF; }
+        .job-list-title { font-size: 13px; font-weight: 600; color: #F0F0F5; }
+        .job-list-client { font-size: 11px; color: rgba(240,240,245,0.55); display: flex; align-items: center; gap: 4px; }
+        .job-list-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .job-list-total { font-size: 14px; font-weight: 700; color: #F0F0F5; }
+        .job-list-date { font-size: 10px; color: rgba(240,240,245,0.45); }
 
-        .stat-label {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .alert-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .alert-card {
-            flex: 1;
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .alert-card.warning { background: rgba(251, 191, 36, 0.08); }
-        .alert-card.error { background: rgba(240, 107, 107, 0.08); }
-
-        .alert-header {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .alert-header.warning { color: var(--warning); }
-        .alert-header.error { color: var(--error); }
-
-        .alert-value {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .section-title-phone {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .job-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 10px;
-            margin-bottom: 8px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-        }
-
-        .job-time {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--info);
-            display: flex;
-            align-items: center;
-            gap: 3px;
-        }
-
-        .job-price {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--purple-glow);
-        }
-
-        .job-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .job-client {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .job-address {
-            font-size: 10px;
-            color: var(--text-caption);
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            margin-top: 2px;
-        }
-
-        .job-actions {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .job-action {
-            flex: 1;
-            padding: 6px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .job-action.call { background: rgba(52, 211, 153, 0.1); color: var(--success); }
-        .job-action.sms { background: rgba(59, 130, 246, 0.1); color: var(--info); }
-        .job-action.route { background: rgba(251, 191, 36, 0.1); color: var(--warning); }
-
-        .quick-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .quick-action {
-            flex: 1;
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 12px 8px;
+        /* Section common */
+        .section-eyebrow {
             text-align: center;
-            border: 1px solid var(--glass-border);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .quick-action-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 6px;
-            font-size: 14px;
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            color: var(--text);
         }
 
-        .quick-action-icon.blue { background: rgba(59, 130, 246, 0.15); }
-        .quick-action-icon.green { background: rgba(52, 211, 153, 0.15); }
-
-        .quick-action-label {
-            font-size: 10px;
-            font-weight: 500;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-        }
-
-        /* Jobs List Screen */
-        .jobs-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-light);
-            margin-bottom: 8px;
-        }
-
-        .jobs-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .search-icon {
-            width: 28px;
-            height: 28px;
-            background: var(--bg-card);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        .filter-tabs {
-            display: flex;
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 3px;
-            margin-bottom: 12px;
-        }
-
-        .filter-tab {
-            flex: 1;
-            padding: 6px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        .filter-tab.active {
-            background: var(--purple);
-            color: var(--text-primary);
-        }
-
-        .job-list-item {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 10px;
-            margin-bottom: 8px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .job-status {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 9px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .job-status.draft { background: rgba(107, 114, 128, 0.15); color: #6B7280; }
-        .job-status.sent { background: rgba(59, 130, 246, 0.15); color: var(--info); }
-        .job-status.approved { background: rgba(52, 211, 153, 0.15); color: var(--success); }
-        .job-status.progress { background: rgba(251, 191, 36, 0.15); color: var(--warning); }
-        .job-status.invoiced { background: rgba(123, 108, 246, 0.15); color: var(--purple-glow); }
-
-        .job-list-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .job-list-client {
-            font-size: 11px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .job-list-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .job-list-total {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .job-list-date {
-            font-size: 10px;
-            color: var(--text-caption);
+            max-width: 480px;
+            margin: 0 auto 56px;
+            line-height: 1.55;
         }
 
         /* Features */
         .features {
             padding: 100px 24px;
-            background: var(--bg-mid);
-            position: relative;
-        }
-
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            background: var(--bg);
         }
 
         .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 600px;
+            max-width: 980px;
             margin: 0 auto;
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .feature-icon.green {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
-            box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
-        }
-
-        .feature-icon.blue {
-            background: linear-gradient(135deg, var(--info) 0%, #1D4ED8 100%);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .feature-icon.orange {
-            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
-            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
-        }
-
-        .feature-icon.pink {
-            background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
-        }
-
-        .feature-icon.cyan {
-            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-        }
-
-        .feature-icon.yellow {
-            background: linear-gradient(135deg, var(--warning) 0%, #D97706 100%);
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
-        }
-
-        .feature-icon.red {
-            background: linear-gradient(135deg, var(--error) 0%, #DC2626 100%);
-            box-shadow: 0 0 20px rgba(240, 107, 107, 0.3);
-        }
-
-        .feature-icon.indigo {
-            background: linear-gradient(135deg, #818CF8 0%, #4F46E5 100%);
-            box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
-        }
-
-        /* Payments Highlight */
-        .payments-section {
-            padding: 100px 24px;
-            background: var(--bg-dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payments-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-
-        .payments-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .payments-methods {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .payment-method {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 14px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-        }
-
-        .payment-method:hover {
-            border-color: rgba(123, 108, 246, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .payment-method-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .payment-method-icon.stripe { background: rgba(99, 91, 255, 0.15); }
-        .payment-method-icon.tap { background: rgba(52, 211, 153, 0.15); }
-        .payment-method-icon.cash { background: rgba(251, 191, 36, 0.15); }
-        .payment-method-icon.venmo { background: rgba(59, 130, 246, 0.15); }
-        .payment-method-icon.zelle { background: rgba(123, 108, 246, 0.15); }
-        .payment-method-icon.check { background: rgba(107, 114, 128, 0.15); }
-
-        .payment-method-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .payment-method-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 100px 24px;
-            background: var(--bg-mid);
-            position: relative;
-        }
-
-        .pricing::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .pricing-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 36px 28px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .pricing-card.featured {
-            border-color: var(--purple);
-            box-shadow: 0 0 40px rgba(123, 108, 246, 0.15);
-            position: relative;
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--purple);
-            color: white;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .pricing-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-gray);
-            margin-bottom: 8px;
-        }
-
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .pricing-price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--text-muted);
-        }
-
-        .pricing-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .pricing-features {
-            text-align: left;
-            margin-bottom: 28px;
-        }
-
-        .pricing-feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 0;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .pricing-feature .check {
-            color: var(--success);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .pricing-feature .limit {
-            color: var(--text-caption);
-            font-size: 0.8rem;
-        }
-
-        .pricing-btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .pricing-btn.primary {
-            background: var(--purple);
-            color: white;
-            box-shadow: 0 0 20px rgba(123, 108, 246, 0.3);
-        }
-
-        .pricing-btn.primary:hover {
-            background: var(--purple-glow);
-            box-shadow: 0 0 30px rgba(123, 108, 246, 0.5);
-        }
-
-        .pricing-btn.secondary {
-            background: var(--bg-elevated);
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-
-        .pricing-btn.secondary:hover {
-            border-color: var(--purple);
-            color: var(--purple-light);
+            gap: 16px;
         }
 
         .feature-card {
-            background: var(--bg-card);
-            padding: 32px;
-            border-radius: 20px;
+            background: var(--bg-white);
+            padding: 32px 24px;
+            border-radius: 16px;
+            border: 1px solid var(--stroke-soft);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--glass-border);
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(123, 108, 246, 0.08);
-            border-color: rgba(123, 108, 246, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
         }
 
         .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-muted) 100%);
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(123, 108, 246, 0.3);
+            margin-bottom: 18px;
         }
 
         .feature-icon svg {
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             stroke: white;
             stroke-width: 1.5;
             fill: none;
         }
 
+        .feature-icon.purple { background: #6366F1; }
+        .feature-icon.green { background: #2EAA65; }
+        .feature-icon.blue { background: var(--accent); }
+        .feature-icon.orange { background: #E6A23C; }
+        .feature-icon.pink { background: #E05282; }
+        .feature-icon.cyan { background: #0891B2; }
+        .feature-icon.yellow { background: #D97706; }
+        .feature-icon.red { background: #E05252; }
+        .feature-icon.indigo { background: #7C3AED; }
+
         .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: var(--text-primary);
+            font-size: 1.08rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+            color: var(--text);
         }
 
         .feature-card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.55;
         }
 
         /* How It Works */
         .how-it-works {
             padding: 100px 24px;
-            background: var(--bg-dark);
-            position: relative;
-        }
-
-        .how-it-works::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            background: var(--bg-white);
         }
 
         .steps {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            max-width: 1200px;
+            gap: 24px;
+            max-width: 980px;
             margin: 0 auto;
         }
 
-        .step {
-            text-align: center;
-        }
+        .step { text-align: center; }
 
         .step-number {
-            width: 56px;
-            height: 56px;
-            background: var(--bg-card);
-            color: var(--purple-glow);
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0 auto 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 0 20px rgba(123, 108, 246, 0.15);
+            font-size: 1.15rem;
+            margin: 0 auto 16px;
         }
 
         .step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
         }
 
         .step p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.5;
         }
 
-        /* For Who */
-        .for-who {
+        /* Payments */
+        .payments-section {
             padding: 100px 24px;
-            background: var(--bg-mid);
+            background: var(--bg);
+        }
+
+        .payments-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .payments-left .section-eyebrow,
+        .payments-left .section-title,
+        .payments-left .section-subtitle { text-align: left; margin-left: 0; }
+
+        .payments-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .payment-method {
+            background: var(--bg-white);
+            border: 1px solid var(--stroke-soft);
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .payment-method-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .payment-method-icon.stripe { background: var(--accent-bg); }
+        .payment-method-icon.tap { background: var(--success-bg); }
+        .payment-method-icon.cash { background: var(--warning-bg); }
+        .payment-method-icon.venmo { background: var(--info-bg); }
+
+        .payment-method-name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+        .payment-method-desc { font-size: 0.78rem; color: var(--text-tertiary); }
+
+        /* Pricing */
+        .pricing {
+            padding: 100px 24px;
+            background: var(--bg-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--bg-white);
+            border: 1px solid var(--stroke);
+            border-radius: 22px;
+            padding: 36px 24px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent), 0 8px 24px rgba(47, 111, 237, 0.12);
             position: relative;
         }
 
-        .for-who::before {
-            content: '';
+        .pricing-badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pricing-name { font-size: 1rem; font-weight: 600; color: var(--text-tertiary); margin-bottom: 8px; }
+        .pricing-price { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 4px; color: var(--text); }
+        .pricing-price span { font-size: 1rem; font-weight: 400; color: var(--text-tertiary); }
+        .pricing-desc { font-size: 0.88rem; color: var(--text-tertiary); margin-bottom: 24px; }
+
+        .pricing-features { text-align: left; margin-bottom: 24px; }
+        .pricing-feature { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .pricing-feature .check { color: var(--success); font-weight: 700; flex-shrink: 0; }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .pricing-btn.primary { background: var(--accent); color: white; }
+        .pricing-btn.primary:hover { background: var(--accent-hover); }
+        .pricing-btn.secondary { background: var(--bg-tertiary); color: var(--text-secondary); }
+        .pricing-btn.secondary:hover { background: var(--stroke); }
+
+        /* Trades */
+        .for-who {
+            padding: 100px 24px;
+            background: var(--bg);
         }
 
         .trades-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            max-width: 900px;
+            gap: 8px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .trade-tag {
-            background: var(--bg-card);
-            padding: 12px 24px;
-            border-radius: 50px;
+            background: var(--bg-white);
+            border: 1px solid var(--stroke-soft);
+            padding: 9px 18px;
+            border-radius: 999px;
             font-weight: 500;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s;
+            gap: 6px;
             color: var(--text-secondary);
+            transition: all 0.2s;
         }
 
         .trade-tag:hover {
-            background: rgba(123, 108, 246, 0.1);
-            border-color: rgba(123, 108, 246, 0.3);
-            transform: scale(1.05);
-            color: var(--purple-light);
+            background: var(--accent-bg);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         /* CTA */
         .cta {
-            padding: 100px 24px;
-            background: var(--bg-dark);
+            padding: 120px 24px;
+            background: var(--bg-white);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(123, 108, 246, 0.12) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .cta-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 64px 48px;
-            box-shadow: 0 0 60px rgba(123, 108, 246, 0.1);
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--purple-light), var(--purple-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 14px;
+            color: var(--text);
         }
 
         .cta p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 32px;
-            max-width: 500px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            max-width: 460px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.55;
         }
 
         /* Footer */
         footer {
-            background: var(--bg-mid);
-            color: var(--text-primary);
-            padding: 60px 24px 30px;
-            border-top: 1px solid var(--border-light);
+            background: var(--bg-tertiary);
+            padding: 48px 24px 24px;
+            border-top: 1px solid var(--stroke);
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 980px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
+            gap: 40px;
         }
 
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .footer-brand p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+        .footer-brand h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+        .footer-brand p { color: var(--text-tertiary); font-size: 0.88rem; line-height: 1.55; }
 
         .footer-column h4 {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
-            color: var(--text-caption);
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+            color: var(--text-tertiary);
+            font-weight: 600;
         }
 
         .footer-column a {
             display: block;
-            color: var(--text-gray);
+            color: var(--text-secondary);
             text-decoration: none;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            font-size: 0.88rem;
             transition: color 0.2s;
         }
 
-        .footer-column a:hover { color: var(--purple-light); }
+        .footer-column a:hover { color: var(--accent); }
 
         .footer-bottom {
-            max-width: 1200px;
-            margin: 48px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid var(--border-light);
+            max-width: 980px;
+            margin: 36px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid var(--stroke);
             display: flex;
             justify-content: space-between;
-            color: var(--text-caption);
-            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-size: 0.82rem;
         }
 
         /* Mobile Menu */
@@ -1180,8 +695,8 @@
         .mobile-menu-btn span {
             display: block;
             width: 100%;
-            height: 2px;
-            background: var(--text-primary);
+            height: 1.5px;
+            background: var(--text);
             border-radius: 2px;
             transition: all 0.3s;
         }
@@ -1189,285 +704,103 @@
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 68px;
+            top: 52px;
             left: 0;
             right: 0;
-            background: rgba(13, 13, 20, 0.95);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 20px 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            padding: 16px 24px;
             z-index: 99;
             flex-direction: column;
-            gap: 16px;
-            border-bottom: 1px solid var(--glass-border);
+            gap: 4px;
+            border-bottom: 1px solid var(--stroke);
         }
 
-        .mobile-menu.active {
-            display: flex;
-        }
+        .mobile-menu.active { display: flex; }
 
         .mobile-menu a {
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1rem;
             padding: 12px 0;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--stroke-soft);
         }
 
-        .mobile-menu a:last-child {
-            border-bottom: none;
-        }
+        .mobile-menu a:last-child { border-bottom: none; }
 
         .mobile-menu .nav-cta {
-            background: var(--purple);
+            background: var(--accent);
             color: white;
             text-align: center;
-            padding: 14px 20px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 999px;
             margin-top: 8px;
+            border: none;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-content p { margin: 0 auto 32px; }
-            .hero-buttons { justify-content: center; }
-            .phones-container { order: -1; margin-bottom: 40px; }
-            .phone.secondary { display: none; }
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .steps { grid-template-columns: repeat(2, 1fr); }
-            .footer-container { grid-template-columns: 1fr 1fr; }
             .payments-container { grid-template-columns: 1fr; text-align: center; }
+            .payments-left .section-eyebrow,
+            .payments-left .section-title,
+            .payments-left .section-subtitle { text-align: center; margin: 0 auto; }
+            .payments-left .section-subtitle { margin-bottom: 40px; }
+            .phone.secondary { display: none; }
             .pricing-grid { grid-template-columns: 1fr 1fr; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn { display: flex; }
 
-            .hero {
-                padding: 100px 20px 60px;
-                min-height: auto;
-            }
+            .hero { padding: 110px 20px 48px; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 1.05rem; margin-bottom: 28px; }
+            .hero-buttons { flex-direction: column; align-items: center; margin-bottom: 48px; }
+            .hero-phone-container { gap: 0; }
+            .phone { width: 236px; }
 
-            .hero-content h1 {
-                font-size: 2rem;
-                margin-bottom: 16px;
-            }
+            .features, .how-it-works, .payments-section, .pricing, .for-who { padding: 64px 20px; }
+            .section-title { font-size: 1.85rem; }
+            .section-subtitle { font-size: 0.98rem; }
 
-            .hero-content p {
-                font-size: 1rem;
-                margin-bottom: 24px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-                padding: 14px 24px;
-            }
-
-            .phones-container {
-                margin-bottom: 32px;
-            }
-
-            .phone {
-                width: 220px;
-            }
-
-            .section-header h2 {
-                font-size: 1.75rem;
-            }
-
-            .section-header p {
-                font-size: 1rem;
-            }
-
-            .features {
-                padding: 60px 20px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .feature-card {
-                padding: 24px;
-            }
-
-            .how-it-works {
-                padding: 60px 20px;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .for-who {
-                padding: 60px 20px;
-            }
-
-            .trades-grid {
-                gap: 10px;
-            }
-
-            .trade-tag {
-                padding: 10px 16px;
-                font-size: 0.9rem;
-            }
-
-            .payments-section { padding: 60px 20px; }
+            .features-grid { grid-template-columns: 1fr; gap: 10px; }
+            .feature-card { padding: 24px 20px; }
+            .steps { grid-template-columns: 1fr; gap: 24px; }
             .payments-methods { grid-template-columns: 1fr; }
-
-            .pricing { padding: 60px 20px; }
-            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
             .pricing-card.featured { order: -1; }
 
-            .cta {
-                padding: 60px 20px;
-            }
+            .cta { padding: 64px 20px; }
+            .cta h2 { font-size: 1.85rem; }
 
-            .cta-inner {
-                padding: 40px 24px;
-                border-radius: 24px;
-            }
-
-            .cta h2 {
-                font-size: 1.75rem;
-            }
-
-            .cta p {
-                font-size: 1rem;
-            }
-
-            footer {
-                padding: 40px 20px 24px;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 32px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-                margin-top: 32px;
-            }
+            footer { padding: 32px 20px 20px; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
 
         @media (max-width: 480px) {
-            nav {
-                padding: 12px 16px;
-            }
-
-            .nav-logo {
-                font-size: 1.1rem;
-            }
-
-            .nav-logo svg {
-                width: 30px;
-                height: 30px;
-            }
-
-            .hero {
-                padding: 90px 16px 50px;
-            }
-
-            .hero-content h1 {
-                font-size: 1.75rem;
-            }
-
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .phone {
-                width: 200px;
-                border-radius: 28px;
-                padding: 6px;
-            }
-
-            .phone-screen {
-                border-radius: 24px;
-            }
-
-            .phone-notch {
-                width: 80px;
-                height: 20px;
-                border-radius: 0 0 12px 12px;
-            }
-
-            .screen-content {
-                padding: 10px;
-            }
-
-            .dash-name {
-                font-size: 16px;
-            }
-
-            .stat-value {
-                font-size: 14px;
-            }
-
-            .section-header {
-                margin-bottom: 40px;
-            }
-
-            .section-header h2 {
-                font-size: 1.5rem;
-            }
-
-            .features, .how-it-works, .for-who, .cta {
-                padding: 50px 16px;
-            }
-
-            .feature-card {
-                padding: 20px;
-            }
-
-            .feature-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .step-number {
-                width: 48px;
-                height: 48px;
-                font-size: 1.1rem;
-            }
-
-            .cta h2 {
-                font-size: 1.5rem;
-            }
-
-            .footer-brand h3 {
-                font-size: 1.25rem;
-            }
+            .hero h1 { font-size: 1.75rem; }
+            .phone { width: 210px; border-radius: 30px; padding: 6px; }
+            .phone-screen { border-radius: 26px; }
+            .phone-notch { width: 76px; height: 18px; }
+            .screen-content { padding: 10px; }
+            .dash-name { font-size: 16px; }
+            .stat-value { font-size: 14px; }
+            .section-title { font-size: 1.6rem; }
+            .cta h2 { font-size: 1.6rem; }
         }
 
         @media (max-width: 360px) {
-            .phone {
-                width: 180px;
-            }
-
-            .hero-content h1 {
-                font-size: 1.5rem;
-            }
-
-            .btn-primary, .btn-secondary {
-                padding: 12px 20px;
-                font-size: 0.95rem;
-            }
+            .phone { width: 190px; }
+            .hero h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -1477,9 +810,9 @@
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <svg viewBox="0 0 36 36" fill="none">
-                    <rect width="36" height="36" rx="8" fill="#7B6CF6"/>
-                    <path d="M0 18 L36 18 L36 28 Q36 36 28 36 L8 36 Q0 36 0 28 Z" fill="#5B4CC6"/>
-                    <path d="M4 18 Q18 25 32 18" stroke="#9B8AFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <rect width="36" height="36" rx="10" fill="#2F6FED"/>
+                    <path d="M0 18 L36 18 L36 28 Q36 36 28 36 L8 36 Q0 36 0 28 Z" fill="#2560D4"/>
+                    <path d="M4 18 Q18 25 32 18" stroke="#6BA3FF" stroke-width="2" stroke-linecap="round" fill="none"/>
                     <rect x="10" y="6" width="7" height="12" rx="2" fill="white"/>
                     <rect x="19" y="8" width="7" height="10" rx="2" fill="white" opacity="0.8"/>
                 </svg>
@@ -1511,148 +844,135 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Run Your Entire Contracting Business From Your Phone</h1>
-                <p>Estimates, invoices, payments, scheduling, time tracking, expenses, team management, and reports — one app replaces them all.</p>
-                <div class="hero-buttons">
-                    <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                        </svg>
-                        Download for iOS
-                    </a>
-                    <a href="#features" class="btn-secondary">Learn More</a>
-                </div>
+        <div class="hero-inner">
+            <div class="hero-eyebrow">Business management for contractors</div>
+            <h1>Your entire business. One app.</h1>
+            <p>Estimates, invoices, payments, scheduling, time tracking, expenses, and team management. All from your pocket.</p>
+            <div class="hero-buttons">
+                <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    Download for iOS
+                </a>
+                <a href="#features" class="btn-secondary">Learn more &#8250;</a>
             </div>
+        </div>
 
-            <!-- Phone Mockups -->
-            <div class="phones-container">
-                <!-- Dashboard Screen -->
-                <div class="phone">
-                    <div class="phone-screen">
-                        <div class="phone-notch"></div>
-                        <div class="screen-content">
-                            <div class="dash-header">
-                                <div>
-                                    <div class="dash-greeting">Good morning,</div>
-                                    <div class="dash-name">Alex!</div>
-                                </div>
-                                <div class="dash-icons">
-                                    <div class="dash-icon">&#9881;</div>
-                                    <div class="dash-icon">&#128276;</div>
-                                </div>
+        <!-- Phone Mockups -->
+        <div class="hero-phone-container">
+            <div class="phone">
+                <div class="phone-screen">
+                    <div class="phone-notch"></div>
+                    <div class="screen-content">
+                        <div class="dash-header">
+                            <div>
+                                <div class="dash-greeting">Good morning,</div>
+                                <div class="dash-name">Alex!</div>
                             </div>
-
-                            <div class="stats-row">
-                                <div class="stat-card">
-                                    <div class="stat-icon green">&#128181;</div>
-                                    <div class="stat-value">$4,850</div>
-                                    <div class="stat-label">This week</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-icon blue">&#128188;</div>
-                                    <div class="stat-value">8</div>
-                                    <div class="stat-label">Open jobs</div>
-                                </div>
+                            <div class="dash-icons">
+                                <div class="dash-icon">&#9881;</div>
+                                <div class="dash-icon">&#128276;</div>
                             </div>
-
-                            <div class="alert-row">
-                                <div class="alert-card warning">
-                                    <div class="alert-header warning">&#129534; 3 Unpaid</div>
-                                    <div class="alert-value">$2,150</div>
-                                </div>
-                                <div class="alert-card error">
-                                    <div class="alert-header error">&#9888; 1 Overdue</div>
-                                    <div class="alert-value">$450</div>
-                                </div>
+                        </div>
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <div class="stat-icon green">&#128181;</div>
+                                <div class="stat-value">$4,850</div>
+                                <div class="stat-label">This week</div>
                             </div>
-
-                            <div class="section-title-phone">Today's Schedule</div>
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="job-time">&#128336; 9:00 AM</div>
-                                    <div class="job-price">$1,200</div>
-                                </div>
-                                <div class="job-title">Kitchen Remodel</div>
-                                <div class="job-client">Sarah Johnson</div>
-                                <div class="job-address">&#128205; 123 Oak Street, Austin</div>
-                                <div class="job-actions">
-                                    <div class="job-action call">&#128222; Call</div>
-                                    <div class="job-action sms">&#128172; SMS</div>
-                                    <div class="job-action route">&#129517; Route</div>
-                                </div>
+                            <div class="stat-card">
+                                <div class="stat-icon blue">&#128188;</div>
+                                <div class="stat-value">8</div>
+                                <div class="stat-label">Open jobs</div>
                             </div>
-
-                            <div class="section-title-phone">Quick Actions</div>
-                            <div class="quick-actions">
-                                <div class="quick-action">
-                                    <div class="quick-action-icon blue">&#128196;</div>
-                                    <div class="quick-action-label">New Estimate</div>
-                                </div>
-                                <div class="quick-action">
-                                    <div class="quick-action-icon green">&#128100;</div>
-                                    <div class="quick-action-label">Add Client</div>
-                                </div>
+                        </div>
+                        <div class="alert-row">
+                            <div class="alert-card warning">
+                                <div class="alert-header warning">&#129534; 3 Unpaid</div>
+                                <div class="alert-value">$2,150</div>
+                            </div>
+                            <div class="alert-card error">
+                                <div class="alert-header error">&#9888; 1 Overdue</div>
+                                <div class="alert-value">$450</div>
+                            </div>
+                        </div>
+                        <div class="section-title-phone">Today's Schedule</div>
+                        <div class="job-card">
+                            <div class="job-header">
+                                <div class="job-time">&#128336; 9:00 AM</div>
+                                <div class="job-price">$1,200</div>
+                            </div>
+                            <div class="job-title">Kitchen Remodel</div>
+                            <div class="job-client">Sarah Johnson</div>
+                            <div class="job-address">&#128205; 123 Oak Street, Austin</div>
+                            <div class="job-actions">
+                                <div class="job-action call">&#128222; Call</div>
+                                <div class="job-action sms">&#128172; SMS</div>
+                                <div class="job-action route">&#129517; Route</div>
+                            </div>
+                        </div>
+                        <div class="section-title-phone">Quick Actions</div>
+                        <div class="quick-actions">
+                            <div class="quick-action">
+                                <div class="quick-action-icon blue">&#128196;</div>
+                                <div class="quick-action-label">New Estimate</div>
+                            </div>
+                            <div class="quick-action">
+                                <div class="quick-action-icon green">&#128100;</div>
+                                <div class="quick-action-label">Add Client</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Jobs List Screen -->
-                <div class="phone secondary">
-                    <div class="phone-screen">
-                        <div class="phone-notch"></div>
-                        <div class="screen-content">
-                            <div class="jobs-header">
-                                <div class="jobs-title">Jobs</div>
-                                <div class="search-icon">&#128269;</div>
+            </div>
+            <div class="phone secondary">
+                <div class="phone-screen">
+                    <div class="phone-notch"></div>
+                    <div class="screen-content">
+                        <div class="jobs-header">
+                            <div class="jobs-title">Jobs</div>
+                            <div class="search-icon">&#128269;</div>
+                        </div>
+                        <div class="filter-tabs">
+                            <div class="filter-tab active">Active</div>
+                            <div class="filter-tab">Completed</div>
+                            <div class="filter-tab">All</div>
+                        </div>
+                        <div class="job-list-item">
+                            <div class="job-status sent">ESTIMATE SENT</div>
+                            <div class="job-list-title">Bathroom Renovation</div>
+                            <div class="job-list-client">&#128100; Mike Chen</div>
+                            <div class="job-list-footer">
+                                <div class="job-list-total">$3,500</div>
+                                <div class="job-list-date">Jan 18</div>
                             </div>
-
-                            <div class="filter-tabs">
-                                <div class="filter-tab active">Active</div>
-                                <div class="filter-tab">Completed</div>
-                                <div class="filter-tab">All</div>
+                        </div>
+                        <div class="job-list-item">
+                            <div class="job-status progress">IN PROGRESS</div>
+                            <div class="job-list-title">Electrical Repair</div>
+                            <div class="job-list-client">&#128100; Emily Davis</div>
+                            <div class="job-list-footer">
+                                <div class="job-list-total">$850</div>
+                                <div class="job-list-date">Jan 15</div>
                             </div>
-
-                            <div class="job-list-item">
-                                <div class="job-status sent">ESTIMATE SENT</div>
-                                <div class="job-list-title">Bathroom Renovation</div>
-                                <div class="job-list-client">&#128100; Mike Chen</div>
-                                <div class="job-list-footer">
-                                    <div class="job-list-total">$3,500</div>
-                                    <div class="job-list-date">Jan 18</div>
-                                </div>
+                        </div>
+                        <div class="job-list-item">
+                            <div class="job-status invoiced">INVOICED</div>
+                            <div class="job-list-title">HVAC Installation</div>
+                            <div class="job-list-client">&#128100; Tom Wilson</div>
+                            <div class="job-list-footer">
+                                <div class="job-list-total">$4,200</div>
+                                <div class="job-list-date">Jan 12</div>
                             </div>
-
-                            <div class="job-list-item">
-                                <div class="job-status progress">IN PROGRESS</div>
-                                <div class="job-list-title">Electrical Repair</div>
-                                <div class="job-list-client">&#128100; Emily Davis</div>
-                                <div class="job-list-footer">
-                                    <div class="job-list-total">$850</div>
-                                    <div class="job-list-date">Jan 15</div>
-                                </div>
-                            </div>
-
-                            <div class="job-list-item">
-                                <div class="job-status invoiced">INVOICED</div>
-                                <div class="job-list-title">HVAC Installation</div>
-                                <div class="job-list-client">&#128100; Tom Wilson</div>
-                                <div class="job-list-footer">
-                                    <div class="job-list-total">$4,200</div>
-                                    <div class="job-list-date">Jan 12</div>
-                                </div>
-                            </div>
-
-                            <div class="job-list-item">
-                                <div class="job-status approved">APPROVED</div>
-                                <div class="job-list-title">Deck Building</div>
-                                <div class="job-list-client">&#128100; Lisa Brown</div>
-                                <div class="job-list-footer">
-                                    <div class="job-list-total">$6,800</div>
-                                    <div class="job-list-date">Jan 20</div>
-                                </div>
+                        </div>
+                        <div class="job-list-item">
+                            <div class="job-status approved">APPROVED</div>
+                            <div class="job-list-title">Deck Building</div>
+                            <div class="job-list-client">&#128100; Lisa Brown</div>
+                            <div class="job-list-footer">
+                                <div class="job-list-total">$6,800</div>
+                                <div class="job-list-date">Jan 20</div>
                             </div>
                         </div>
                     </div>
@@ -1664,13 +984,12 @@
     <!-- Features -->
     <section class="features" id="features">
         <div class="features-container">
-            <div class="section-header">
-                <h2>Everything You Need. Nothing You Don't.</h2>
-                <p>JobPocket replaces your notepad, spreadsheet, calendar, and invoicing software with one app that fits in your pocket.</p>
-            </div>
+            <div class="section-eyebrow">Features</div>
+            <div class="section-title">Everything you need.<br>Nothing you don't.</div>
+            <div class="section-subtitle">One app replaces your notepad, spreadsheet, calendar, and invoicing software.</div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon purple">
                         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <polyline points="14 2 14 8 20 8"></polyline>
@@ -1679,7 +998,7 @@
                         </svg>
                     </div>
                     <h3>Estimates & Invoices</h3>
-                    <p>Create branded PDF estimates with your logo, line items, and taxes. Convert to invoices in one tap. Add QR codes, custom templates, and payment terms.</p>
+                    <p>Branded PDF estimates with your logo, line items, and taxes. Convert to invoices in one tap. QR codes, custom templates, and payment terms.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon green">
@@ -1688,8 +1007,8 @@
                             <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                         </svg>
                     </div>
-                    <h3>Accept Payments Anywhere</h3>
-                    <p>Stripe online payments, Tap to Pay on iPhone, cash, check, Venmo, Zelle. Send payment links. Track partial payments and send automatic reminders.</p>
+                    <h3>Accept Payments</h3>
+                    <p>Stripe online payments, Tap to Pay on iPhone, cash, check, Venmo, Zelle. Send payment links. Track partial payments and automatic reminders.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon blue">
@@ -1700,8 +1019,8 @@
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
                     </div>
-                    <h3>Scheduling & Calendar Sync</h3>
-                    <p>Schedule jobs with dates, times, and priority levels. Auto-sync to Apple or Google Calendar. Set up recurring jobs weekly, monthly, or quarterly.</p>
+                    <h3>Scheduling & Calendar</h3>
+                    <p>Schedule jobs with dates, times, and priority. Auto-sync to Apple or Google Calendar. Recurring jobs weekly, monthly, or quarterly.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon orange">
@@ -1711,7 +1030,7 @@
                         </svg>
                     </div>
                     <h3>Time Tracking</h3>
-                    <p>Clock in and out per job with GPS location. Track breaks. View daily, weekly, and monthly time summaries. Know exactly where your hours go.</p>
+                    <p>Clock in and out per job with GPS. Track breaks. Daily, weekly, and monthly summaries. Know exactly where your hours go.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon pink">
@@ -1723,7 +1042,7 @@
                         </svg>
                     </div>
                     <h3>Team Management</h3>
-                    <p>Invite workers, assign jobs, control permissions. Team members see their assigned work, accept or decline jobs, and update status from their phone.</p>
+                    <p>Invite workers, assign jobs, control permissions. Team members see assigned work, accept or decline, and update status from their phone.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon cyan">
@@ -1733,7 +1052,7 @@
                         </svg>
                     </div>
                     <h3>Client Management</h3>
-                    <p>Store client contacts, addresses, and notes. View job history and total revenue per client. One-tap call, text, or navigate to any client.</p>
+                    <p>Contacts, addresses, notes. Job history and revenue per client. One-tap call, text, or navigate to any client location.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon yellow">
@@ -1744,7 +1063,7 @@
                         </svg>
                     </div>
                     <h3>Reports & Tax Summaries</h3>
-                    <p>Revenue reports, profit &amp; loss, tax summaries, conversion rates. Export to PDF or CSV. See top services, average job value, and trends over time.</p>
+                    <p>Revenue, profit &amp; loss, tax summaries, conversion rates. Export PDF or CSV. Top services, average job value, and trends.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon red">
@@ -1755,7 +1074,7 @@
                         </svg>
                     </div>
                     <h3>Expense Tracking</h3>
-                    <p>Log materials, fuel, tools, and other business expenses. Attach receipt photos. Link expenses to jobs. See profit margins and annual deductions at a glance.</p>
+                    <p>Materials, fuel, tools, business expenses. Attach receipt photos. Link expenses to jobs. Profit margins and annual deductions at a glance.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon indigo">
@@ -1765,8 +1084,8 @@
                             <polyline points="21 15 16 10 5 21"></polyline>
                         </svg>
                     </div>
-                    <h3>Job Photos & Documentation</h3>
-                    <p>Capture before, during, and after photos with GPS location. Scan documents with OCR to import templates. Keep a visual record of every job.</p>
+                    <h3>Photos & Documentation</h3>
+                    <p>Before, during, and after photos with GPS. Document scanning with OCR. A visual record of every job you complete.</p>
                 </div>
             </div>
         </div>
@@ -1774,10 +1093,9 @@
 
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
-        <div class="section-header">
-            <h2>From Estimate to Paid in 4 Steps</h2>
-            <p>No training needed. If you can text, you can use JobPocket.</p>
-        </div>
+        <div class="section-eyebrow">How it works</div>
+        <div class="section-title">Estimate to paid.<br>Four steps.</div>
+        <div class="section-subtitle">No training needed. If you can text, you can use JobPocket.</div>
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
@@ -1805,16 +1123,15 @@
     <!-- Payments -->
     <section class="payments-section" id="payments">
         <div class="payments-container">
-            <div>
-                <div class="section-header" style="text-align:left;margin-bottom:40px;">
-                    <h2>Get Paid However You Want</h2>
-                    <p style="margin:0">Accept payments on-site or remotely. Send payment links via text. Track every dollar from estimate to deposit.</p>
-                </div>
+            <div class="payments-left">
+                <div class="section-eyebrow">Payments</div>
+                <div class="section-title">Get paid however you want.</div>
+                <div class="section-subtitle">Accept payments on-site or remotely. Send payment links via text. Track every dollar.</div>
                 <div class="payments-methods">
                     <div class="payment-method">
                         <div class="payment-method-icon stripe">&#128179;</div>
                         <div>
-                            <div class="payment-method-name">Stripe Card Payments</div>
+                            <div class="payment-method-name">Stripe Payments</div>
                             <div class="payment-method-desc">Online checkout links</div>
                         </div>
                     </div>
@@ -1847,35 +1164,35 @@
                         <div class="phone-notch"></div>
                         <div class="screen-content">
                             <div style="text-align:center;padding:16px 0 8px;">
-                                <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Invoice #1042</div>
-                                <div style="font-size:28px;font-weight:800;color:var(--text-primary);">$3,500</div>
-                                <div style="font-size:11px;color:var(--success);font-weight:600;margin-top:4px;">&#9679; PAID</div>
+                                <div style="font-size:11px;color:rgba(240,240,245,0.55);margin-bottom:4px;">Invoice #1042</div>
+                                <div style="font-size:28px;font-weight:700;letter-spacing:-0.02em;color:#F0F0F5;">$3,500</div>
+                                <div style="font-size:11px;color:#34D399;font-weight:600;margin-top:4px;">&#9679; PAID</div>
                             </div>
-                            <div style="background:var(--bg-card);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid var(--glass-border);">
-                                <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px;">Payment History</div>
-                                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border-light);">
+                            <div style="background:#22222e;border-radius:12px;padding:12px;margin-bottom:8px;">
+                                <div style="font-size:10px;color:rgba(240,240,245,0.55);margin-bottom:6px;">Payment History</div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
                                     <div>
-                                        <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Deposit (50%)</div>
-                                        <div style="font-size:9px;color:var(--text-caption);">Tap to Pay &#183; Jan 15</div>
+                                        <div style="font-size:11px;font-weight:600;color:#F0F0F5;">Deposit (50%)</div>
+                                        <div style="font-size:9px;color:rgba(240,240,245,0.45);">Tap to Pay &#183; Jan 15</div>
                                     </div>
-                                    <div style="font-size:12px;font-weight:700;color:var(--success);">$1,750</div>
+                                    <div style="font-size:12px;font-weight:700;color:#34D399;">$1,750</div>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
                                     <div>
-                                        <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Final Payment</div>
-                                        <div style="font-size:9px;color:var(--text-caption);">Stripe &#183; Jan 22</div>
+                                        <div style="font-size:11px;font-weight:600;color:#F0F0F5;">Final Payment</div>
+                                        <div style="font-size:9px;color:rgba(240,240,245,0.45);">Stripe &#183; Jan 22</div>
                                     </div>
-                                    <div style="font-size:12px;font-weight:700;color:var(--success);">$1,750</div>
+                                    <div style="font-size:12px;font-weight:700;color:#34D399;">$1,750</div>
                                 </div>
                             </div>
-                            <div style="background:var(--bg-card);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid var(--glass-border);">
-                                <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Bathroom Renovation</div>
-                                <div style="font-size:11px;color:var(--text-secondary);">&#128100; Mike Chen</div>
-                                <div style="font-size:10px;color:var(--text-caption);margin-top:2px;">&#128205; 456 Elm Street, Austin</div>
+                            <div style="background:#22222e;border-radius:12px;padding:12px;margin-bottom:8px;">
+                                <div style="font-size:10px;color:rgba(240,240,245,0.55);margin-bottom:4px;">Bathroom Renovation</div>
+                                <div style="font-size:11px;color:rgba(240,240,245,0.78);">&#128100; Mike Chen</div>
+                                <div style="font-size:10px;color:rgba(240,240,245,0.45);margin-top:2px;">&#128205; 456 Elm Street, Austin</div>
                             </div>
                             <div style="display:flex;gap:8px;">
-                                <div style="flex:1;background:var(--purple);color:white;text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:600;">Send Receipt</div>
-                                <div style="flex:1;background:var(--bg-card);color:var(--text-secondary);text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:600;border:1px solid var(--glass-border);">Share PDF</div>
+                                <div style="flex:1;background:#7B6CF6;color:white;text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:600;">Send Receipt</div>
+                                <div style="flex:1;background:#22222e;color:rgba(240,240,245,0.78);text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:600;">Share PDF</div>
                             </div>
                         </div>
                     </div>
@@ -1886,10 +1203,9 @@
 
     <!-- Pricing -->
     <section class="pricing" id="pricing">
-        <div class="section-header">
-            <h2>Simple, Transparent Pricing</h2>
-            <p>Start free. Upgrade when your business grows.</p>
-        </div>
+        <div class="section-eyebrow">Pricing</div>
+        <div class="section-title">Simple, transparent pricing.</div>
+        <div class="section-subtitle">Start free. Upgrade when your business grows.</div>
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="pricing-name">Free</div>
@@ -1942,10 +1258,9 @@
 
     <!-- For Who -->
     <section class="for-who">
-        <div class="section-header">
-            <h2>Built for Every Trade</h2>
-            <p>Pre-configured templates, job types, and workflows for your specific industry.</p>
-        </div>
+        <div class="section-eyebrow">Industries</div>
+        <div class="section-title">Built for every trade.</div>
+        <div class="section-subtitle">Pre-configured templates and workflows for your specific industry.</div>
         <div class="trades-grid">
             <div class="trade-tag">&#128295; Plumbing</div>
             <div class="trade-tag">&#9889; Electrical</div>
@@ -1968,16 +1283,14 @@
 
     <!-- CTA -->
     <section class="cta">
-        <div class="cta-inner">
-            <h2>Your Business Deserves Better Than a Notepad.</h2>
-            <p>Free to download. No credit card required. Start with 3 free jobs and see why contractors are switching to JobPocket.</p>
-            <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                Download Free on App Store
-            </a>
-        </div>
+        <h2>Your business deserves<br>better than a notepad.</h2>
+        <p>Free to download. No credit card required. Start with 3 free jobs and see the difference.</p>
+        <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Download Free on App Store
+        </a>
     </section>
 
     <!-- Footer -->
@@ -2007,7 +1320,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 JobPocket. All rights reserved.</p>
-            <p>Made with &#10084; for contractors</p>
+            <p>Made for contractors</p>
         </div>
     </footer>
 
@@ -2020,7 +1333,6 @@
             document.getElementById('mobileMenu').classList.remove('active');
         }
 
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('mobileMenu');
             const btn = document.querySelector('.mobile-menu-btn');
@@ -2029,7 +1341,6 @@
             }
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
