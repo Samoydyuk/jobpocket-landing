@@ -651,6 +651,263 @@
             gap: 24px;
         }
 
+        .feature-icon.green {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+        }
+
+        .feature-icon.blue {
+            background: linear-gradient(135deg, var(--info) 0%, #1D4ED8 100%);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .feature-icon.orange {
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+
+        .feature-icon.pink {
+            background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .feature-icon.cyan {
+            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .feature-icon.yellow {
+            background: linear-gradient(135deg, var(--warning) 0%, #D97706 100%);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .feature-icon.red {
+            background: linear-gradient(135deg, var(--error) 0%, #DC2626 100%);
+            box-shadow: 0 0 20px rgba(240, 107, 107, 0.3);
+        }
+
+        .feature-icon.indigo {
+            background: linear-gradient(135deg, #818CF8 0%, #4F46E5 100%);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+        }
+
+        /* Payments Highlight */
+        .payments-section {
+            padding: 100px 24px;
+            background: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payments-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .payments-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .payments-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .payment-method {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            border-color: rgba(123, 108, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .payment-method-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .payment-method-icon.stripe { background: rgba(99, 91, 255, 0.15); }
+        .payment-method-icon.tap { background: rgba(52, 211, 153, 0.15); }
+        .payment-method-icon.cash { background: rgba(251, 191, 36, 0.15); }
+        .payment-method-icon.venmo { background: rgba(59, 130, 246, 0.15); }
+        .payment-method-icon.zelle { background: rgba(123, 108, 246, 0.15); }
+        .payment-method-icon.check { background: rgba(107, 114, 128, 0.15); }
+
+        .payment-method-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .payment-method-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 24px;
+            background: var(--bg-mid);
+            position: relative;
+        }
+
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--purple);
+            box-shadow: 0 0 40px rgba(123, 108, 246, 0.15);
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--purple);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pricing-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .pricing-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 28px;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .pricing-feature .check {
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .pricing-feature .limit {
+            color: var(--text-caption);
+            font-size: 0.8rem;
+        }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-btn.primary {
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 0 20px rgba(123, 108, 246, 0.3);
+        }
+
+        .pricing-btn.primary:hover {
+            background: var(--purple-glow);
+            box-shadow: 0 0 30px rgba(123, 108, 246, 0.5);
+        }
+
+        .pricing-btn.secondary {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .pricing-btn.secondary:hover {
+            border-color: var(--purple);
+            color: var(--purple-light);
+        }
+
         .feature-card {
             background: var(--bg-card);
             padding: 32px;
@@ -982,6 +1239,8 @@
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .steps { grid-template-columns: repeat(2, 1fr); }
             .footer-container { grid-template-columns: 1fr 1fr; }
+            .payments-container { grid-template-columns: 1fr; text-align: center; }
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -1064,6 +1323,13 @@
                 padding: 10px 16px;
                 font-size: 0.9rem;
             }
+
+            .payments-section { padding: 60px 20px; }
+            .payments-methods { grid-template-columns: 1fr; }
+
+            .pricing { padding: 60px 20px; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .pricing-card.featured { order: -1; }
 
             .cta {
                 padding: 60px 20px;
@@ -1221,7 +1487,8 @@
             </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#payments">Payments</a>
+                <a href="#pricing">Pricing</a>
                 <a href="support.html">Support</a>
                 <a href="https://apps.apple.com/app/id6757860497" class="nav-cta">Download</a>
             </div>
@@ -1236,7 +1503,8 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#features" onclick="closeMenu()">Features</a>
-        <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
+        <a href="#payments" onclick="closeMenu()">Payments</a>
+        <a href="#pricing" onclick="closeMenu()">Pricing</a>
         <a href="support.html">Support</a>
         <a href="https://apps.apple.com/app/id6757860497" class="nav-cta">Download for iOS</a>
     </div>
@@ -1245,8 +1513,8 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Estimates, Invoices & Payments — All From Your Phone</h1>
-                <p>No more scribbled quotes on paper. No more forgotten invoices. Create professional PDFs, track who owes you, and get paid faster.</p>
+                <h1>Run Your Entire Contracting Business From Your Phone</h1>
+                <p>Estimates, invoices, payments, scheduling, time tracking, expenses, team management, and reports — one app replaces them all.</p>
                 <div class="hero-buttons">
                     <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
                         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1397,8 +1665,8 @@
     <section class="features" id="features">
         <div class="features-container">
             <div class="section-header">
-                <h2>Stop Losing Money on Paperwork</h2>
-                <p>Every minute spent on admin is money lost. JobPocket automates the boring stuff so you can focus on what you do best.</p>
+                <h2>Everything You Need. Nothing You Don't.</h2>
+                <p>JobPocket replaces your notepad, spreadsheet, calendar, and invoicing software with one app that fits in your pocket.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -1408,33 +1676,23 @@
                             <polyline points="14 2 14 8 20 8"></polyline>
                             <line x1="16" y1="13" x2="8" y2="13"></line>
                             <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
                     </div>
-                    <h3>PDF Estimates in 30 Seconds</h3>
-                    <p>Create professional estimates with your logo, line items, and taxes. Send via email or text with one tap. Clients love it.</p>
+                    <h3>Estimates & Invoices</h3>
+                    <p>Create branded PDF estimates with your logo, line items, and taxes. Convert to invoices in one tap. Add QR codes, custom templates, and payment terms.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon green">
                         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="12" y1="1" x2="12" y2="23"></line>
                             <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                         </svg>
                     </div>
-                    <h3>Never Forget Who Owes You</h3>
-                    <p>See unpaid and overdue invoices on your dashboard. Know exactly who owes what, and send payment reminders instantly.</p>
+                    <h3>Accept Payments Anywhere</h3>
+                    <p>Stripe online payments, Tap to Pay on iPhone, cash, check, Venmo, Zelle. Send payment links. Track partial payments and send automatic reminders.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                    </div>
-                    <h3>Call, Text, Navigate — One Tap</h3>
-                    <p>Running late? Tap to call. Need directions? Tap to navigate. Send "On my way" text. All from the job card.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon blue">
                         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -1442,31 +1700,73 @@
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
                     </div>
-                    <h3>Auto-Sync to Your Calendar</h3>
-                    <p>Jobs automatically appear in Google or Apple Calendar with reminders. Your wife knows your schedule. You never double-book.</p>
+                    <h3>Scheduling & Calendar Sync</h3>
+                    <p>Schedule jobs with dates, times, and priority levels. Auto-sync to Apple or Google Calendar. Set up recurring jobs weekly, monthly, or quarterly.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon orange">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Time Tracking</h3>
+                    <p>Clock in and out per job with GPS location. Track breaks. View daily, weekly, and monthly time summaries. Know exactly where your hours go.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon pink">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Team Management</h3>
+                    <p>Invite workers, assign jobs, control permissions. Team members see their assigned work, accept or decline jobs, and update status from their phone.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon cyan">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Client Management</h3>
+                    <p>Store client contacts, addresses, and notes. View job history and total revenue per client. One-tap call, text, or navigate to any client.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon yellow">
                         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="20" x2="18" y2="10"></line>
                             <line x1="12" y1="20" x2="12" y2="4"></line>
                             <line x1="6" y1="20" x2="6" y2="14"></line>
                         </svg>
                     </div>
-                    <h3>Know Your Numbers</h3>
-                    <p>Weekly revenue, jobs completed, average ticket — see how your business is doing at a glance. Make smarter decisions.</p>
+                    <h3>Reports & Tax Summaries</h3>
+                    <p>Revenue reports, profit &amp; loss, tax summaries, conversion rates. Export to PDF or CSV. See top services, average job value, and trends over time.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon red">
                         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-                            <path d="M2 2l7.586 7.586"></path>
-                            <circle cx="11" cy="11" r="2"></circle>
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg>
                     </div>
-                    <h3>Look Like a Pro</h3>
-                    <p>Your logo, your colors, your company name on every estimate and invoice. Clients take you seriously when you look professional.</p>
+                    <h3>Expense Tracking</h3>
+                    <p>Log materials, fuel, tools, and other business expenses. Attach receipt photos. Link expenses to jobs. See profit margins and annual deductions at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon indigo">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Job Photos & Documentation</h3>
+                    <p>Capture before, during, and after photos with GPS location. Scan documents with OCR to import templates. Keep a visual record of every job.</p>
                 </div>
             </div>
         </div>
@@ -1475,29 +1775,167 @@
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="section-header">
-            <h2>Up and Running in 2 Minutes</h2>
+            <h2>From Estimate to Paid in 4 Steps</h2>
             <p>No training needed. If you can text, you can use JobPocket.</p>
         </div>
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
-                <h3>Sign Up</h3>
-                <p>Enter your phone number. Get a code. Done.</p>
+                <h3>Create an Estimate</h3>
+                <p>Add line items, taxes, and your branding. Send a professional PDF via text or email.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h3>Add a Client</h3>
-                <p>Name, phone, address. 20 seconds.</p>
+                <h3>Schedule the Job</h3>
+                <p>Client approves? Schedule it. It syncs to your calendar with reminders automatically.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Create an Estimate</h3>
-                <p>Add line items, set your price, hit send.</p>
+                <h3>Do the Work</h3>
+                <p>Clock in, take photos, track expenses. Call or navigate to the job site in one tap.</p>
             </div>
             <div class="step">
                 <div class="step-number">4</div>
                 <h3>Get Paid</h3>
-                <p>Convert to invoice when done. Track payment.</p>
+                <p>Convert to invoice, send a payment link. Accept card, Tap to Pay, cash, or Venmo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payments -->
+    <section class="payments-section" id="payments">
+        <div class="payments-container">
+            <div>
+                <div class="section-header" style="text-align:left;margin-bottom:40px;">
+                    <h2>Get Paid However You Want</h2>
+                    <p style="margin:0">Accept payments on-site or remotely. Send payment links via text. Track every dollar from estimate to deposit.</p>
+                </div>
+                <div class="payments-methods">
+                    <div class="payment-method">
+                        <div class="payment-method-icon stripe">&#128179;</div>
+                        <div>
+                            <div class="payment-method-name">Stripe Card Payments</div>
+                            <div class="payment-method-desc">Online checkout links</div>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-method-icon tap">&#128241;</div>
+                        <div>
+                            <div class="payment-method-name">Tap to Pay</div>
+                            <div class="payment-method-desc">Contactless on iPhone</div>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-method-icon venmo">&#128176;</div>
+                        <div>
+                            <div class="payment-method-name">Venmo &amp; Zelle</div>
+                            <div class="payment-method-desc">Track manual transfers</div>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-method-icon cash">&#128181;</div>
+                        <div>
+                            <div class="payment-method-name">Cash &amp; Check</div>
+                            <div class="payment-method-desc">Record any payment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="phone" style="margin:0 auto;">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="screen-content">
+                            <div style="text-align:center;padding:16px 0 8px;">
+                                <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Invoice #1042</div>
+                                <div style="font-size:28px;font-weight:800;color:var(--text-primary);">$3,500</div>
+                                <div style="font-size:11px;color:var(--success);font-weight:600;margin-top:4px;">&#9679; PAID</div>
+                            </div>
+                            <div style="background:var(--bg-card);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid var(--glass-border);">
+                                <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px;">Payment History</div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border-light);">
+                                    <div>
+                                        <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Deposit (50%)</div>
+                                        <div style="font-size:9px;color:var(--text-caption);">Tap to Pay &#183; Jan 15</div>
+                                    </div>
+                                    <div style="font-size:12px;font-weight:700;color:var(--success);">$1,750</div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
+                                    <div>
+                                        <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Final Payment</div>
+                                        <div style="font-size:9px;color:var(--text-caption);">Stripe &#183; Jan 22</div>
+                                    </div>
+                                    <div style="font-size:12px;font-weight:700;color:var(--success);">$1,750</div>
+                                </div>
+                            </div>
+                            <div style="background:var(--bg-card);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid var(--glass-border);">
+                                <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Bathroom Renovation</div>
+                                <div style="font-size:11px;color:var(--text-secondary);">&#128100; Mike Chen</div>
+                                <div style="font-size:10px;color:var(--text-caption);margin-top:2px;">&#128205; 456 Elm Street, Austin</div>
+                            </div>
+                            <div style="display:flex;gap:8px;">
+                                <div style="flex:1;background:var(--purple);color:white;text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:600;">Send Receipt</div>
+                                <div style="flex:1;background:var(--bg-card);color:var(--text-secondary);text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:600;border:1px solid var(--glass-border);">Share PDF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Start free. Upgrade when your business grows.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-name">Free</div>
+                <div class="pricing-price">$0</div>
+                <div class="pricing-desc">Get started, no card needed</div>
+                <div class="pricing-features">
+                    <div class="pricing-feature"><span class="check">&#10003;</span> 3 active jobs</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> 10 clients</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> PDF estimates &amp; invoices</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Client management</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Apple Calendar sync</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Call, text, navigate</div>
+                </div>
+                <a href="https://apps.apple.com/app/id6757860497" class="pricing-btn secondary">Download Free</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-name">Pro</div>
+                <div class="pricing-price">$14.99<span>/mo</span></div>
+                <div class="pricing-desc">Everything for solo contractors</div>
+                <div class="pricing-features">
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Unlimited jobs &amp; clients</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Online payments &amp; Tap to Pay</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Recurring jobs</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Time tracking</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Expense tracking</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Custom templates &amp; QR codes</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Reports &amp; tax summaries</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Google Calendar sync</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Remove JobPocket branding</div>
+                </div>
+                <a href="https://apps.apple.com/app/id6757860497" class="pricing-btn primary">Start 7-Day Free Trial</a>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-name">Business</div>
+                <div class="pricing-price">$29.99<span>/mo</span></div>
+                <div class="pricing-desc">For teams and growing companies</div>
+                <div class="pricing-features">
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Everything in Pro</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Up to 5 team members</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Job assignment &amp; permissions</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Team statistics</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Lower platform fees (1%)</div>
+                    <div class="pricing-feature"><span class="check">&#10003;</span> Priority support</div>
+                </div>
+                <a href="https://apps.apple.com/app/id6757860497" class="pricing-btn secondary">Start Free Trial</a>
             </div>
         </div>
     </section>
@@ -1505,30 +1943,34 @@
     <!-- For Who -->
     <section class="for-who">
         <div class="section-header">
-            <h2>Built for Tradespeople Who Hate Paperwork</h2>
-            <p>If you spend more time on the job than in an office, this app is for you.</p>
+            <h2>Built for Every Trade</h2>
+            <p>Pre-configured templates, job types, and workflows for your specific industry.</p>
         </div>
         <div class="trades-grid">
-            <div class="trade-tag">&#128295; Plumbers</div>
-            <div class="trade-tag">&#9889; Electricians</div>
-            <div class="trade-tag">&#10052; HVAC Techs</div>
-            <div class="trade-tag">&#127968; General Contractors</div>
-            <div class="trade-tag">&#127912; Painters</div>
-            <div class="trade-tag">&#127795; Landscapers</div>
-            <div class="trade-tag">&#129529; Cleaners</div>
-            <div class="trade-tag">&#128296; Handymen</div>
-            <div class="trade-tag">&#127959; Remodelers</div>
+            <div class="trade-tag">&#128295; Plumbing</div>
+            <div class="trade-tag">&#9889; Electrical</div>
+            <div class="trade-tag">&#10052; HVAC</div>
+            <div class="trade-tag">&#127968; General Contractor</div>
+            <div class="trade-tag">&#127912; Painting</div>
+            <div class="trade-tag">&#127795; Landscaping</div>
+            <div class="trade-tag">&#129529; Cleaning Service</div>
+            <div class="trade-tag">&#128296; Handyman</div>
+            <div class="trade-tag">&#128703; Roofing</div>
             <div class="trade-tag">&#128297; Appliance Repair</div>
-            <div class="trade-tag">&#128703; Roofers</div>
-            <div class="trade-tag">&#129695; Window Installers</div>
+            <div class="trade-tag">&#128663; Auto Repair</div>
+            <div class="trade-tag">&#128030; Pest Control</div>
+            <div class="trade-tag">&#128273; Locksmith</div>
+            <div class="trade-tag">&#127946; Pool Service</div>
+            <div class="trade-tag">&#128166; Pressure Washing</div>
+            <div class="trade-tag">&#127978; Garage Door</div>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta">
         <div class="cta-inner">
-            <h2>Stop Chasing Payments. Start Getting Paid.</h2>
-            <p>Free to download. No credit card required. See why contractors love JobPocket.</p>
+            <h2>Your Business Deserves Better Than a Notepad.</h2>
+            <p>Free to download. No credit card required. Start with 3 free jobs and see why contractors are switching to JobPocket.</p>
             <a href="https://apps.apple.com/app/id6757860497" class="btn-primary">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -1543,12 +1985,13 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <h3>JobPocket</h3>
-                <p>The simplest way to manage your contracting business. Create estimates, send invoices, and get paid faster.</p>
+                <p>The all-in-one business management app for contractors. Estimates, invoices, payments, scheduling, time tracking, expenses, team management, and reports.</p>
             </div>
             <div class="footer-column">
                 <h4>Product</h4>
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#payments">Payments</a>
+                <a href="#pricing">Pricing</a>
                 <a href="https://apps.apple.com/app/id6757860497">Download</a>
             </div>
             <div class="footer-column">
