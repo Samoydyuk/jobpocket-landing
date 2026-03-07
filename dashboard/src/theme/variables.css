@@ -1,0 +1,74 @@
+:root, [data-theme="light"] {
+  --bg-primary: #F7F8FA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F1F3F6;
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #FBFCFE;
+  --surface-nav: rgba(255,255,255,0.8);
+  --text-primary: #111318;
+  --text-secondary: #5B6472;
+  --text-tertiary: #8B95A5;
+  --text-on-accent: #FFFFFF;
+  --stroke-hairline: #E7EAF0;
+  --stroke-soft: #EEF1F6;
+  --accent-primary: #2F6FED;
+  --accent-primary-hover: #2560D4;
+  --status-success: #2EAA65;
+  --status-warning: #E6A23C;
+  --status-danger: #E05252;
+  --status-info: #4C7DFF;
+  --badge-success-bg: #E9F7EF;
+  --badge-warning-bg: #FFF4E0;
+  --badge-danger-bg: #FDE8E8;
+  --badge-info-bg: #EAF0FF;
+  --shadow-card: 0 8px 16px rgba(0,0,0,0.08);
+  --shadow-elevated: 0 12px 24px rgba(0,0,0,0.12);
+  --overlay: rgba(0,0,0,0.4);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0B0F17;
+  --bg-secondary: #0F1522;
+  --bg-tertiary: #141B2B;
+  --surface-card: #121A2A;
+  --surface-card-alt: #0F1626;
+  --surface-nav: rgba(11,15,23,0.8);
+  --text-primary: #E9EDF5;
+  --text-secondary: #A9B3C3;
+  --text-tertiary: #78849A;
+  --text-on-accent: #0B0F17;
+  --stroke-hairline: #1E2A40;
+  --stroke-soft: #172033;
+  --accent-primary: #6EA0FF;
+  --accent-primary-hover: #5A8FEF;
+  --status-success: #4ADE80;
+  --status-warning: #FBBF24;
+  --status-danger: #FB7185;
+  --status-info: #7AA2FF;
+  --badge-success-bg: #0E2A1D;
+  --badge-warning-bg: #2A1F0C;
+  --badge-danger-bg: #2A1016;
+  --badge-info-bg: #101A33;
+  --shadow-card: 0 0 18px rgba(110,160,255,0.08);
+  --shadow-elevated: 0 0 22px rgba(110,160,255,0.12);
+  --overlay: rgba(0,0,0,0.6);
+  color-scheme: dark;
+}
+
+:root {
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 72px;
+  --header-height: 64px;
+  --bottom-nav-height: 72px;
+}
