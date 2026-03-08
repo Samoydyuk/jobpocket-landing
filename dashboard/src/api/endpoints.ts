@@ -69,15 +69,15 @@ export const jobsApi = {
     if (params.endDate) qs.set('endDate', params.endDate);
     return apiFetch<{ jobs: Job[]; total: number; hasMore: boolean }>(`/jobs?${qs}`);
   },
-  get: (id: string) => apiFetch<Job>(`/jobs/${id}`),
+  get: (id: string) => apiFetch<{ job: Job }>(`/jobs/${id}`).then(r => r.job),
   create: (data: CreateJobInput) =>
-    apiFetch<Job>('/jobs', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ job: Job }>('/jobs', { method: 'POST', body: JSON.stringify(data) }).then(r => r.job),
   update: (id: string, data: Partial<Job>) =>
-    apiFetch<Job>(`/jobs/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ job: Job }>(`/jobs/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.job),
   updateStatus: (id: string, status: string) =>
-    apiFetch<Job>(`/jobs/${id}/status`, { method: 'PUT', body: JSON.stringify({ status }) }),
+    apiFetch<{ job: Job }>(`/jobs/${id}/status`, { method: 'PUT', body: JSON.stringify({ status }) }).then(r => r.job),
   updateLineItems: (id: string, lineItems: Array<{ description: string; quantity: number; unitPrice: number; total: number; category?: string; isTaxable?: boolean }>) =>
-    apiFetch<Job>(`/jobs/${id}/line-items`, { method: 'PUT', body: JSON.stringify({ lineItems }) }),
+    apiFetch<{ job: Job }>(`/jobs/${id}/line-items`, { method: 'PUT', body: JSON.stringify({ lineItems }) }).then(r => r.job),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/jobs/${id}`, { method: 'DELETE' }),
   assign: (id: string, teamMemberId: string) =>
@@ -102,9 +102,9 @@ export const clientsApi = {
   },
   get: (id: string) => apiFetch<{ client: Client; jobs: Job[] }>(`/clients/${id}`),
   create: (data: CreateClientInput) =>
-    apiFetch<Client>('/clients', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ client: Client }>('/clients', { method: 'POST', body: JSON.stringify(data) }).then(r => r.client),
   update: (id: string, data: Partial<CreateClientInput>) =>
-    apiFetch<Client>(`/clients/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ client: Client }>(`/clients/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.client),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/clients/${id}`, { method: 'DELETE' }),
 };
@@ -120,11 +120,11 @@ export const documentsApi = {
     if (params?.offset) qs.set('offset', String(params.offset));
     return apiFetch<{ documents: Document[]; total: number }>(`/documents?${qs}`);
   },
-  get: (id: string) => apiFetch<Document>(`/documents/${id}`),
+  get: (id: string) => apiFetch<{ document: Document }>(`/documents/${id}`).then(r => r.document),
   create: (data: CreateDocumentInput) =>
-    apiFetch<Document>('/documents', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ document: Document }>('/documents', { method: 'POST', body: JSON.stringify(data) }).then(r => r.document),
   update: (id: string, data: Partial<CreateDocumentInput>) =>
-    apiFetch<Document>(`/documents/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ document: Document }>(`/documents/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.document),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/documents/${id}`, { method: 'DELETE' }),
   send: (id: string) =>
@@ -136,15 +136,15 @@ export const documentsApi = {
 export const templatesApi = {
   list: () => apiFetch<{ templates: InvoiceTemplate[] }>('/templates'),
   presets: () => apiFetch<{ templates: InvoiceTemplate[] }>('/templates/presets'),
-  get: (id: string) => apiFetch<InvoiceTemplate>(`/templates/${id}`),
+  get: (id: string) => apiFetch<{ template: InvoiceTemplate }>(`/templates/${id}`).then(r => r.template),
   create: (data: CreateTemplateInput) =>
-    apiFetch<InvoiceTemplate>('/templates', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ template: InvoiceTemplate }>('/templates', { method: 'POST', body: JSON.stringify(data) }).then(r => r.template),
   update: (id: string, data: Partial<CreateTemplateInput>) =>
-    apiFetch<InvoiceTemplate>(`/templates/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ template: InvoiceTemplate }>(`/templates/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.template),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/templates/${id}`, { method: 'DELETE' }),
   duplicate: (id: string) =>
-    apiFetch<InvoiceTemplate>(`/templates/${id}/duplicate`, { method: 'POST', body: JSON.stringify({}) }),
+    apiFetch<{ template: InvoiceTemplate }>(`/templates/${id}/duplicate`, { method: 'POST', body: JSON.stringify({}) }).then(r => r.template),
   setDefault: (id: string) =>
     apiFetch<{ success: boolean }>(`/templates/${id}/default`, { method: 'PUT', body: JSON.stringify({}) }),
 };
@@ -167,11 +167,11 @@ export const paymentsApi = {
       method: 'POST', body: JSON.stringify({ jobId, amount }),
     }),
   recordCash: (data: { jobId: string; amount: number; method: string; notes?: string; isDeposit?: boolean }) =>
-    apiFetch<Payment>('/payments/record-cash', {
+    apiFetch<{ payment: Payment }>('/payments/record-cash', {
       method: 'POST', body: JSON.stringify(data),
-    }),
+    }).then(r => r.payment),
   update: (id: string, data: Partial<Payment>) =>
-    apiFetch<Payment>(`/payments/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ payment: Payment }>(`/payments/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.payment),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/payments/${id}`, { method: 'DELETE' }),
 };
@@ -189,11 +189,11 @@ export const expensesApi = {
     if (params?.offset) qs.set('offset', String(params.offset));
     return apiFetch<{ expenses: Expense[]; total: number }>(`/expenses?${qs}`);
   },
-  get: (id: string) => apiFetch<Expense>(`/expenses/${id}`),
+  get: (id: string) => apiFetch<{ expense: Expense }>(`/expenses/${id}`).then(r => r.expense),
   create: (data: Omit<Expense, 'id' | 'userId' | 'createdAt' | 'updatedAt'>) =>
-    apiFetch<Expense>('/expenses', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ expense: Expense }>('/expenses', { method: 'POST', body: JSON.stringify(data) }).then(r => r.expense),
   update: (id: string, data: Partial<Expense>) =>
-    apiFetch<Expense>(`/expenses/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ expense: Expense }>(`/expenses/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.expense),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/expenses/${id}`, { method: 'DELETE' }),
   summary: (year?: number) =>
@@ -220,11 +220,11 @@ export const timeTrackingApi = {
     return apiFetch<TimeSummary>(`/time/summary?${qs}`);
   },
   clockIn: (data: { jobId: string; notes?: string }) =>
-    apiFetch<TimeEntry>('/time/clock-in', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ entry: TimeEntry }>('/time/clock-in', { method: 'POST', body: JSON.stringify(data) }).then(r => r.entry),
   clockOut: (data?: { notes?: string }) =>
-    apiFetch<TimeEntry>('/time/clock-out', { method: 'POST', body: JSON.stringify(data || {}) }),
+    apiFetch<{ entry: TimeEntry }>('/time/clock-out', { method: 'POST', body: JSON.stringify(data || {}) }).then(r => r.entry),
   update: (id: string, data: Partial<TimeEntry>) =>
-    apiFetch<TimeEntry>(`/time/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ entry: TimeEntry }>(`/time/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.entry),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/time/${id}`, { method: 'DELETE' }),
 };
@@ -319,17 +319,17 @@ export const inventoryApi = {
     if (params?.offset) qs.set('offset', String(params.offset));
     return apiFetch<{ parts: PartStock[]; total: number }>(`/inventory?${qs}`);
   },
-  get: (id: string) => apiFetch<{ part: PartStock; transactions: PartUsageLog[] }>(`/inventory/${id}`),
+  get: (id: string) => apiFetch<{ part: PartStock; usageLog: PartUsageLog[] }>(`/inventory/${id}`),
   create: (data: Omit<PartStock, 'id' | 'userId' | 'isActive' | 'createdAt' | 'updatedAt'>) =>
-    apiFetch<PartStock>('/inventory', { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ part: PartStock }>('/inventory', { method: 'POST', body: JSON.stringify(data) }).then(r => r.part),
   update: (id: string, data: Partial<PartStock>) =>
-    apiFetch<PartStock>(`/inventory/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    apiFetch<{ part: PartStock }>(`/inventory/${id}`, { method: 'PUT', body: JSON.stringify(data) }).then(r => r.part),
   delete: (id: string) =>
     apiFetch<{ success: boolean }>(`/inventory/${id}`, { method: 'DELETE' }),
   adjust: (id: string, data: { quantity: number; notes?: string }) =>
-    apiFetch<PartStock>(`/inventory/${id}/adjust`, { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ part: PartStock }>(`/inventory/${id}/adjust`, { method: 'POST', body: JSON.stringify(data) }).then(r => r.part),
   transfer: (id: string, data: { location: string; quantity: number }) =>
-    apiFetch<PartStock>(`/inventory/${id}/transfer`, { method: 'POST', body: JSON.stringify(data) }),
+    apiFetch<{ part: PartStock }>(`/inventory/${id}/transfer`, { method: 'POST', body: JSON.stringify(data) }).then(r => r.part),
   lowStock: () => apiFetch<{ parts: PartStock[] }>('/inventory/low-stock'),
   summary: () => apiFetch<InventorySummary>('/inventory/summary'),
 };
