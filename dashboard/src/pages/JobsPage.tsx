@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { Search, Briefcase, MapPin } from 'lucide-react';
+import { Search, Briefcase, MapPin, Plus } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Input } from '../components/ui/Input';
@@ -9,6 +9,7 @@ import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
 import { ListSkeleton } from '../components/ui/Skeleton';
 import { Header } from '../components/layout/Header';
+import { JobCreateModal } from '../components/jobs/JobCreateModal';
 import { jobsApi } from '../api/endpoints';
 import { useDebounce } from '../hooks/useDebounce';
 import { useIsMobile } from '../hooks/useMediaQuery';
@@ -31,6 +32,7 @@ export function JobsPage() {
   const [status, setStatus] = useState('');
   const [search, setSearch] = useState('');
   const [offset, setOffset] = useState(0);
+  const [showCreate, setShowCreate] = useState(false);
   const debouncedSearch = useDebounce(search);
   const limit = 20;
 
@@ -42,7 +44,15 @@ export function JobsPage() {
 
   return (
     <>
-      <Header title="Jobs" subtitle={data ? `${data.total} total` : undefined} />
+      <Header
+        title="Jobs"
+        subtitle={data ? `${data.total} total` : undefined}
+        action={
+          <Button size="sm" onClick={() => setShowCreate(true)} icon={<Plus size={16} />}>
+            New Job
+          </Button>
+        }
+      />
 
       {/* Filters */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
@@ -153,9 +163,11 @@ export function JobsPage() {
         <EmptyState
           icon={<Briefcase size={28} />}
           title="No jobs found"
-          description={search ? 'Try a different search term' : 'Create your first job in the mobile app'}
+          description={search ? 'Try a different search term' : 'Create your first job'}
         />
       )}
+
+      <JobCreateModal open={showCreate} onClose={() => setShowCreate(false)} />
     </>
   );
 }

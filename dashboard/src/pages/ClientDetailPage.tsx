@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Phone, Mail, MapPin, Briefcase } from 'lucide-react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { ArrowLeft, Phone, Mail, MapPin, Briefcase, Trash2 } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
 import { CardSkeleton, ListSkeleton } from '../components/ui/Skeleton';
+import { ConfirmDialog } from '../components/ui/ConfirmDialog';
 import { Header } from '../components/layout/Header';
 import { clientsApi } from '../api/endpoints';
+import { useToast } from '../hooks/useToast';
 
 function formatCurrency(amount: number) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(amount);
@@ -27,11 +30,24 @@ function nameColor(name: string) {
 export function ClientDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const toast = useToast();
+  const [showDelete, setShowDelete] = useState(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ['client', id],
     queryFn: () => clientsApi.get(id!),
     enabled: !!id,
+  });
+
+  const deleteMut = useMutation({
+    mutationFn: () => clientsApi.delete(id!),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['clients'] });
+      toast.success('Client deleted');
+      navigate('/clients');
+    },
+    onError: () => toast.error('Failed to delete client'),
   });
 
   const client = data?.client;
@@ -61,9 +77,14 @@ export function ClientDetailPage() {
       <Header
         title={client.name}
         action={
-          <Button variant="ghost" onClick={() => navigate(-1)} style={{ gap: 6 }}>
-            <ArrowLeft size={18} /> Back
-          </Button>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <Button variant="ghost" onClick={() => navigate(-1)} style={{ gap: 6 }} size="sm">
+              <ArrowLeft size={18} /> Back
+            </Button>
+            <Button variant="ghost" onClick={() => setShowDelete(true)} style={{ color: 'var(--status-danger)', gap: 6 }} size="sm">
+              <Trash2 size={16} /> Delete
+            </Button>
+          </div>
         }
       />
 
@@ -159,6 +180,15 @@ export function ClientDetailPage() {
           description="Jobs for this client will appear here"
         />
       )}
+
+      <ConfirmDialog
+        open={showDelete}
+        onClose={() => setShowDelete(false)}
+        onConfirm={() => deleteMut.mutate()}
+        title="Delete Client"
+        message="Are you sure you want to delete this client? This will not delete their jobs."
+        loading={deleteMut.isPending}
+      />
     </>
   );
 }

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { Search, Users, Phone, Mail } from 'lucide-react';
+import { Search, Users, Phone, Mail, Plus } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
+import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
 import { ListSkeleton } from '../components/ui/Skeleton';
 import { Header } from '../components/layout/Header';
+import { ClientCreateModal } from '../components/clients/ClientCreateModal';
 import { clientsApi } from '../api/endpoints';
 import { useDebounce } from '../hooks/useDebounce';
 import { useIsMobile } from '../hooks/useMediaQuery';
@@ -31,6 +33,7 @@ export function ClientsPage() {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [search, setSearch] = useState('');
+  const [showCreate, setShowCreate] = useState(false);
   const debouncedSearch = useDebounce(search);
 
   const { data, isLoading } = useQuery({
@@ -41,7 +44,15 @@ export function ClientsPage() {
 
   return (
     <>
-      <Header title="Clients" subtitle={data ? `${data.total} total` : undefined} />
+      <Header
+        title="Clients"
+        subtitle={data ? `${data.total} total` : undefined}
+        action={
+          <Button size="sm" onClick={() => setShowCreate(true)} icon={<Plus size={16} />}>
+            New Client
+          </Button>
+        }
+      />
 
       <div style={{ marginBottom: 20 }}>
         <Input
@@ -125,9 +136,11 @@ export function ClientsPage() {
         <EmptyState
           icon={<Users size={28} />}
           title="No clients found"
-          description={search ? 'Try a different search term' : 'Add your first client in the mobile app'}
+          description={search ? 'Try a different search term' : 'Add your first client'}
         />
       )}
+
+      <ClientCreateModal open={showCreate} onClose={() => setShowCreate(false)} />
     </>
   );
 }

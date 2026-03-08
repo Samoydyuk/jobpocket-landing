@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, MapPin, Calendar, User, FileText, Clock } from 'lucide-react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { ArrowLeft, MapPin, Calendar, User, FileText, Clock, Trash2, Send } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
 import { CardSkeleton } from '../components/ui/Skeleton';
+import { ConfirmDialog } from '../components/ui/ConfirmDialog';
 import { Header } from '../components/layout/Header';
 import { jobsApi } from '../api/endpoints';
 import { useIsMobile } from '../hooks/useMediaQuery';
+import { useToast } from '../hooks/useToast';
 
 function formatCurrency(amount: number) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(amount);
@@ -22,15 +25,59 @@ function formatTime(dateStr: string) {
   return new Date(dateStr).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 }
 
+const STATUS_TRANSITIONS: Record<string, string[]> = {
+  DRAFT: ['SCHEDULED'],
+  SCHEDULED: ['IN_PROGRESS', 'CANCELLED'],
+  IN_PROGRESS: ['COMPLETED', 'PAUSED'],
+  PAUSED: ['IN_PROGRESS', 'CANCELLED'],
+  COMPLETED: ['INVOICED'],
+  INVOICED: ['PAID'],
+};
+
 export function JobDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const queryClient = useQueryClient();
+  const toast = useToast();
+  const [showDelete, setShowDelete] = useState(false);
 
   const { data: job, isLoading } = useQuery({
     queryKey: ['job', id],
     queryFn: () => jobsApi.get(id!),
     enabled: !!id,
+  });
+
+  const statusMut = useMutation({
+    mutationFn: (status: string) => jobsApi.updateStatus(id!, status),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['job', id] });
+      queryClient.invalidateQueries({ queryKey: ['jobs'] });
+      toast.success('Status updated');
+    },
+    onError: () => toast.error('Failed to update status'),
+  });
+
+  const deleteMut = useMutation({
+    mutationFn: () => jobsApi.delete(id!),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['jobs'] });
+      toast.success('Job deleted');
+      navigate('/jobs');
+    },
+    onError: () => toast.error('Failed to delete job'),
+  });
+
+  const sendEstimateMut = useMutation({
+    mutationFn: () => jobsApi.sendEstimate(id!),
+    onSuccess: () => { toast.success('Estimate sent'); queryClient.invalidateQueries({ queryKey: ['job', id] }); },
+    onError: () => toast.error('Failed to send estimate'),
+  });
+
+  const sendInvoiceMut = useMutation({
+    mutationFn: () => jobsApi.sendInvoice(id!),
+    onSuccess: () => { toast.success('Invoice sent'); queryClient.invalidateQueries({ queryKey: ['job', id] }); },
+    onError: () => toast.error('Failed to send invoice'),
   });
 
   if (isLoading) {
@@ -76,6 +123,41 @@ export function JobDetailPage() {
           <div style={{ fontSize: 28, fontWeight: 800 }}>{formatCurrency(job.total)}</div>
         </div>
       </Card>
+
+      {/* Actions */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+        {/* Status transitions */}
+        {(STATUS_TRANSITIONS[job.status] || []).map(next => (
+          <Button
+            key={next}
+            size="sm"
+            variant={next === 'CANCELLED' ? 'destructive' : 'primary'}
+            onClick={() => statusMut.mutate(next)}
+            loading={statusMut.isPending}
+            style={{ fontSize: 13, padding: '8px 16px' }}
+          >
+            {next.replace('_', ' ')}
+          </Button>
+        ))}
+
+        {/* Send estimate/invoice */}
+        {job.client?.email && ['DRAFT', 'SCHEDULED'].includes(job.status) && (
+          <Button size="sm" variant="secondary" onClick={() => sendEstimateMut.mutate()} loading={sendEstimateMut.isPending} icon={<Send size={14} />} style={{ fontSize: 13, padding: '8px 16px' }}>
+            Send Estimate
+          </Button>
+        )}
+        {job.client?.email && job.status === 'INVOICED' && (
+          <Button size="sm" variant="secondary" onClick={() => sendInvoiceMut.mutate()} loading={sendInvoiceMut.isPending} icon={<Send size={14} />} style={{ fontSize: 13, padding: '8px 16px' }}>
+            Send Invoice
+          </Button>
+        )}
+
+        <div style={{ flex: 1 }} />
+
+        <Button size="sm" variant="ghost" onClick={() => setShowDelete(true)} style={{ color: 'var(--status-danger)', fontSize: 13, padding: '8px 16px' }} icon={<Trash2 size={14} />}>
+          Delete
+        </Button>
+      </div>
 
       {/* Info Grid */}
       <div style={{
@@ -250,6 +332,15 @@ export function JobDetailPage() {
           </div>
         </Card>
       )}
+
+      <ConfirmDialog
+        open={showDelete}
+        onClose={() => setShowDelete(false)}
+        onConfirm={() => deleteMut.mutate()}
+        title="Delete Job"
+        message="Are you sure you want to delete this job? This action cannot be undone."
+        loading={deleteMut.isPending}
+      />
     </>
   );
 }
