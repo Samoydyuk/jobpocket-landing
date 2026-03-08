@@ -17,7 +17,7 @@ export function VerifyPage() {
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
-    if (!email) navigate('/dashboard/login', { replace: true });
+    if (!email) navigate('/login', { replace: true });
     inputs.current[0]?.focus();
   }, [email, navigate]);
 
@@ -67,7 +67,7 @@ export function VerifyPage() {
       }
       if (res.token && res.user) {
         login(res.token, res.user);
-        navigate('/dashboard', { replace: true });
+        navigate('/', { replace: true });
       }
     } catch (err: any) {
       setError(err.message || 'Invalid code');
@@ -132,7 +132,7 @@ export function VerifyPage() {
 
         <Button
           variant="ghost"
-          onClick={() => navigate('/dashboard/login')}
+          onClick={() => navigate('/login')}
           style={{ marginTop: 8 }}
         >
           Use a different email

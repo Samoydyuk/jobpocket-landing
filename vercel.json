@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "buildCommand": "cd dashboard && npm install && npm run build && cp dist/index.html . && cp -r dist/assets .",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/dashboard/(.*)", "destination": "/dashboard/index.html" }
-  ]
-}

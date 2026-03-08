@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from './theme/ThemeContext';
 import { AuthProvider } from './auth/AuthContext';
@@ -27,28 +27,28 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AuthProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Routes>
               {/* Public */}
-              <Route path="/dashboard/login" element={<LoginPage />} />
-              <Route path="/dashboard/verify" element={<VerifyPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/verify" element={<VerifyPage />} />
 
               {/* Protected — inside AppShell */}
               <Route element={<ProtectedRoute />}>
                 <Route element={<AppShell />}>
-                  <Route path="/dashboard" element={<DashboardPage />} />
-                  <Route path="/dashboard/jobs" element={<JobsPage />} />
-                  <Route path="/dashboard/jobs/:id" element={<JobDetailPage />} />
-                  <Route path="/dashboard/clients" element={<ClientsPage />} />
-                  <Route path="/dashboard/clients/:id" element={<ClientDetailPage />} />
-                  <Route path="/dashboard/settings" element={<SettingsPage />} />
+                  <Route path="/" element={<DashboardPage />} />
+                  <Route path="/jobs" element={<JobsPage />} />
+                  <Route path="/jobs/:id" element={<JobDetailPage />} />
+                  <Route path="/clients" element={<ClientsPage />} />
+                  <Route path="/clients/:id" element={<ClientDetailPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
                 </Route>
               </Route>
 
               {/* Fallback */}
-              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>

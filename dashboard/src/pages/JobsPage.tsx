@@ -95,7 +95,7 @@ export function JobsPage() {
               key={job.id}
               variant="bordered"
               padding="standard"
-              onClick={() => navigate(`/dashboard/jobs/${job.id}`)}
+              onClick={() => navigate(`/jobs/${job.id}`)}
               style={{ cursor: 'pointer', transition: 'background 0.15s' }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--bg-tertiary)'; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--surface-card)'; }}

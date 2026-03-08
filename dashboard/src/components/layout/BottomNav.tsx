@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom';
 import { LayoutGrid, Briefcase, Users, Settings } from 'lucide-react';
 
 const navItems = [
-  { to: '/dashboard', icon: LayoutGrid, label: 'Home' },
-  { to: '/dashboard/jobs', icon: Briefcase, label: 'Jobs' },
-  { to: '/dashboard/clients', icon: Users, label: 'Clients' },
-  { to: '/dashboard/settings', icon: Settings, label: 'Settings' },
+  { to: '/', icon: LayoutGrid, label: 'Home' },
+  { to: '/jobs', icon: Briefcase, label: 'Jobs' },
+  { to: '/clients', icon: Users, label: 'Clients' },
+  { to: '/settings', icon: Settings, label: 'Settings' },
 ];
 
 export function BottomNav() {
@@ -30,7 +30,7 @@ export function BottomNav() {
         <NavLink
           key={to}
           to={to}
-          end={to === '/dashboard'}
+          end={to === '/'}
           style={({ isActive }) => ({
             display: 'flex',
             flexDirection: 'column',

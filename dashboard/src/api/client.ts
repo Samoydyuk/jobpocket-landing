@@ -22,7 +22,7 @@ export async function apiFetch<T>(endpoint: string, options?: RequestInit): Prom
   if (res.status === 401) {
     localStorage.removeItem('jp_token');
     localStorage.removeItem('jp_user');
-    window.location.href = '/dashboard/login';
+    window.location.hash = '#/login';
     throw new ApiError(401, 'Session expired');
   }
 

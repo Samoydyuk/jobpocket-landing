@@ -93,7 +93,7 @@ export function JobDetailPage() {
                 <div style={{ fontSize: 11, color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5 }}>Client</div>
                 <div
                   style={{ fontSize: 14, fontWeight: 600, cursor: 'pointer', color: 'var(--accent-primary)' }}
-                  onClick={() => navigate(`/dashboard/clients/${job.clientId}`)}
+                  onClick={() => navigate(`/clients/${job.clientId}`)}
                 >
                   {job.client.name}
                 </div>

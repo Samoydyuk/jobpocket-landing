@@ -4,10 +4,10 @@ import { useAuth } from '../../auth/AuthContext';
 import { useIsDesktop } from '../../hooks/useMediaQuery';
 
 const navItems = [
-  { to: '/dashboard', icon: LayoutGrid, label: 'Dashboard' },
-  { to: '/dashboard/jobs', icon: Briefcase, label: 'Jobs' },
-  { to: '/dashboard/clients', icon: Users, label: 'Clients' },
-  { to: '/dashboard/settings', icon: Settings, label: 'Settings' },
+  { to: '/', icon: LayoutGrid, label: 'Dashboard' },
+  { to: '/jobs', icon: Briefcase, label: 'Jobs' },
+  { to: '/clients', icon: Users, label: 'Clients' },
+  { to: '/settings', icon: Settings, label: 'Settings' },
 ];
 
 export function Sidebar() {
@@ -62,7 +62,7 @@ export function Sidebar() {
           <NavLink
             key={to}
             to={to}
-            end={to === '/dashboard'}
+            end={to === '/'}
             style={({ isActive }) => ({
               display: 'flex',
               alignItems: 'center',

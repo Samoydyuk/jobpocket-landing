@@ -19,7 +19,7 @@ export function LoginPage() {
     setLoading(true);
     try {
       await authApi.sendEmailCode(email.trim().toLowerCase());
-      navigate(`/dashboard/verify?email=${encodeURIComponent(email.trim().toLowerCase())}`);
+      navigate(`/verify?email=${encodeURIComponent(email.trim().toLowerCase())}`);
     } catch (err: any) {
       setError(err.message || 'Failed to send code');
     } finally {
