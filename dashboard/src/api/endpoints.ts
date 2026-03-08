@@ -14,6 +14,10 @@ export const authApi = {
       body: JSON.stringify({ email, code }),
     }),
   me: () => apiFetch<{ user: User }>('/auth/me'),
+  createQrSession: () =>
+    apiFetch<{ sessionId: string }>('/auth/qr-session', { method: 'POST', body: JSON.stringify({}) }),
+  pollQrSession: (sessionId: string) =>
+    apiFetch<{ status: 'pending' | 'confirmed' | 'expired'; token?: string; user?: User }>(`/auth/qr-session/${sessionId}`),
 };
 
 // Dashboard Stats

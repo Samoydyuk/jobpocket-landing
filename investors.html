@@ -267,6 +267,16 @@ td.dim{color:var(--text3)}
     <div class="stat"><div class="stat-value">v1.1</div><div class="stat-label" data-i18n="hero_build">Current Build</div></div>
     <div class="stat"><div class="stat-value">$0</div><div class="stat-label" data-i18n="hero_month">to start</div></div>
   </div>
+  <div class="pill-row" style="justify-content:center;margin-top:32px;max-width:800px;margin-left:auto;margin-right:auto">
+    <span class="pill" data-i18n="hero_p1">Estimates & Invoices</span>
+    <span class="pill" data-i18n="hero_p2">Tap to Pay (NFC)</span>
+    <span class="pill" data-i18n="hero_p3">Stripe Connect</span>
+    <span class="pill" data-i18n="hero_p4">Team Management</span>
+    <span class="pill" data-i18n="hero_p5">Offline-First</span>
+    <span class="pill" data-i18n="hero_p6">Full Spanish</span>
+    <span class="pill" data-i18n="hero_p7">Reports & Tax</span>
+    <span class="pill" data-i18n="hero_p8">Calendar Sync</span>
+  </div>
 </div>
 </section>
 
@@ -350,6 +360,58 @@ td.dim{color:var(--text3)}
 </div>
 </section>
 
+<!-- ===================== SLIDE: TRACTION ===================== -->
+<section class="slide" id="s_tr" style="background:radial-gradient(ellipse at 40% 60%,rgba(52,211,153,.08),transparent 50%)">
+<div class="slide-inner">
+  <div class="slide-num" data-i18n="str_label">03 &mdash; Traction &amp; Product</div>
+  <h2 data-i18n="str_title">Built, Shipped, <span style="color:var(--green-light)">Ready to Launch</span></h2>
+  <div class="sep"></div>
+
+  <div class="card-grid card-grid-4" style="margin-bottom:40px">
+    <div class="stat"><div class="stat-value">67</div><div class="stat-label" data-i18n="str_screens">Screens</div></div>
+    <div class="stat"><div class="stat-value">24</div><div class="stat-label" data-i18n="str_api">API Routes</div></div>
+    <div class="stat"><div class="stat-value">17+</div><div class="stat-label" data-i18n="str_db">DB Models</div></div>
+    <div class="stat"><div class="stat-value">3</div><div class="stat-label" data-i18n="str_lang">Languages</div></div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 data-i18n="str_stack">Tech Stack</h3>
+      <div class="pill-row" style="margin-bottom:24px">
+        <span class="pill">React Native 0.81</span>
+        <span class="pill">Expo SDK 54</span>
+        <span class="pill">TypeScript</span>
+        <span class="pill">PostgreSQL</span>
+        <span class="pill">Prisma ORM</span>
+        <span class="pill">Stripe Terminal</span>
+        <span class="pill">Stripe Connect</span>
+        <span class="pill">Railway</span>
+        <span class="pill">Supabase Auth</span>
+        <span class="pill">Zustand</span>
+        <span class="pill">Twilio SMS</span>
+      </div>
+      <div class="card" style="border-color:var(--green);background:rgba(52,211,153,.06)">
+        <p style="color:var(--green-light);font-size:.85rem;font-weight:600" data-i18n="str_solo">Solo technical founder built the entire product in 4 months. Zero external funding. Zero debt.</p>
+      </div>
+    </div>
+    <div>
+      <h3 data-i18n="str_done">What&rsquo;s Built</h3>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f1">Full estimate &rarr; payment &rarr; receipt flow</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f2">Stripe Connect + Tap to Pay (NFC)</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f3">Complete Spanish localization</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f4">Offline-first with auto-sync</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f5">Team management (Owner/Manager/Worker)</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f6">Reports, tax export, receipt OCR</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f7">Google Calendar sync + recurring jobs</span></span></div>
+        <div class="metric-row"><span class="metric-key">&#9989; <span data-i18n="str_f8">19 business verticals with custom templates</span></span></div>
+        <div class="metric-row"><span class="metric-key" style="color:var(--amber-light)">&#128312; <span data-i18n="str_f9">App Store submission (in progress)</span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- ===================== SLIDE 4: MARKET ===================== -->
 <section class="slide" id="s4">
 <div class="slide-inner">
@@ -405,24 +467,24 @@ td.dim{color:var(--text3)}
       <div class="table-wrap">
         <table>
           <tr><th data-i18n="s5_plan">Plan</th><th data-i18n="s2_th_price">Price</th><th data-i18n="s5_target">Target</th></tr>
-          <tr><td><span class="badge badge-green">FREE</span></td><td>$0/mo <span style="color:var(--text3);font-size:.75rem">(2% fee)</span></td><td data-i18n="s5_lead">Revenue via payment fees</td></tr>
-          <tr><td><span class="badge badge-purple">PRO</span></td><td>$29/mo <span style="color:var(--text3);font-size:.75rem">(1% fee)</span></td><td data-i18n="s5_solo">Solo contractors</td></tr>
-          <tr><td><span class="badge badge-blue">BUSINESS</span></td><td>$79/mo <span style="color:var(--text3);font-size:.75rem">(1% fee)</span></td><td data-i18n="s5_crew">Crews (3 users)</td></tr>
+          <tr><td><span class="badge badge-green">FREE</span></td><td>$0/mo <span style="color:var(--text3);font-size:.75rem">(1.5% fee)</span></td><td data-i18n="s5_lead">Revenue via payment fees</td></tr>
+          <tr><td><span class="badge badge-purple">PRO</span></td><td>$49/mo <span style="color:var(--text3);font-size:.75rem">(1% fee)</span></td><td data-i18n="s5_solo">Solo contractors</td></tr>
+          <tr><td><span class="badge badge-blue">BUSINESS</span></td><td>$79/mo <span style="color:var(--text3);font-size:.75rem">(1% fee)</span></td><td data-i18n="s5_crew">Crews (5 users)</td></tr>
         </table>
       </div>
 
       <h3 style="margin-top:32px" data-i18n="s5_stream2">Stream 2: Payment Processing</h3>
-      <p style="color:var(--text2);font-size:.9rem;margin-bottom:16px" data-i18n="s5_fee_desc"><strong style="color:var(--white)">2% platform fee (FREE plan) / 1% (paid plans)</strong> on every Stripe transaction</p>
+      <p style="color:var(--text2);font-size:.9rem;margin-bottom:16px" data-i18n="s5_fee_desc"><strong style="color:var(--white)">1.5% platform fee (FREE plan) / 1% (paid plans)</strong> on every Stripe transaction</p>
 
       <div class="waterfall">
         <div class="wf-row wf-in"><span class="wf-label" data-i18n="s5_wf1">Customer pays</span><span class="wf-amount" style="color:var(--white)">$350.00</span></div>
         <div class="wf-row wf-out"><span class="wf-label" data-i18n="s5_wf2">Stripe processing (2.9% + $0.30)</span><span class="wf-amount" style="color:var(--red)">&minus;$10.45</span></div>
-        <div class="wf-row wf-out" style="border-color:var(--purple);background:var(--purple-glow)"><span class="wf-label"><strong data-i18n="s5_wf3">JobPocket fee (2% free / 1% paid)</strong></span><span class="wf-amount" style="color:var(--purple-light)">&minus;$7.00 / $3.50</span></div>
+        <div class="wf-row wf-out" style="border-color:var(--purple);background:var(--purple-glow)"><span class="wf-label"><strong data-i18n="s5_wf3">JobPocket fee (1.5% free / 1% paid)</strong></span><span class="wf-amount" style="color:var(--purple-light)">&minus;$5.25 / $3.50</span></div>
         <div class="wf-row wf-out"><span class="wf-label" data-i18n="s5_wf4">Stripe payout (0.25%)</span><span class="wf-amount" style="color:var(--red)">&minus;$0.88</span></div>
-        <div class="wf-row wf-net"><span class="wf-label" data-i18n="s5_wf5">Contractor receives</span><span class="wf-amount" style="color:var(--green-light)">$331.67 / $335.17</span></div>
+        <div class="wf-row wf-net"><span class="wf-label" data-i18n="s5_wf5">Contractor receives</span><span class="wf-amount" style="color:var(--green-light)">$333.42 / $335.17</span></div>
       </div>
 
-      <p style="color:var(--amber-light);font-size:.8rem;margin-top:12px" data-i18n="s5_upgrade"><strong>Upgrade incentive:</strong> Break-even at $2,900/mo processed &mdash; 2% &times; $2,900 = $58 &gt; $29 + 1% &times; $2,900</p>
+      <p style="color:var(--amber-light);font-size:.8rem;margin-top:12px" data-i18n="s5_upgrade"><strong>Upgrade incentive:</strong> Break-even at $9,800/mo processed &mdash; 1.5% &times; $9,800 = $147 &gt; $49 + 1% &times; $9,800</p>
     </div>
     <div>
       <h3 data-i18n="s5_peruser">Per-User Revenue (Monthly, Base)</h3>
@@ -809,6 +871,69 @@ Stripe keeps:                       $11.33 (3.24%)</pre>
 </div>
 </section>
 
+<!-- ===================== SLIDE: GO-TO-MARKET ===================== -->
+<section class="slide" id="s_gtm" style="background:radial-gradient(ellipse at 70% 50%,rgba(59,130,246,.08),transparent 50%)">
+<div class="slide-inner">
+  <div class="slide-num" data-i18n="sgtm_label">12 &mdash; Go-to-Market</div>
+  <h2 data-i18n="sgtm_title">From Zero to <span class="gradient">10,000 Users</span></h2>
+  <div class="sep"></div>
+
+  <div class="two-col">
+    <div>
+      <h3 data-i18n="sgtm_phases">Growth Phases</h3>
+
+      <div class="card" style="margin-bottom:16px;border-left:3px solid var(--amber)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-weight:700;color:var(--amber-light)" data-i18n="sgtm_p1">Phase 1: Validate (M1&ndash;2)</span>
+          <span class="badge badge-amber" data-i18n="sgtm_p1_goal">50&ndash;130 users</span>
+        </div>
+        <p style="color:var(--text2);font-size:.85rem" data-i18n="sgtm_p1_d">FREE plan as main hook. Target Spanish-speaking contractors in TX, CA, AZ. Facebook groups + local demos. $2K/mo paid ads from Day 1. Validate 2% fee acceptance.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px;border-left:3px solid var(--blue)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-weight:700;color:var(--blue-light)" data-i18n="sgtm_p2">Phase 2: Grow (M3&ndash;6)</span>
+          <span class="badge badge-blue" data-i18n="sgtm_p2_goal">250&ndash;800 users</span>
+        </div>
+        <p style="color:var(--text2);font-size:.85rem" data-i18n="sgtm_p2_d">QuickBooks integration. Supply house partnerships. Bilingual YouTube/TikTok content. Referral program. Marketing scales with gross profit (flywheel begins).</p>
+      </div>
+
+      <div class="card" style="border-left:3px solid var(--green)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-weight:700;color:var(--green-light)" data-i18n="sgtm_p3">Phase 3: Scale (M7&ndash;18)</span>
+          <span class="badge badge-green" data-i18n="sgtm_p3_goal">1,000&ndash;5,500 users</span>
+        </div>
+        <p style="color:var(--text2);font-size:.85rem" data-i18n="sgtm_p3_d">Self-funded flywheel: $2K base + 30% of gross profit &rarr; marketing. Expand verticals (pest control, carpet cleaning). Hire developer from rev share budget.</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 data-i18n="sgtm_channels">Acquisition Channels</h3>
+      <div class="table-wrap" style="margin-top:20px">
+        <table>
+          <tr><th data-i18n="sgtm_ch">Channel</th><th>CAC</th><th data-i18n="sgtm_mix">Mix</th></tr>
+          <tr><td data-i18n="sgtm_c1">Organic (ASO, word of mouth)</td><td style="color:var(--green-light)">$5</td><td>40%</td></tr>
+          <tr><td data-i18n="sgtm_c2">Referral program</td><td style="color:var(--green-light)">$8</td><td>15%</td></tr>
+          <tr><td data-i18n="sgtm_c3">Paid ads (Meta / Google)</td><td style="color:var(--amber)">$25</td><td>30%</td></tr>
+          <tr><td data-i18n="sgtm_c4">Supply house partnerships</td><td style="color:var(--green-light)">$15</td><td>15%</td></tr>
+          <tr class="highlight-row"><td data-i18n="sgtm_blend">Blended</td><td>$15</td><td>100%</td></tr>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:24px;border-color:var(--purple);background:var(--purple-glow)">
+        <h4 style="color:var(--purple-light);margin-bottom:8px" data-i18n="sgtm_flywheel">Self-Funded Flywheel</h4>
+        <p style="color:var(--text2);font-size:.85rem" data-i18n="sgtm_fly_d">Every free user generates revenue via 2% fee. More users &rarr; more GP &rarr; more marketing budget &rarr; more users. No external funding required after M2.</p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h4 style="margin-bottom:8px" data-i18n="sgtm_wedge">Market Wedge</h4>
+        <p style="color:var(--text2);font-size:.85rem" data-i18n="sgtm_wedge_d">Spanish-speaking contractors in TX/CA/AZ are the beachhead. Zero competitors serve them. FREE plan + Spanish = lowest barrier in the market.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- ===================== SLIDE 13: WHY NOW ===================== -->
 <section class="slide" id="s13" style="background:radial-gradient(ellipse at 60% 40%,rgba(123,108,246,.1),transparent 50%)">
 <div class="slide-inner" style="text-align:center">
@@ -917,7 +1042,7 @@ Stripe keeps:                       $11.33 (3.24%)</pre>
 // Nav dots
 const slides = document.querySelectorAll('.slide');
 const navDots = document.getElementById('navDots');
-const slideNames = ['Intro','Problem','Solution','Market','Model','Unit Econ','Revenue','P&L','36-Mo','Volume','Sensitivity','Risks','Why Now','Ask'];
+const slideNames = ['Intro','Problem','Solution','Traction','Market','Model','Unit Econ','Revenue','P&L','24-Mo','Volume','Sensitivity','Risks','GTM','Why Now','Ask'];
 slides.forEach((s, i) => {
   const d = document.createElement('div');
   d.className = 'nav-dot';
@@ -1034,6 +1159,18 @@ s12_r3:'Apple IAP (30%)',s12_r3d:'Apple cobra 30% de ingresos por suscripci\u00f
 s12_r4:'Alto Churn (&gt;8%)',s12_r4d:'Usuarios abandonan despu\u00e9s del uso inicial.',s12_r4m:'<strong>Mitigaci\u00f3n:</strong> Lock-in de datos (historial cliente/pagos). Funciones de equipo. Trabajos recurrentes. Incluso con 8% churn, LTV:CAC pagado es 83:1.',
 s12_r5:'Guerra de Precios',s12_r5d:'Housecall Pro o Jobber bajan precios.',s12_r5m:'<strong>Mitigaci\u00f3n:</strong> 60% de ingresos es procesamiento de pagos \u2014 independiente del precio de suscripci\u00f3n.',
 s12_r6:'Cambios en Stripe Connect',s12_r6d:'Stripe modifica estructura de comisiones.',s12_r6m:'<strong>Mitigaci\u00f3n:</strong> Diversificar a Adyen/Square. Negociar precios por volumen a escala.',
+hero_p1:'Presupuestos y Facturas',hero_p2:'Tap to Pay (NFC)',hero_p3:'Stripe Connect',hero_p4:'Gesti\u00f3n de Equipo',hero_p5:'Offline-First',hero_p6:'Espa\u00f1ol Completo',hero_p7:'Informes e Impuestos',hero_p8:'Sincro Calendario',
+str_label:'03 \u2014 Tracci\u00f3n y Producto',str_title:'Construido, enviado, <span style="color:var(--green-light)">listo para lanzar</span>',
+str_screens:'Pantallas',str_api:'Rutas API',str_db:'Modelos DB',str_lang:'Idiomas',
+str_stack:'Stack Tecnol\u00f3gico',str_solo:'Fundador t\u00e9cnico solo construy\u00f3 todo el producto en 4 meses. Cero financiaci\u00f3n externa. Cero deuda.',
+str_done:'Lo que est\u00e1 construido',str_f1:'Flujo completo presupuesto \u2192 pago \u2192 recibo',str_f2:'Stripe Connect + Tap to Pay (NFC)',str_f3:'Localizaci\u00f3n completa en espa\u00f1ol',str_f4:'Offline-first con auto-sync',str_f5:'Gesti\u00f3n de equipo (Due\u00f1o/Gerente/Trabajador)',str_f6:'Informes, exportaci\u00f3n fiscal, OCR de recibos',str_f7:'Sincronizaci\u00f3n Google Calendar + trabajos recurrentes',str_f8:'19 verticales de negocio con plantillas personalizadas',str_f9:'Env\u00edo a App Store (en progreso)',
+sgtm_label:'12 \u2014 Go-to-Market',sgtm_title:'De cero a <span class="gradient">10,000 usuarios</span>',
+sgtm_phases:'Fases de Crecimiento',sgtm_p1:'Fase 1: Validar (M1\u20132)',sgtm_p1_goal:'50\u2013130 usuarios',sgtm_p1_d:'Plan FREE como gancho principal. Contratistas hispanohablantes en TX, CA, AZ. Grupos de Facebook + demos locales. $2K/mes en anuncios desde el D\u00eda 1. Validar aceptaci\u00f3n de comisi\u00f3n 2%.',
+sgtm_p2:'Fase 2: Crecer (M3\u20136)',sgtm_p2_goal:'250\u2013800 usuarios',sgtm_p2_d:'Integraci\u00f3n QuickBooks. Alianzas con distribuidores. Contenido biling\u00fce YouTube/TikTok. Programa de referidos. Marketing escala con utilidad bruta (flywheel comienza).',
+sgtm_p3:'Fase 3: Escalar (M7\u201318)',sgtm_p3_goal:'1,000\u20135,500 usuarios',sgtm_p3_d:'Flywheel autofinanciado: $2K base + 30% utilidad bruta \u2192 marketing. Expandir verticales (control de plagas, limpieza). Contratar desarrollador con presupuesto de rev share.',
+sgtm_channels:'Canales de Adquisici\u00f3n',sgtm_ch:'Canal',sgtm_mix:'Mix',sgtm_c1:'Org\u00e1nico (ASO, boca a boca)',sgtm_c2:'Programa de referidos',sgtm_c3:'Anuncios pagados (Meta / Google)',sgtm_c4:'Alianzas con distribuidores',sgtm_blend:'Combinado',
+sgtm_flywheel:'Flywheel Autofinanciado',sgtm_fly_d:'Cada usuario gratis genera ingresos v\u00eda comisi\u00f3n 2%. M\u00e1s usuarios \u2192 m\u00e1s GP \u2192 m\u00e1s presupuesto de marketing \u2192 m\u00e1s usuarios. Sin financiaci\u00f3n externa despu\u00e9s de M2.',
+sgtm_wedge:'Cu\u00f1a de Mercado',sgtm_wedge_d:'Contratistas hispanohablantes en TX/CA/AZ son la cabeza de playa. Cero competidores los atienden. Plan FREE + Espa\u00f1ol = barrera m\u00e1s baja del mercado.',
 s13_label:'12 \u2014 Por Qu\u00e9 Ahora',s13_title:'Momento Perfecto',
 s13_w1:'Tap to Pay en iPhone',s13_w1d:'Apple abri\u00f3 NFC para pagos. Los contratistas pueden aceptar tarjetas sin hardware por primera vez. Un cambio de juego.',
 s13_w2:'Mercado Hispano Sin Explotar',s13_w2d:'34% de los trabajadores de construcci\u00f3n en EE.UU. son hispanos/latinos. Ning\u00fan competidor ofrece espa\u00f1ol completo. Acceso a 2M+ contratistas desatendidos.',
@@ -1120,6 +1257,18 @@ s12_r3:'Apple IAP (30%)',s12_r3d:'Apple \u0431\u0435\u0440\u0435 30% \u0434\u043
 s12_r4:'\u0412\u0438\u0441\u043e\u043a\u0438\u0439 \u0432\u0456\u0434\u0442\u0456\u043a (&gt;8%)',s12_r4d:'\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u043f\u0456\u0448\u043b\u0438 \u043f\u0456\u0441\u043b\u044f \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f.',s12_r4m:'<strong>\u041f\u043e\u043c\'\u044f\u043a\u0448\u0435\u043d\u043d\u044f:</strong> Lock-in \u0434\u0430\u043d\u0438\u0445. \u0424\u0443\u043d\u043a\u0446\u0456\u0457 \u043a\u043e\u043c\u0430\u043d\u0434\u0438. \u041f\u043e\u0432\u0442\u043e\u0440\u044e\u0432\u0430\u043d\u0456 \u0440\u043e\u0431\u043e\u0442\u0438. \u041d\u0430\u0432\u0456\u0442\u044c \u043f\u0440\u0438 8% LTV:CAC \u043f\u043b\u0430\u0442\u043d\u0438\u0445 = 83:1.',
 s12_r5:'\u0426\u0456\u043d\u043e\u0432\u0430 \u0432\u0456\u0439\u043d\u0430',s12_r5d:'Housecall Pro \u0430\u0431\u043e Jobber \u0437\u043d\u0438\u0436\u0443\u044e\u0442\u044c \u0446\u0456\u043d\u0438.',s12_r5m:'<strong>\u041f\u043e\u043c\'\u044f\u043a\u0448\u0435\u043d\u043d\u044f:</strong> 60% \u0434\u043e\u0445\u043e\u0434\u0443 \u2014 \u043e\u0431\u0440\u043e\u0431\u043a\u0430 \u043f\u043b\u0430\u0442\u0435\u0436\u0456\u0432, \u043d\u0435\u0437\u0430\u043b\u0435\u0436\u043d\u0430 \u0432\u0456\u0434 \u0446\u0456\u043d\u0438 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438.',
 s12_r6:'\u0417\u043c\u0456\u043d\u0438 Stripe Connect',s12_r6d:'Stripe \u0437\u043c\u0456\u043d\u044e\u0454 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0443 \u043a\u043e\u043c\u0456\u0441\u0456\u0439.',s12_r6m:'<strong>\u041f\u043e\u043c\'\u044f\u043a\u0448\u0435\u043d\u043d\u044f:</strong> \u0414\u0438\u0432\u0435\u0440\u0441\u0438\u0444\u0456\u043a\u0430\u0446\u0456\u044f \u043d\u0430 Adyen/Square. \u0422\u043e\u0440\u0433 \u043f\u043e \u043e\u0431\u0441\u044f\u0433\u0443.',
+hero_p1:'\u041a\u043e\u0448\u0442\u043e\u0440\u0438\u0441\u0438 \u0442\u0430 \u0440\u0430\u0445\u0443\u043d\u043a\u0438',hero_p2:'Tap to Pay (NFC)',hero_p3:'Stripe Connect',hero_p4:'\u0423\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u044e',hero_p5:'\u041e\u0444\u043b\u0430\u0439\u043d-\u0440\u0435\u0436\u0438\u043c',hero_p6:'\u041f\u043e\u0432\u043d\u0430 \u0456\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u0430',hero_p7:'\u0417\u0432\u0456\u0442\u0438 \u0442\u0430 \u043f\u043e\u0434\u0430\u0442\u043a\u0438',hero_p8:'\u0421\u0438\u043d\u0445\u0440\u043e \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f',
+str_label:'03 \u2014 \u0422\u0440\u0435\u043a\u0448\u043d \u0442\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442',str_title:'\u041f\u043e\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u043e, \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e, <span style="color:var(--green-light)">\u0433\u043e\u0442\u043e\u0432\u043e \u0434\u043e \u0437\u0430\u043f\u0443\u0441\u043a\u0443</span>',
+str_screens:'\u0415\u043a\u0440\u0430\u043d\u0456\u0432',str_api:'\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432 API',str_db:'\u041c\u043e\u0434\u0435\u043b\u0435\u0439 \u0411\u0414',str_lang:'\u041c\u043e\u0432\u0438',
+str_stack:'\u0422\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0456\u0447\u043d\u0438\u0439 \u0441\u0442\u0435\u043a',str_solo:'\u0421\u043e\u043b\u043e-\u0442\u0435\u0445\u043d\u0456\u0447\u043d\u0438\u0439 \u0437\u0430\u0441\u043d\u043e\u0432\u043d\u0438\u043a \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0432 \u0432\u0435\u0441\u044c \u043f\u0440\u043e\u0434\u0443\u043a\u0442 \u0437\u0430 4 \u043c\u0456\u0441\u044f\u0446\u0456. \u041d\u0443\u043b\u044c \u0437\u043e\u0432\u043d\u0456\u0448\u043d\u044c\u043e\u0433\u043e \u0444\u0456\u043d\u0430\u043d\u0441\u0443\u0432\u0430\u043d\u043d\u044f. \u041d\u0443\u043b\u044c \u0431\u043e\u0440\u0433\u0443.',
+str_done:'\u0429\u043e \u043f\u043e\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u043e',str_f1:'\u041f\u043e\u0432\u043d\u0438\u0439 \u0446\u0438\u043a\u043b \u043a\u043e\u0448\u0442\u043e\u0440\u0438\u0441 \u2192 \u043e\u043f\u043b\u0430\u0442\u0430 \u2192 \u043a\u0432\u0438\u0442\u0430\u043d\u0446\u0456\u044f',str_f2:'Stripe Connect + Tap to Pay (NFC)',str_f3:'\u041f\u043e\u0432\u043d\u0430 \u043b\u043e\u043a\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u0456\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u043e\u044e',str_f4:'\u041e\u0444\u043b\u0430\u0439\u043d-\u0440\u0435\u0436\u0438\u043c \u0437 \u0430\u0432\u0442\u043e-\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u0430\u0446\u0456\u0454\u044e',str_f5:'\u0423\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u044e (\u0412\u043b\u0430\u0441\u043d\u0438\u043a/\u041c\u0435\u043d\u0435\u0434\u0436\u0435\u0440/\u041f\u0440\u0430\u0446\u0456\u0432\u043d\u0438\u043a)',str_f6:'\u0417\u0432\u0456\u0442\u0438, \u043f\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0435\u043a\u0441\u043f\u043e\u0440\u0442, OCR \u0447\u0435\u043a\u0456\u0432',str_f7:'\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u0430\u0446\u0456\u044f Google Calendar + \u043f\u043e\u0432\u0442\u043e\u0440\u044e\u0432\u0430\u043d\u0456 \u0440\u043e\u0431\u043e\u0442\u0438',str_f8:'19 \u0431\u0456\u0437\u043d\u0435\u0441-\u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u0435\u0439 \u0437 \u0432\u043b\u0430\u0441\u043d\u0438\u043c\u0438 \u0448\u0430\u0431\u043b\u043e\u043d\u0430\u043c\u0438',str_f9:'\u041f\u043e\u0434\u0430\u0447\u0430 \u0432 App Store (\u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0456)',
+sgtm_label:'12 \u2014 Go-to-Market',sgtm_title:'\u0412\u0456\u0434 \u043d\u0443\u043b\u044f \u0434\u043e <span class="gradient">10,000 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432</span>',
+sgtm_phases:'\u0424\u0430\u0437\u0438 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f',sgtm_p1:'\u0424\u0430\u0437\u0430 1: \u0412\u0430\u043b\u0456\u0434\u0430\u0446\u0456\u044f (M1\u20132)',sgtm_p1_goal:'50\u2013130 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432',sgtm_p1_d:'FREE \u043f\u043b\u0430\u043d \u044f\u043a \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0439 \u0433\u0430\u0447\u043e\u043a. \u0406\u0441\u043f\u0430\u043d\u043e\u043c\u043e\u0432\u043d\u0456 \u043f\u0456\u0434\u0440\u044f\u0434\u043d\u0438\u043a\u0438 \u0432 TX, CA, AZ. Facebook-\u0433\u0440\u0443\u043f\u0438 + \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u0456 \u0434\u0435\u043c\u043e. $2K/\u043c\u0456\u0441 \u0440\u0435\u043a\u043b\u0430\u043c\u0430 \u0437 1-\u0433\u043e \u0434\u043d\u044f. \u0412\u0430\u043b\u0456\u0434\u0430\u0446\u0456\u044f \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0442\u044f 2% \u043a\u043e\u043c\u0456\u0441\u0456\u0457.',
+sgtm_p2:'\u0424\u0430\u0437\u0430 2: \u0417\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f (M3\u20136)',sgtm_p2_goal:'250\u2013800 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432',sgtm_p2_d:'\u0406\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0456\u044f QuickBooks. \u041f\u0430\u0440\u0442\u043d\u0435\u0440\u0441\u0442\u0432\u043e \u0437 \u043f\u043e\u0441\u0442\u0430\u0447\u0430\u043b\u044c\u043d\u0438\u043a\u0430\u043c\u0438. \u0414\u0432\u043e\u043c\u043e\u0432\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u043d\u0442 YouTube/TikTok. \u0420\u0435\u0444\u0435\u0440\u0430\u043b\u044c\u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430. \u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0443\u0454\u0442\u044c\u0441\u044f \u0437 \u0432\u0430\u043b\u043e\u0432\u0438\u043c \u043f\u0440\u0438\u0431\u0443\u0442\u043a\u043e\u043c (flywheel).',
+sgtm_p3:'\u0424\u0430\u0437\u0430 3: \u041c\u0430\u0441\u0448\u0442\u0430\u0431\u0443\u0432\u0430\u043d\u043d\u044f (M7\u201318)',sgtm_p3_goal:'1,000\u20135,500 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432',sgtm_p3_d:'\u0421\u0430\u043c\u043e\u0444\u0456\u043d\u0430\u043d\u0441\u043e\u0432\u0430\u043d\u0438\u0439 flywheel: $2K \u0431\u0430\u0437\u0430 + 30% \u0432\u0430\u043b\u043e\u0432\u043e\u0433\u043e \u043f\u0440\u0438\u0431\u0443\u0442\u043a\u0443 \u2192 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433. \u0420\u043e\u0437\u0448\u0438\u0440\u0435\u043d\u043d\u044f \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u0435\u0439. \u041d\u0430\u0439\u043c \u0440\u043e\u0437\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u0437 \u0431\u044e\u0434\u0436\u0435\u0442\u0443 rev share.',
+sgtm_channels:'\u041a\u0430\u043d\u0430\u043b\u0438 \u0437\u0430\u043b\u0443\u0447\u0435\u043d\u043d\u044f',sgtm_ch:'\u041a\u0430\u043d\u0430\u043b',sgtm_mix:'\u041c\u0456\u043a\u0441',sgtm_c1:'\u041e\u0440\u0433\u0430\u043d\u0456\u0447\u043d\u0438\u0439 (ASO, \u0441\u0430\u0440\u0430\u0444\u0430\u043d)',sgtm_c2:'\u0420\u0435\u0444\u0435\u0440\u0430\u043b\u044c\u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430',sgtm_c3:'\u041f\u043b\u0430\u0442\u043d\u0430 \u0440\u0435\u043a\u043b\u0430\u043c\u0430 (Meta / Google)',sgtm_c4:'\u041f\u0430\u0440\u0442\u043d\u0435\u0440\u0441\u0442\u0432\u043e \u0437 \u043f\u043e\u0441\u0442\u0430\u0447\u0430\u043b\u044c\u043d\u0438\u043a\u0430\u043c\u0438',sgtm_blend:'\u0417\u043c\u0456\u0448\u0430\u043d\u0438\u0439',
+sgtm_flywheel:'\u0421\u0430\u043c\u043e\u0444\u0456\u043d\u0430\u043d\u0441\u043e\u0432\u0430\u043d\u0438\u0439 Flywheel',sgtm_fly_d:'\u041a\u043e\u0436\u0435\u043d free \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u0433\u0435\u043d\u0435\u0440\u0443\u0454 \u0434\u043e\u0445\u0456\u0434 \u0447\u0435\u0440\u0435\u0437 2% \u043a\u043e\u043c\u0456\u0441\u0456\u044e. \u0411\u0456\u043b\u044c\u0448\u0435 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 \u2192 \u0431\u0456\u043b\u044c\u0448\u0435 GP \u2192 \u0431\u0456\u043b\u044c\u0448\u0435 \u0431\u044e\u0434\u0436\u0435\u0442 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u0443 \u2192 \u0431\u0456\u043b\u044c\u0448\u0435 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432. \u0411\u0435\u0437 \u0437\u043e\u0432\u043d\u0456\u0448\u043d\u044c\u043e\u0433\u043e \u0444\u0456\u043d\u0430\u043d\u0441\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0456\u0441\u043b\u044f M2.',
+sgtm_wedge:'\u0420\u0438\u043d\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0438\u043d',sgtm_wedge_d:'\u0406\u0441\u043f\u0430\u043d\u043e\u043c\u043e\u0432\u043d\u0456 \u043f\u0456\u0434\u0440\u044f\u0434\u043d\u0438\u043a\u0438 \u0432 TX/CA/AZ \u2014 \u043f\u043b\u0430\u0446\u0434\u0430\u0440\u043c. \u041d\u0443\u043b\u044c \u043a\u043e\u043d\u043a\u0443\u0440\u0435\u043d\u0442\u0456\u0432 \u0457\u0445 \u043e\u0431\u0441\u043b\u0443\u0433\u043e\u0432\u0443\u0454. FREE + \u0456\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u0430 = \u043d\u0430\u0439\u043d\u0438\u0436\u0447\u0438\u0439 \u0431\u0430\u0440\'\u0454\u0440 \u043d\u0430 \u0440\u0438\u043d\u043a\u0443.',
 s13_label:'12 \u2014 \u0427\u043e\u043c\u0443 \u0437\u0430\u0440\u0430\u0437',s13_title:'\u0406\u0434\u0435\u0430\u043b\u044c\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442',
 s13_w1:'Tap to Pay \u043d\u0430 iPhone',s13_w1d:'Apple \u0432\u0456\u0434\u043a\u0440\u0438\u043b\u0430 NFC \u0434\u043b\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0456\u0432. \u041f\u0456\u0434\u0440\u044f\u0434\u043d\u0438\u043a\u0438 \u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0440\u0438\u0439\u043c\u0430\u0442\u0438 \u043a\u0430\u0440\u0442\u043a\u0438 \u0431\u0435\u0437 \u043e\u0431\u043b\u0430\u0434\u043d\u0430\u043d\u043d\u044f \u0432\u043f\u0435\u0440\u0448\u0435.',
 s13_w2:'\u0406\u0441\u043f\u0430\u043d\u043e\u043c\u043e\u0432\u043d\u0438\u0439 \u0440\u0438\u043d\u043e\u043a',s13_w2d:'34% \u043f\u0440\u0430\u0446\u0456\u0432\u043d\u0438\u043a\u0456\u0432 \u0431\u0443\u0434\u0456\u0432\u043d\u0438\u0446\u0442\u0432\u0430 \u0421\u0428\u0410 \u2014 \u043b\u0430\u0442\u0438\u043d\u043e\u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0446\u0456. \u0416\u043e\u0434\u0435\u043d \u043a\u043e\u043d\u043a\u0443\u0440\u0435\u043d\u0442 \u043d\u0435 \u043c\u0430\u0454 \u043f\u043e\u0432\u043d\u043e\u0457 \u0456\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u043e\u0457. \u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e 2\u041c+ \u043d\u0435\u0434\u043e\u043e\u0431\u0441\u043b\u0443\u0433\u043e\u0432\u0430\u043d\u0438\u0445 \u043f\u0456\u0434\u0440\u044f\u0434\u043d\u0438\u043a\u0456\u0432.',
