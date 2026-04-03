@@ -1125,6 +1125,130 @@
       50%       { box-shadow: -20px 40px 80px rgba(0,0,0,0.80), -8px 20px 40px rgba(0,0,0,0.60), 0 0 0 1px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 0 80px rgba(255,214,10,0.07), 0 0 60px rgba(255,214,10,0.06); }
     }
 
+
+    /* ── FREE VALUE SECTION ───────────────────────────── */
+    .free-value {
+      background: var(--dark);
+      padding: 100px 48px;
+    }
+
+    .fv-inner { max-width: 1100px; margin: 0 auto; }
+
+    .fv-head { margin-bottom: 56px; max-width: 600px; }
+    .fv-head .eyebrow { color: var(--yellow); margin-bottom: 14px; }
+
+    .y-mark {
+      background: none; color: var(--yellow);
+      font-style: normal;
+    }
+
+    .fv-sub {
+      font-size: 17px; color: var(--t2); line-height: 1.65; margin-top: 14px;
+    }
+
+    /* Feature grid with mini screens */
+    .fv-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .fv-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color .2s;
+    }
+    .fv-card:hover { border-color: rgba(255,255,255,0.14); }
+
+    .fv-badge {
+      position: absolute; top: 10px; right: 10px; z-index: 2;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 100px;
+      letter-spacing: .05em;
+    }
+    .fv-badge.free { background: rgba(26,158,63,0.20); color: #4ade80; }
+    .fv-badge.pro  { background: rgba(255,214,10,0.15); color: var(--yellow); }
+
+    .fv-screen-wrap {
+      padding: 10px 10px 0;
+    }
+
+    .fv-mini-screen {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 0.5px solid rgba(30,27,46,0.10);
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .fv-feat-name {
+      font-family: var(--ff-display);
+      font-size: 14px; font-weight: 700;
+      color: #fff; padding: 12px 14px 4px;
+    }
+
+    .fv-feat-desc {
+      font-size: 12px; color: var(--t2); line-height: 1.5;
+      padding: 0 14px 16px;
+    }
+
+    /* Comparison table */
+    .fv-compare {
+      margin-bottom: 56px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .fv-compare-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--t3); padding: 20px 24px 0;
+      margin-bottom: 12px;
+    }
+
+    .fv-compare-grid { padding: 0 0 4px; }
+
+    .fv-comp-row {
+      display: grid; grid-template-columns: 1fr 120px 120px 140px;
+      padding: 10px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      align-items: center;
+    }
+    .fv-comp-row:last-child { border-bottom: none; }
+    .fv-comp-row.header { opacity: .5; padding-bottom: 6px; }
+
+    .fv-comp-feat { font-size: 13px; color: var(--t2); }
+    .fv-comp-app  { font-size: 11px; font-weight: 600; text-align: center; color: var(--t3); }
+    .fv-comp-app.jp { color: var(--yellow); }
+
+    .fv-comp-val { font-size: 12px; font-weight: 600; text-align: center; }
+    .free-tag { color: #4ade80; }
+    .pro-tag  { color: var(--yellow); }
+    .paid-tag { color: rgba(255,255,255,0.25); }
+
+    /* Plans side by side */
+    .fv-plans {
+      display: grid; grid-template-columns: 1fr 1.05fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .fv-grid { grid-template-columns: repeat(2, 1fr); }
+      .fv-comp-row { grid-template-columns: 1fr 90px 90px 100px; }
+    }
+
+    @media (max-width: 680px) {
+      .free-value { padding: 72px 20px; }
+      .fv-grid { grid-template-columns: 1fr; }
+      .fv-compare { display: none; }
+      .fv-plans { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1160,8 +1284,8 @@
     </h1>
 
     <p class="hero-sub">
-      Stop juggling spreadsheets, paper invoices, and forgotten warranties.
-      <strong>JobPocket</strong> runs your entire repair business from your iPhone.
+      Jobs, scheduling, invoices, payments, warranties &mdash;
+      <strong>all free forever.</strong> Only team management requires Pro.
     </p>
 
     <div class="hero-actions">
