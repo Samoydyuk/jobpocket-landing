@@ -239,7 +239,7 @@
 
     .trust-item svg { width: 15px; height: 15px; color: rgba(255,214,10,0.6); }
 
-    /* ── PHONE ────────────────────────────────────────── */
+    /* ── PHONE 3D ─────────────────────────────────────── */
     .hero-visual {
       position: relative; z-index: 2;
       height: 100vh;
@@ -247,44 +247,109 @@
       padding-bottom: 0;
     }
 
+    .phone-scene {
+      perspective: 1400px;
+      perspective-origin: 50% 40%;
+    }
+
     .phone-outer {
       position: relative;
       width: 300px;
+      transform-style: preserve-3d;
     }
 
-    /* glow under phone */
+    /* Ambient glow — big soft yellow bloom */
     .phone-glow {
       position: absolute;
-      bottom: -60px; left: 50%;
+      bottom: -80px; left: 50%;
       transform: translateX(-50%);
-      width: 300px; height: 160px;
-      background: radial-gradient(ellipse, rgba(255,214,10,0.28) 0%, rgba(255,214,10,0.10) 40%, transparent 70%);
+      width: 440px; height: 220px;
+      background: radial-gradient(ellipse, rgba(255,214,10,0.32) 0%, rgba(255,214,10,0.12) 35%, transparent 70%);
       pointer-events: none;
       animation: glowBreath 4s ease-in-out infinite;
+      filter: blur(8px);
     }
 
-    .phone-glow::after {
+    /* Secondary wider ring */
+    .phone-glow::before {
       content: '';
       position: absolute;
-      top: -30px; left: 50%;
+      top: -80px; left: 50%;
       transform: translateX(-50%);
-      width: 380px; height: 380px;
-      background: radial-gradient(circle, rgba(255,214,10,0.10) 0%, transparent 60%);
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(255,214,10,0.09) 0%, transparent 55%);
       animation: glowRing 4s ease-in-out infinite;
     }
 
+    /* Pulse ring */
+    .phone-glow::after {
+      content: '';
+      position: absolute;
+      top: -40px; left: 50%;
+      transform: translateX(-50%);
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid rgba(255,214,10,0.15);
+      animation: glowRingPulse 3.5s ease-in-out infinite;
+    }
+
+    /* Phone body — 3D tilted */
     .phone {
-      width: 300px; height: 600px;
-      background: #12101E;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 50px;
-      box-shadow:
-        0 80px 160px rgba(0,0,0,0.75),
-        0 30px 60px rgba(0,0,0,0.50),
-        inset 0 0 0 0.5px rgba(255,255,255,0.06);
+      width: 300px; height: 620px;
+      background: linear-gradient(160deg, #1a1826 0%, #0e0c1a 100%);
+      border-radius: 52px;
       position: relative;
       overflow: hidden;
-      animation: shimmer 4s ease-in-out infinite;
+      transform: rotateY(-18deg) rotateX(6deg);
+      transform-style: preserve-3d;
+      box-shadow:
+        -20px 40px 80px rgba(0,0,0,0.80),
+        -8px 20px 40px rgba(0,0,0,0.60),
+        0 0 0 1px rgba(255,255,255,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 0 60px rgba(255,214,10,0.03);
+      animation: shimmerBorder 4s ease-in-out infinite;
+    }
+
+    /* Left side of phone (3D depth) */
+    .phone-side-left {
+      position: absolute;
+      top: 12px; bottom: 12px;
+      left: -14px;
+      width: 14px;
+      background: linear-gradient(to right, #0a0814, #151222);
+      border-radius: 4px 0 0 4px;
+      transform: rotateY(-90deg) translateZ(-7px);
+      transform-origin: right center;
+    }
+
+    /* Bottom side */
+    .phone-side-bottom {
+      position: absolute;
+      left: 12px; right: 12px;
+      bottom: -10px;
+      height: 10px;
+      background: linear-gradient(to bottom, #0e0c1a, #070510);
+      border-radius: 0 0 4px 4px;
+      transform: rotateX(-90deg) translateZ(-5px);
+      transform-origin: top center;
+    }
+
+    /* Screen glass reflection */
+    .phone-reflection {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(
+        160deg,
+        rgba(255,255,255,0.06) 0%,
+        rgba(255,255,255,0.02) 30%,
+        transparent 60%
+      );
+      pointer-events: none;
+      z-index: 10;
+      border-radius: 52px 52px 0 0;
     }
 
     .island {
@@ -941,7 +1006,7 @@
     .hero-sub     { animation: fadeUp .5s .12s ease both; }
     .hero-actions { animation: fadeUp .5s .18s ease both; }
     .hero-trust   { animation: fadeUp .5s .24s ease both; }
-    .phone-outer  { animation: phoneIn .7s .1s ease both, float 6s .8s ease-in-out infinite; }
+    .phone-outer  { animation: phoneIn .7s .1s ease both, float3d 6s .8s ease-in-out infinite; }
 
     /* ── RESPONSIVE ───────────────────────────────────── */
     @media (max-width: 1024px) {
@@ -971,31 +1036,37 @@
       .footer-top { flex-direction: column; gap: 24px; align-items: flex-start; }
     }
 
-    /* Phone float */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      25%       { transform: translateY(-10px) rotate(0.4deg); }
-      75%       { transform: translateY(-6px) rotate(-0.3deg); }
+    /* 3D float — subtle tilt change during float */
+    @keyframes float3d {
+      0%, 100% { transform: translateY(0px); }
+      30%       { transform: translateY(-11px); }
+      60%       { transform: translateY(-7px); }
     }
 
     /* Glow breathing */
     @keyframes glowBreath {
-      0%, 100% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: .85; }
-      50%       { transform: translateX(-50%) scaleX(1.25) scaleY(1.4); opacity: 1; }
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: .75; }
+      50%       { transform: translateX(-50%) scale(1.18); opacity: 1; }
     }
 
-    /* Outer ring pulse */
+    /* Outer ring radiate */
     @keyframes glowRing {
-      0%    { transform: translateX(-50%) scale(.7); opacity: .5; }
-      60%   { transform: translateX(-50%) scale(1.4); opacity: 0; }
-      100%  { transform: translateX(-50%) scale(.7); opacity: 0; }
+      0%    { transform: translateX(-50%) scale(.6); opacity: .4; }
+      70%   { transform: translateX(-50%) scale(1.5); opacity: 0; }
+      100%  { transform: translateX(-50%) scale(.6); opacity: 0; }
     }
 
-    /* Shimmer on phone border */
-    @keyframes shimmer {
-      0%   { box-shadow: 0 80px 160px rgba(0,0,0,0.75), 0 30px 60px rgba(0,0,0,0.50), inset 0 0 0 0.5px rgba(255,255,255,0.06), 0 0 0 0 rgba(255,214,10,0); }
-      50%  { box-shadow: 0 80px 160px rgba(0,0,0,0.75), 0 30px 60px rgba(0,0,0,0.50), inset 0 0 0 0.5px rgba(255,255,255,0.12), 0 0 40px 0px rgba(255,214,10,0.08); }
-      100% { box-shadow: 0 80px 160px rgba(0,0,0,0.75), 0 30px 60px rgba(0,0,0,0.50), inset 0 0 0 0.5px rgba(255,255,255,0.06), 0 0 0 0 rgba(255,214,10,0); }
+    /* Pulse ring expand */
+    @keyframes glowRingPulse {
+      0%    { transform: translateX(-50%) scale(.8); opacity: .6; }
+      60%   { transform: translateX(-50%) scale(1.8); opacity: 0; }
+      100%  { transform: translateX(-50%) scale(.8); opacity: 0; }
+    }
+
+    /* Border shimmer */
+    @keyframes shimmerBorder {
+      0%, 100% { box-shadow: -20px 40px 80px rgba(0,0,0,0.80), -8px 20px 40px rgba(0,0,0,0.60), 0 0 0 1px rgba(255,255,255,0.10), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 0 60px rgba(255,214,10,0.03); }
+      50%       { box-shadow: -20px 40px 80px rgba(0,0,0,0.80), -8px 20px 40px rgba(0,0,0,0.60), 0 0 0 1px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 0 80px rgba(255,214,10,0.07), 0 0 60px rgba(255,214,10,0.06); }
     }
 
   </style>
@@ -1069,86 +1140,97 @@
   </div>
 
   <div class="hero-visual">
-    <div class="phone-outer">
-      <div class="phone-glow"></div>
-      <div class="phone">
-        <div class="island"></div>
-        <div class="screen">
-          <div class="status-bar">
-            <span class="status-time">9:41</span>
-            <div class="status-icons">
-              <svg viewBox="0 0 24 12" fill="currentColor"><rect x="0" y="2" width="5" height="8" rx="1"/><rect x="6" y="0" width="5" height="10" rx="1" opacity=".5"/><rect x="12" y="4" width="5" height="6" rx="1" opacity=".3"/><rect x="19" y="1" width="4" height="10" rx="1.5" stroke="currentColor" stroke-width="1" fill="none"/><rect x="20" y="3" width="2" height="6" rx=".5"/></svg>
+    <div class="phone-scene">
+      <div class="phone-outer">
+        <div class="phone-glow"></div>
+        <div class="phone">
+          <div class="phone-side-left"></div>
+          <div class="phone-side-bottom"></div>
+          <div class="phone-reflection"></div>
+          <div class="island"></div>
+          <div class="screen">
+
+            <!-- Status bar -->
+            <div class="status-bar">
+              <span class="status-time">9:41</span>
+              <div class="status-icons">
+                <svg viewBox="0 0 24 12" fill="currentColor"><rect x="0" y="2" width="5" height="8" rx="1"/><rect x="6" y="0" width="5" height="10" rx="1" opacity=".5"/><rect x="12" y="4" width="5" height="6" rx="1" opacity=".3"/><rect x="19" y="1" width="4" height="10" rx="1.5" stroke="currentColor" stroke-width="1" fill="none"/><rect x="20" y="3" width="2" height="6" rx=".5"/></svg>
+              </div>
             </div>
-          </div>
 
-          <div class="app-header">
-            <div class="app-title">Dashboard</div>
-            <div class="app-date">Thursday, April 3</div>
-          </div>
-
-          <div class="rev-card">
-            <div class="rev-label">Today&rsquo;s Revenue</div>
-            <div class="rev-amount">$1,840</div>
-            <div class="rev-meta">
-              <span class="rev-tag">+24% vs last week</span>
+            <!-- Header -->
+            <div class="app-header">
+              <div class="app-title">Dashboard</div>
+              <div class="app-date">Friday, April 3 &middot; Irvine, CA</div>
             </div>
-          </div>
 
-          <div class="job-section-label">Active Jobs</div>
-
-          <div class="job-card">
-            <div class="job-dot dot-green"></div>
-            <div class="job-info">
-              <div class="job-name">Samsung Washer — Martin K.</div>
-              <div class="job-appliance">Bearing replacement &middot; Completed</div>
+            <!-- Revenue -->
+            <div class="rev-card">
+              <div class="rev-label">Today&rsquo;s Revenue</div>
+              <div class="rev-amount">$2,340</div>
+              <div class="rev-meta">
+                <span class="rev-tag">+18% vs last Fri</span>
+              </div>
             </div>
-            <div class="job-amt">$420</div>
-          </div>
 
-          <div class="job-card">
-            <div class="job-dot dot-blue"></div>
-            <div class="job-info">
-              <div class="job-name">LG Refrigerator — Sarah D.</div>
-              <div class="job-appliance">Compressor check &middot; In Progress</div>
+            <div class="job-section-label">Today&rsquo;s Jobs &middot; Orange County</div>
+
+            <div class="job-card">
+              <div class="job-dot dot-green"></div>
+              <div class="job-info">
+                <div class="job-name">Jake Martinez &middot; Newport Beach</div>
+                <div class="job-appliance">Samsung Washer &middot; Drum bearing</div>
+              </div>
+              <div class="job-amt">$480</div>
             </div>
-            <div class="job-amt">$280</div>
-          </div>
 
-          <div class="job-card">
-            <div class="job-dot dot-amber"></div>
-            <div class="job-info">
-              <div class="job-name">Whirlpool Dryer — Tom A.</div>
-              <div class="job-appliance">Heating element &middot; Scheduled 2pm</div>
+            <div class="job-card">
+              <div class="job-dot dot-blue"></div>
+              <div class="job-info">
+                <div class="job-name">Emily Chen &middot; Irvine</div>
+                <div class="job-appliance">LG Fridge &middot; Compressor</div>
+              </div>
+              <div class="job-amt">$640</div>
             </div>
-            <div class="job-amt">$350</div>
-          </div>
 
-          <div class="job-card">
-            <div class="job-dot dot-purple"></div>
-            <div class="job-info">
-              <div class="job-name">Bosch Dishwasher — Anna R.</div>
-              <div class="job-appliance">Invoice sent &middot; Awaiting payment</div>
+            <div class="job-card">
+              <div class="job-dot dot-amber"></div>
+              <div class="job-info">
+                <div class="job-name">David Park &middot; Laguna Hills</div>
+                <div class="job-appliance">Whirlpool Dryer &middot; 2:30pm</div>
+              </div>
+              <div class="job-amt">$320</div>
             </div>
-            <div class="job-amt">$790</div>
-          </div>
-        </div>
 
-        <div class="tab-bar">
-          <div class="tab-item active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-            <span class="tab-label">Home</span>
+            <div class="job-card">
+              <div class="job-dot dot-purple"></div>
+              <div class="job-info">
+                <div class="job-name">Sofia Reyes &middot; Huntington Beach</div>
+                <div class="job-appliance">Bosch Dishwasher &middot; Invoice sent</div>
+              </div>
+              <div class="job-amt">$900</div>
+            </div>
+
           </div>
-          <div class="tab-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            <span class="tab-label">Jobs</span>
-          </div>
-          <div class="tab-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span class="tab-label">Clients</span>
-          </div>
-          <div class="tab-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-            <span class="tab-label">Profile</span>
+
+          <!-- Tab bar -->
+          <div class="tab-bar">
+            <div class="tab-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              <span class="tab-label">Home</span>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span class="tab-label">Jobs</span>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span class="tab-label">Clients</span>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+              <span class="tab-label">Profile</span>
+            </div>
           </div>
         </div>
       </div>
