@@ -1249,6 +1249,184 @@
       .fv-compare { display: none; }
       .fv-plans { grid-template-columns: 1fr; }
     }
+
+    /* ── ADVANTAGES ───────────────────────────────────── */
+    .advantages {
+      background: var(--dark);
+    }
+
+    .adv-header {
+      background: var(--cream);
+      padding: 100px 48px 80px;
+      text-align: center;
+    }
+    .adv-header .eyebrow { color: #BF5800; margin-bottom: 14px; }
+    .adv-header .block-title { margin-bottom: 14px; }
+    .adv-header-sub {
+      font-size: 17px; color: var(--lt2); max-width: 520px;
+      margin: 0 auto; line-height: 1.65;
+    }
+
+    .adv-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 0;
+      min-height: 620px;
+    }
+
+    .adv-dark  { background: var(--dark); }
+    .adv-cream { background: var(--cream); }
+
+    .adv-flip { direction: rtl; }
+    .adv-flip > * { direction: ltr; }
+
+    .adv-screen-side {
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px 48px;
+    }
+
+    .adv-screen-outer {
+      position: relative;
+    }
+
+    .adv-free-pill {
+      position: absolute; top: -14px; right: -14px; z-index: 10;
+      background: #1A9E3F; color: #fff;
+      font-size: 11px; font-weight: 700;
+      padding: 5px 14px; border-radius: 100px;
+      letter-spacing: .04em;
+      box-shadow: 0 4px 12px rgba(26,158,63,0.40);
+    }
+
+    .adv-device {
+      width: 280px; height: 520px;
+      background: #12101E;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 46px;
+      position: relative; overflow: hidden;
+      box-shadow:
+        0 60px 120px rgba(0,0,0,0.70),
+        0 20px 40px rgba(0,0,0,0.40),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+    }
+
+    .adv-device-light {
+      border-color: rgba(30,27,46,0.20);
+      box-shadow:
+        0 60px 120px rgba(30,27,46,0.30),
+        0 20px 40px rgba(30,27,46,0.15);
+    }
+
+    .adv-device-island {
+      position: absolute; top: 12px; left: 50%;
+      transform: translateX(-50%);
+      width: 80px; height: 22px;
+      background: #000; border-radius: 100px;
+      z-index: 5;
+    }
+
+    .adv-screen-body {
+      position: absolute; inset: 0;
+      border-radius: 45px;
+      overflow: hidden;
+    }
+
+    .adv-copy-side {
+      padding: 60px 64px 60px 48px;
+    }
+    .adv-flip .adv-copy-side {
+      padding: 60px 48px 60px 64px;
+    }
+
+    .adv-free-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #1A9E3F;
+      background: rgba(26,158,63,0.12);
+      border-radius: 100px; padding: 5px 14px;
+      margin-bottom: 18px;
+    }
+
+    .adv-pro-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--yellow);
+      background: rgba(255,214,10,0.12);
+      border-radius: 100px; padding: 5px 14px;
+      margin-bottom: 18px;
+    }
+
+    .adv-title {
+      font-family: var(--ff-display);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+
+    .adv-dark  .adv-title { color: #fff; }
+    .adv-cream .adv-title { color: var(--dark); }
+
+    .adv-body {
+      font-size: 16px; line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .adv-dark  .adv-body { color: var(--t2); }
+    .adv-cream .adv-body { color: var(--lt2); }
+
+    .adv-compare-pill {
+      display: inline-flex; flex-direction: column; gap: 5px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px; padding: 12px 16px;
+    }
+    .adv-cream .adv-compare-pill {
+      background: rgba(30,27,46,0.04);
+      border-color: rgba(30,27,46,0.09);
+    }
+
+    .acp-them {
+      font-size: 12px;
+      text-decoration: line-through;
+    }
+    .adv-dark  .acp-them { color: rgba(255,255,255,0.28); }
+    .adv-cream .acp-them { color: rgba(30,27,46,0.30); }
+
+    .acp-us {
+      font-size: 13px; font-weight: 600;
+      color: #4ade80;
+    }
+    .adv-cream .acp-us { color: #1A9E3F; }
+
+    /* Team full-width */
+    .adv-team {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 100px 48px;
+    }
+
+    .adv-team-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .adv-team-screen {
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .adv-row { grid-template-columns: 1fr; min-height: auto; }
+      .adv-flip { direction: ltr; }
+      .adv-screen-side { padding: 40px 24px; }
+      .adv-copy-side,
+      .adv-flip .adv-copy-side { padding: 0 24px 48px; }
+      .adv-team-inner { grid-template-columns: 1fr; gap: 40px; }
+      .adv-device { width: 240px; height: 440px; }
+      .adv-header { padding: 72px 24px 56px; }
+      .adv-team { padding: 72px 24px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1280,12 +1458,12 @@
     </div>
 
     <h1 class="hero-h1">
-      From first call<br>to <mark>getting paid</mark>&mdash;<br>one app.
+      The tools that run<br>your repair business.<br><mark>Free.</mark>
     </h1>
 
     <p class="hero-sub">
-      Jobs, scheduling, invoices, payments, warranties &mdash;
-      <strong>all free forever.</strong> Only team management requires Pro.
+      Jobber starts at $49/mo. ServiceTitan at $298/mo.
+      JobPocket gives you <strong>everything a solo tech actually needs</strong> &mdash; at no cost.
     </p>
 
     <div class="hero-actions">
@@ -1492,121 +1670,319 @@
   </div>
 </section>
 
-<!-- FEATURES BENTO -->
-<section class="features-wrap" id="features">
-  <div style="max-width:1100px;margin:0 auto 56px;">
-    <div class="eyebrow eyebrow-a">Everything you need</div>
-    <h2 class="block-title dark" style="max-width:520px;">Designed for the way you actually work</h2>
+<!-- ADVANTAGES -->
+<section class="advantages" id="features">
+
+  <div class="adv-header">
+    <div class="eyebrow eyebrow-a">Why JobPocket</div>
+    <h2 class="block-title dark">
+      While others charge monthly,<br>you just need your iPhone.
+    </h2>
+    <p class="adv-header-sub">
+      Every core tool a solo appliance repair technician uses daily &mdash; free.
+      No trial period. No credit card. No catch.
+    </p>
   </div>
 
-  <div class="feat-bento">
-
-    <!-- Large: Invoicing -->
-    <div class="fb-large">
-      <div class="fb-icon fb-icon-y">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-          <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
-        </svg>
-      </div>
-      <div class="fb-title">Professional Invoices in 2 Minutes</div>
-      <p class="fb-body">Line items, taxes, photos, warranty badge. Clients pay on the spot via QR code, card, or Zelle. No more chasing payments.</p>
-
-      <div class="invoice-preview">
-        <div class="inv-header">
-          <span class="inv-no">INVOICE #JP-0047</span>
-          <span class="inv-status">Paid</span>
-        </div>
-        <div class="inv-body">
-          <div class="inv-row"><span>Labor &mdash; Bearing replacement</span><span>$320.00</span></div>
-          <div class="inv-row"><span>Drum bearing kit (OEM)</span><span>$89.00</span></div>
-          <div class="inv-row"><span>Tax (8.75%)</span><span>$35.72</span></div>
-          <div class="inv-row total"><span>Total</span><span>$444.72</span></div>
-        </div>
-        <div class="qr-strip">
-          <div class="qr-box">
-            <span></span><span></span><span></span>
-            <span></span><span style="background:transparent"></span><span></span>
-            <span></span><span></span><span></span>
-          </div>
-          <span class="qr-text">Scan to pay &middot; Apple Pay, Card, Zelle</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mid: Job Management -->
-    <div class="fb-mid">
-      <div class="fb-icon fb-icon-b">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2"/>
-          <path d="M16 2v4M8 2v4M3 10h18"/>
-        </svg>
-      </div>
-      <div class="fb-title">Jobs from Draft to Paid</div>
-      <p class="fb-body" style="margin-bottom:24px;">10 status stages. Swipe right to advance, swipe left to pause. Your whole day at a glance.</p>
-
-      <div class="fh-items" style="padding:0;">
-        <div class="fh-row">
-          <div class="fh-dot" style="background:#60a5fa"></div>
-          <div class="fh-row-text">
-            <div class="fh-row-title">Scheduled &rarr; In Progress &rarr; Done</div>
-            <div class="fh-row-sub">One swipe per stage</div>
-          </div>
-        </div>
-        <div class="fh-row">
-          <div class="fh-dot" style="background:#a78bfa"></div>
-          <div class="fh-row-text">
-            <div class="fh-row-title">Calendar: Day, Week, Month</div>
-            <div class="fh-row-sub">Color-coded by status</div>
-          </div>
-        </div>
-        <div class="fh-row">
-          <div class="fh-dot" style="background:#4ade80"></div>
-          <div class="fh-row-text">
-            <div class="fh-row-title">Photos attached per job</div>
-            <div class="fh-row-sub">Before &amp; after, on-site</div>
+  <!-- ADV 1: Scheduling — dark bg, screen left -->
+  <div class="adv-row adv-dark">
+    <div class="adv-screen-side">
+      <div class="adv-screen-outer">
+        <div class="adv-free-pill">Free</div>
+        <div class="adv-device">
+          <div class="adv-device-island"></div>
+          <div class="adv-screen-body" style="background:#FAF7F2">
+            <!-- Calendar Week recreation -->
+            <div style="padding:18px 14px 12px">
+              <div style="font-size:22px;font-weight:700;color:#1E1B2E;letter-spacing:-0.5px;margin-bottom:14px">Calendar</div>
+              <!-- Segment -->
+              <div style="display:flex;background:rgba(30,27,46,0.07);border-radius:10px;padding:3px;margin-bottom:14px">
+                <div style="flex:1;text-align:center;font-size:12px;color:rgba(30,27,46,0.38);padding:5px">Day</div>
+                <div style="flex:1;text-align:center;font-size:12px;font-weight:600;color:#1E1B2E;background:#fff;border-radius:7px;padding:5px;box-shadow:0 1px 3px rgba(30,27,46,0.12)">Week</div>
+                <div style="flex:1;text-align:center;font-size:12px;color:rgba(30,27,46,0.38);padding:5px">Month</div>
+              </div>
+              <!-- Week strip -->
+              <div style="display:flex;justify-content:space-between;margin-bottom:14px;padding:0 2px">
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">M</div><div style="font-size:14px;color:rgba(30,27,46,0.45)">23</div><div style="height:5px"></div></div>
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">T</div><div style="font-size:14px;color:rgba(30,27,46,0.45)">24</div><div style="height:5px"></div></div>
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">W</div><div style="font-size:14px;color:rgba(30,27,46,0.45)">25</div><div style="height:5px"></div></div>
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">T</div><div style="font-size:14px;color:rgba(30,27,46,0.45)">26</div><div style="height:5px"></div></div>
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">F</div><div style="font-size:14px;color:rgba(30,27,46,0.45)">27</div><div style="height:5px"></div></div>
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">S</div><div style="width:28px;height:28px;background:#1E1B2E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#fff;margin:0 auto">28</div><div style="width:5px;height:5px;background:#FFD60A;border-radius:50%;margin:3px auto 0"></div></div>
+                <div style="text-align:center"><div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:4px">S</div><div style="font-size:14px;color:rgba(30,27,46,0.45)">29</div><div style="height:5px"></div></div>
+              </div>
+              <!-- Date label -->
+              <div style="font-size:11px;font-weight:500;color:rgba(30,27,46,0.40);margin-bottom:10px">Saturday, March 28 &middot; 3 jobs &middot; $650</div>
+              <!-- Job rows -->
+              <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(30,27,46,0.06),0 6px 20px rgba(30,27,46,0.07)">
+                <div style="padding:12px 14px;border-bottom:0.5px solid rgba(30,27,46,0.07);display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:13px;font-weight:500;color:rgba(30,27,46,0.85)">Refrigerator Repair</div>
+                    <div style="font-size:11px;color:rgba(30,27,46,0.35);margin-top:2px">10:00 &rarr; 11:30 &middot; Martin H.</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-size:13px;color:rgba(30,27,46,0.55)">$320</div>
+                    <div style="font-size:10px;font-weight:600;color:#BF5800;background:rgba(191,88,0,0.10);border-radius:100px;padding:2px 8px;margin-top:3px">In Progress</div>
+                  </div>
+                </div>
+                <div style="padding:12px 14px;border-bottom:0.5px solid rgba(30,27,46,0.07);display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:13px;font-weight:500;color:rgba(30,27,46,0.85)">Washer Repair</div>
+                    <div style="font-size:11px;color:rgba(30,27,46,0.35);margin-top:2px">1:00 PM &middot; Sandra V.</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-size:13px;color:rgba(30,27,46,0.55)">$185</div>
+                    <div style="font-size:10px;font-weight:600;color:#0071E3;background:rgba(0,113,227,0.08);border-radius:100px;padding:2px 8px;margin-top:3px">Scheduled</div>
+                  </div>
+                </div>
+                <div style="padding:12px 14px;display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:13px;font-weight:500;color:rgba(30,27,46,0.85)">Dryer Repair</div>
+                    <div style="font-size:11px;color:rgba(30,27,46,0.35);margin-top:2px">3:30 &rarr; 4:30 &middot; Kevin P.</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-size:13px;color:rgba(30,27,46,0.55)">$145</div>
+                    <div style="font-size:10px;font-weight:600;color:#0071E3;background:rgba(0,113,227,0.08);border-radius:100px;padding:2px 8px;margin-top:3px">Scheduled</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Small: Warranty -->
-    <div class="fb-small">
-      <div class="fb-icon fb-icon-g">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
+    <div class="adv-copy-side">
+      <div class="adv-free-tag">Free &mdash; always</div>
+      <h3 class="adv-title">Schedule every job.<br>See every day.</h3>
+      <p class="adv-body">Day, week, and month views. Color-coded by job status. See your full week at a glance and never double-book again.</p>
+      <div class="adv-compare-pill">
+        <span class="acp-them">Jobber charges $49/mo for this</span>
+        <span class="acp-us">JobPocket: free</span>
       </div>
-      <div class="fb-title">Warranty Tracking</div>
-      <p class="fb-body">QR sticker on every appliance. Client scans &mdash; sees full repair history. Auto-reminders before expiry.</p>
     </div>
-
-    <!-- Small: Clients -->
-    <div class="fb-small">
-      <div class="fb-icon fb-icon-p">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </div>
-      <div class="fb-title">Client Portal</div>
-      <p class="fb-body">Every client gets a branded portal. Track job progress, pay invoices, view warranties &mdash; no app needed.</p>
-    </div>
-
-    <!-- Small: Team -->
-    <div class="fb-small">
-      <div class="fb-icon fb-icon-y">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-        </svg>
-      </div>
-      <div class="fb-title">Team Ready</div>
-      <p class="fb-body">Add technicians, assign jobs, track performance. Grows from solo to a full crew without switching tools.</p>
-    </div>
-
   </div>
+
+  <!-- ADV 2: Invoicing — cream bg, screen right -->
+  <div class="adv-row adv-cream adv-flip">
+    <div class="adv-copy-side">
+      <div class="adv-free-tag">Free &mdash; always</div>
+      <h3 class="adv-title">Send invoices.<br>Get paid instantly.</h3>
+      <p class="adv-body">Professional invoices in 2 minutes. Line items, tax, your logo. Clients pay via QR code, Apple Pay, card, or Zelle &mdash; right on-site.</p>
+      <div class="adv-compare-pill">
+        <span class="acp-them">ServiceTitan: $298/mo for invoicing</span>
+        <span class="acp-us">JobPocket: free</span>
+      </div>
+    </div>
+    <div class="adv-screen-side">
+      <div class="adv-screen-outer">
+        <div class="adv-free-pill">Free</div>
+        <div class="adv-device adv-device-light">
+          <div class="adv-device-island" style="background:#1E1B2E"></div>
+          <div class="adv-screen-body" style="background:#FAF7F2">
+            <div style="padding:14px 14px 12px">
+              <div style="font-size:11px;color:rgba(30,27,46,0.35);margin-bottom:14px">&larr; Job #CP-0042</div>
+              <!-- Invoice card -->
+              <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(30,27,46,0.06),0 6px 20px rgba(30,27,46,0.07);margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#1E1B2E">CoastPro LLC</div>
+                    <div style="font-size:10px;color:rgba(30,27,46,0.40)">coastpro.com &middot; (949) 555-0100</div>
+                  </div>
+                  <div style="font-size:10px;font-weight:700;color:#BF5800;background:rgba(191,88,0,0.10);border-radius:6px;padding:3px 8px">INVOICE</div>
+                </div>
+                <div style="font-size:10px;color:rgba(30,27,46,0.40);margin-bottom:2px">Bill To</div>
+                <div style="font-size:13px;font-weight:700;color:#1E1B2E;margin-bottom:2px">Martin Household</div>
+                <div style="font-size:10px;color:rgba(30,27,46,0.35);margin-bottom:10px">1234 Oak Street, Irvine CA 92612</div>
+                <div style="border-top:0.5px solid rgba(30,27,46,0.08);padding-top:8px">
+                  <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(30,27,46,0.55);margin-bottom:4px"><span>Diagnostic fee</span><span>$75.00</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(30,27,46,0.55);margin-bottom:4px"><span>Ice maker module <span style="font-size:9px;color:#BF5800;background:rgba(191,88,0,0.10);border-radius:3px;padding:1px 4px">T</span></span><span>$145.00</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(30,27,46,0.55);margin-bottom:8px"><span>Labor &mdash; 2 hrs</span><span>$130.00</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:8px;color:rgba(30,27,46,0.35);margin-bottom:4px"><span>Tax (8.6%)</span><span>+$12.47</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#1E1B2E;border-top:0.5px solid rgba(30,27,46,0.08);padding-top:8px"><span>Total Due</span><span>$362.47</span></div>
+                </div>
+                <!-- PAID stamp -->
+                <div style="text-align:center;margin-top:10px">
+                  <div style="display:inline-block;font-size:12px;font-weight:700;color:#1A9E3F;border:1.5px solid #1A9E3F;border-radius:6px;padding:3px 14px;letter-spacing:0.08em">PAID</div>
+                </div>
+              </div>
+              <!-- QR pay -->
+              <div style="background:rgba(0,113,227,0.07);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px">
+                <div style="width:38px;height:38px;background:rgba(0,113,227,0.12);border-radius:8px;flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:6px">
+                  <span style="background:rgba(0,113,227,0.8);border-radius:1px"></span><span style="background:rgba(0,113,227,0.8);border-radius:1px"></span><span style="background:rgba(0,113,227,0.8);border-radius:1px"></span>
+                  <span style="background:rgba(0,113,227,0.8);border-radius:1px"></span><span style="background:transparent"></span><span style="background:rgba(0,113,227,0.8);border-radius:1px"></span>
+                  <span style="background:rgba(0,113,227,0.8);border-radius:1px"></span><span style="background:rgba(0,113,227,0.8);border-radius:1px"></span><span style="background:rgba(0,113,227,0.8);border-radius:1px"></span>
+                </div>
+                <div>
+                  <div style="font-size:11px;font-weight:600;color:#0071E3">Scan to pay</div>
+                  <div style="font-size:10px;color:rgba(0,113,227,0.65)">Apple Pay &middot; Card &middot; Zelle &middot; Cash</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADV 3: Clients + Appliances — dark bg, screen left -->
+  <div class="adv-row adv-dark">
+    <div class="adv-screen-side">
+      <div class="adv-screen-outer">
+        <div class="adv-free-pill">Free</div>
+        <div class="adv-device">
+          <div class="adv-device-island"></div>
+          <div class="adv-screen-body" style="background:#FAF7F2">
+            <div style="padding:14px 14px 12px">
+              <div style="font-size:9px;color:rgba(30,27,46,0.35);margin-bottom:10px">&larr; Clients</div>
+              <!-- Client hero -->
+              <div style="text-align:center;margin-bottom:14px">
+                <div style="width:52px;height:52px;border-radius:50%;background:rgba(0,113,227,0.10);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#0071E3;margin:0 auto 8px">MH</div>
+                <div style="font-size:16px;font-weight:700;color:#1E1B2E">Martin Household</div>
+                <div style="font-size:11px;color:rgba(30,27,46,0.40)">(949) 555-0182</div>
+                <div style="display:flex;gap:6px;justify-content:center;margin-top:6px">
+                  <span style="font-size:10px;font-weight:600;color:#0071E3;background:rgba(0,113,227,0.08);border-radius:100px;padding:2px 9px">VIP</span>
+                  <span style="font-size:10px;font-weight:600;color:rgba(30,27,46,0.50);background:rgba(30,27,46,0.07);border-radius:100px;padding:2px 9px">Repeat</span>
+                </div>
+              </div>
+              <!-- Stats row -->
+              <div style="display:flex;gap:7px;margin-bottom:12px">
+                <div style="flex:1;background:#1E1B2E;border-radius:12px;padding:10px 12px"><div style="font-size:9px;color:rgba(255,255,255,0.35)">REVENUE</div><div style="font-size:18px;font-weight:700;color:#fff">$3,120</div><div style="font-size:9px;color:rgba(255,255,255,0.30)">lifetime</div></div>
+                <div style="flex:1;background:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 1px 3px rgba(30,27,46,0.06)"><div style="font-size:9px;color:rgba(30,27,46,0.32)">JOBS</div><div style="font-size:18px;font-weight:700;color:#1E1B2E">7</div><div style="font-size:9px;color:rgba(30,27,46,0.32)">2 this year</div></div>
+                <div style="flex:1;background:#F0C38E;border-radius:12px;padding:10px 12px"><div style="font-size:9px;color:rgba(30,27,46,0.45)">SINCE</div><div style="font-size:18px;font-weight:700;color:#1E1B2E">2023</div><div style="font-size:9px;color:rgba(30,27,46,0.45)">3 yrs ago</div></div>
+              </div>
+              <!-- Address + appliances -->
+              <div style="background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 1px 3px rgba(30,27,46,0.06)">
+                <div style="font-size:11px;font-weight:600;color:#1E1B2E;margin-bottom:3px">1234 Oak Street</div>
+                <div style="font-size:10px;color:rgba(30,27,46,0.40);margin-bottom:10px">Irvine, CA 92612 &middot; Primary</div>
+                <div style="border-top:0.5px solid rgba(30,27,46,0.07);padding-top:8px">
+                  <div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,46,0.28);margin-bottom:7px">Appliances</div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <div><div style="font-size:11px;font-weight:500;color:rgba(30,27,46,0.85)">Samsung RF28R7351SR</div><div style="font-size:10px;color:rgba(30,27,46,0.35)">Refrigerator &middot; 2021 &middot; <span style="color:#1A9E3F">Warranty &#10003;</span></div></div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div><div style="font-size:11px;font-weight:500;color:rgba(30,27,46,0.85)">LG WM3900HWA</div><div style="font-size:10px;color:rgba(30,27,46,0.35)">Washer &middot; 2020</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="adv-copy-side">
+      <div class="adv-free-tag">Free &mdash; always</div>
+      <h3 class="adv-title">Every client.<br>Every appliance.</h3>
+      <p class="adv-body">Full repair history per household. Multiple addresses. Appliances linked with warranty status. One tap to call, email, or start a new job.</p>
+      <div class="adv-compare-pill">
+        <span class="acp-them">Most apps lock CRM behind Pro tier</span>
+        <span class="acp-us">JobPocket: free</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADV 4: Warranty — cream bg, screen right -->
+  <div class="adv-row adv-cream adv-flip">
+    <div class="adv-copy-side">
+      <div class="adv-free-tag">Free &mdash; always</div>
+      <h3 class="adv-title">Warranties that<br>earn repeat jobs.</h3>
+      <p class="adv-body">QR sticker on every appliance. Client scans &mdash; sees full service history. Auto-reminder before expiry brings them back to you, not a competitor.</p>
+      <div class="adv-compare-pill">
+        <span class="acp-them">Competitors don&rsquo;t offer this at any tier</span>
+        <span class="acp-us">JobPocket: free</span>
+      </div>
+    </div>
+    <div class="adv-screen-side">
+      <div class="adv-screen-outer">
+        <div class="adv-free-pill">Free</div>
+        <div class="adv-device adv-device-light">
+          <div class="adv-device-island" style="background:#1E1B2E"></div>
+          <div class="adv-screen-body" style="background:#FAF7F2">
+            <div style="padding:14px 14px 12px">
+              <div style="font-size:9px;color:rgba(30,27,46,0.35);margin-bottom:10px">&larr; Martin HH</div>
+              <!-- Appliance card -->
+              <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(30,27,46,0.06),0 6px 20px rgba(30,27,46,0.07);margin-bottom:10px">
+                <div style="font-size:14px;font-weight:700;color:#1E1B2E;margin-bottom:2px">Samsung RF28R7351SR</div>
+                <div style="font-size:11px;color:rgba(30,27,46,0.40);margin-bottom:12px">French Door Refrigerator</div>
+                <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(26,158,63,0.09);border-radius:100px;padding:4px 10px;margin-bottom:12px">
+                  <div style="width:7px;height:7px;background:#1A9E3F;border-radius:50%"></div>
+                  <span style="font-size:11px;font-weight:600;color:#1A9E3F">Warranty until Dec 2026</span>
+                </div>
+                <!-- Stats mini -->
+                <div style="display:flex;gap:6px;margin-bottom:12px">
+                  <div style="flex:1;background:#1E1B2E;border-radius:10px;padding:8px"><div style="font-size:9px;color:rgba(255,255,255,0.35)">REPAIRS</div><div style="font-size:16px;font-weight:700;color:#fff">3</div></div>
+                  <div style="flex:1;background:rgba(30,27,46,0.05);border-radius:10px;padding:8px"><div style="font-size:9px;color:rgba(30,27,46,0.32)">SPENT</div><div style="font-size:16px;font-weight:700;color:#1E1B2E">$745</div></div>
+                  <div style="flex:1;background:#F0C38E;border-radius:10px;padding:8px"><div style="font-size:9px;color:rgba(30,27,46,0.45)">AGE</div><div style="font-size:16px;font-weight:700;color:#1E1B2E">4 yrs</div></div>
+                </div>
+                <!-- Warranty section -->
+                <div style="background:rgba(30,27,46,0.03);border-radius:10px;padding:10px 12px">
+                  <div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,46,0.28);margin-bottom:8px">Warranty</div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <div style="font-size:11px;color:rgba(30,27,46,0.45)">Status</div>
+                    <div style="font-size:11px;font-weight:600;color:#1A9E3F">Active</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between">
+                    <div style="font-size:11px;color:rgba(30,27,46,0.45)">Expires</div>
+                    <div style="font-size:11px;font-weight:600;color:#1E1B2E">December 15, 2026</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Repair history -->
+              <div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,46,0.28);margin-bottom:8px">Repair History</div>
+              <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(30,27,46,0.06)">
+                <div style="padding:9px 12px;border-bottom:0.5px solid rgba(30,27,46,0.07);display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:rgba(30,27,46,0.85)">Ice Maker Repair</span><span style="font-size:10px;font-weight:600;color:#BF5800;background:rgba(191,88,0,0.10);border-radius:100px;padding:2px 7px">In Progress</span></div>
+                <div style="padding:9px 12px;border-bottom:0.5px solid rgba(30,27,46,0.07);display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:rgba(30,27,46,0.85)">Compressor Service</span><span style="font-size:10px;font-weight:600;color:#1A9E3F;background:rgba(26,158,63,0.09);border-radius:100px;padding:2px 7px">Paid</span></div>
+                <div style="padding:9px 12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:rgba(30,27,46,0.85)">Door Seal Replacement</span><span style="font-size:10px;font-weight:600;color:#1A9E3F;background:rgba(26,158,63,0.09);border-radius:100px;padding:2px 7px">Paid</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADV 5: Team — pro, full-width dark -->
+  <div class="adv-team">
+    <div class="adv-team-inner">
+      <div class="adv-team-copy">
+        <div class="adv-pro-tag">Pro &mdash; $49/mo</div>
+        <h3 class="adv-title" style="color:#fff">When your business grows,<br>your team grows with it.</h3>
+        <p class="adv-body" style="color:var(--t2)">Add technicians, set roles, assign jobs. Owner gets full access. Technicians see only their jobs and clients. No extra per-seat fees.</p>
+        <a href="https://apps.apple.com/app/jobpocket" class="btn-primary" style="margin-top:28px;display:inline-flex">
+          Start 14-day free trial
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Team mini screen -->
+      <div class="adv-team-screen">
+        <div style="background:#FAF7F2;border-radius:18px;padding:20px;box-shadow:0 40px 80px rgba(0,0,0,0.50);border:1px solid rgba(255,255,255,0.10);max-width:320px">
+          <div style="font-size:9px;color:rgba(30,27,46,0.35);margin-bottom:12px">&larr; Business</div>
+          <div style="text-align:center;font-size:17px;font-weight:700;color:#1E1B2E;margin-bottom:16px">Team</div>
+          <!-- Team members -->
+          <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(30,27,46,0.06),0 6px 20px rgba(30,27,46,0.07);margin-bottom:12px">
+            <div style="padding:13px 16px;border-bottom:0.5px solid rgba(30,27,46,0.07);display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:34px;height:34px;border-radius:50%;background:rgba(0,113,227,0.10);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0071E3">OS</div>
+                <div><div style="font-size:13px;font-weight:500;color:rgba(30,27,46,0.85)">Oleksandr S.</div><div style="font-size:11px;color:rgba(30,27,46,0.35)">+1 (949) 555-0182</div></div>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:rgba(30,27,46,0.55);background:rgba(30,27,46,0.07);border-radius:100px;padding:3px 10px">Owner</span>
+            </div>
+            <div style="padding:13px 16px;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:34px;height:34px;border-radius:50%;background:rgba(88,86,214,0.10);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#5856D6">JM</div>
+                <div><div style="font-size:13px;font-weight:500;color:rgba(30,27,46,0.85)">Jake Martinez</div><div style="font-size:11px;color:rgba(30,27,46,0.35)">+1 (949) 555-0147</div></div>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:#0071E3;background:rgba(0,113,227,0.08);border-radius:100px;padding:3px 10px">Technician</span>
+            </div>
+          </div>
+          <div style="background:rgba(0,113,227,0.06);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(0,113,227,0.12);display:flex;align-items:center;justify-content:center;font-size:16px;color:#0071E3;flex-shrink:0">+</div>
+            <div><div style="font-size:13px;font-weight:500;color:#0071E3">Invite Team Member</div><div style="font-size:11px;color:rgba(0,113,227,0.55)">Send email invite &middot; they set own password</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- PRICING -->
