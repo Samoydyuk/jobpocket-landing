@@ -297,7 +297,7 @@
     /* Phone body — 3D tilted */
     .phone {
       width: 300px; height: 620px;
-      background: linear-gradient(160deg, #1a1826 0%, #0e0c1a 100%);
+      background: #FAF7F2;
       border-radius: 52px;
       position: relative;
       overflow: hidden;
@@ -360,136 +360,192 @@
       z-index: 5;
     }
 
+    /* ── REAL APP SCREEN (Figma-accurate) ────────── */
     .screen {
       position: absolute; inset: 0;
-      padding: 60px 16px 28px;
+      background: #FAF7F2;
       overflow: hidden;
+      border-radius: 51px;
+    }
+
+    /* scroll area */
+    .screen-scroll {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      bottom: 72px;
+      overflow: hidden;
+      padding: 0;
     }
 
     /* Status bar */
     .status-bar {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 8px;
-      margin-bottom: 16px;
+      padding: 14px 20px 0;
+      margin-bottom: 0;
     }
     .status-time {
       font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,0.90);
+      color: #1E1B2E; letter-spacing: -0.3px;
     }
-    .status-icons {
-      display: flex; gap: 5px; align-items: center;
-    }
-    .status-icons svg { width: 14px; height: 10px; color: rgba(255,255,255,0.80); }
+    .status-icons { display: flex; gap: 4px; align-items: center; }
+    .status-icons svg { width: 13px; height: 9px; color: #1E1B2E; }
 
-    /* App nav */
-    .app-header {
-      padding: 0 8px 14px;
-    }
+    /* Header */
+    .app-header { padding: 6px 16px 12px; display: flex; justify-content: space-between; align-items: flex-start; }
     .app-title {
       font-family: var(--ff-display);
-      font-size: 26px; font-weight: 700;
-      color: rgba(255,255,255,0.94);
-      letter-spacing: -0.6px;
-      margin-bottom: 2px;
+      font-size: 28px; font-weight: 700;
+      color: #1E1B2E; letter-spacing: -0.6px; line-height: 1;
     }
-    .app-date {
-      font-size: 12px; color: rgba(255,255,255,0.35);
-      font-weight: 400;
+    .app-date { font-size: 11px; color: rgba(30,27,46,0.32); margin-top: 2px; }
+    .nav-icons { display: flex; gap: 12px; padding-top: 8px; }
+    .nav-icon-dot {
+      width: 14px; height: 14px;
+      background: rgba(30,27,46,0.10); border-radius: 3px;
     }
 
     /* Revenue card */
     .rev-card {
-      background: linear-gradient(135deg, rgba(255,214,10,0.18) 0%, rgba(255,214,10,0.06) 100%);
-      border: 1px solid rgba(255,214,10,0.22);
-      border-radius: 18px;
-      padding: 16px;
-      margin: 0 8px 10px;
+      background: #1E1B2E; border-radius: 18px;
+      padding: 14px 16px 12px;
+      margin: 0 14px 10px;
+      position: relative; overflow: hidden;
     }
     .rev-label {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: rgba(255,214,10,0.70);
-      margin-bottom: 4px;
+      font-size: 9px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 3px;
     }
     .rev-amount {
       font-family: var(--ff-display);
-      font-size: 30px; font-weight: 700;
-      color: var(--yellow);
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 8px;
+      font-size: 32px; font-weight: 700; letter-spacing: -0.04em;
+      color: #fff; line-height: 1; margin-bottom: 6px;
     }
-    .rev-meta {
-      display: flex; gap: 6px;
+    .rev-growth { font-size: 10px; color: #FFD60A; margin-bottom: 4px; }
+    .rev-pending {
+      display: inline-block; font-size: 9px; font-weight: 500;
+      color: #F0C38E; background: rgba(240,195,142,0.18);
+      border-radius: 100px; padding: 2px 8px;
     }
-    .rev-tag {
-      font-size: 9px; font-weight: 600;
-      padding: 2px 7px; border-radius: 100px;
-      background: rgba(26,158,63,0.20); color: #4ade80;
+    /* mini bar chart */
+    .rev-bars {
+      position: absolute; right: 14px; bottom: 12px;
+      display: flex; gap: 3px; align-items: flex-end; height: 28px;
+    }
+    .rev-bar {
+      width: 7px; background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+    }
+    .rev-bar.hi { background: #FFD60A; }
+
+    /* Alert strip */
+    .alert-strip {
+      margin: 0 14px 8px;
+      background: rgba(192,57,43,0.07); border-radius: 12px;
+      padding: 10px 12px 10px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-left: 3px solid rgba(192,57,43,0.85);
+    }
+    .alert-text-main { font-size: 11px; color: rgba(30,27,46,0.80); font-weight: 500; }
+    .alert-text-sub  { font-size: 10px; color: rgba(30,27,46,0.40); }
+    .alert-btn {
+      font-size: 10px; font-weight: 600; color: #C0392B;
+      background: rgba(192,57,43,0.12); border-radius: 100px;
+      padding: 3px 9px;
     }
 
-    /* Job cards */
-    .job-section-label {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-      padding: 0 10px; margin-bottom: 7px;
+    /* Quick actions */
+    .quick-actions {
+      margin: 0 14px 10px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 1px 3px rgba(30,27,46,0.06), 0 6px 20px rgba(30,27,46,0.07);
+      padding: 10px 0;
+      display: flex;
     }
+    .qa-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px;
+      padding: 4px 0;
+      border-right: 0.5px solid rgba(30,27,46,0.07);
+    }
+    .qa-item:last-child { border-right: none; }
+    .qa-dot {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: rgba(30,27,46,0.06);
+    }
+    .qa-dot.yellow { background: #FFD60A; }
+    .qa-label { font-size: 9px; color: rgba(30,27,46,0.35); }
 
-    .job-card {
-      background: rgba(255,255,255,0.055);
-      border: 0.5px solid rgba(255,255,255,0.09);
-      border-radius: 14px;
-      padding: 11px 12px;
-      margin: 0 8px 8px;
+    /* Stats row */
+    .stats-row { display: flex; gap: 8px; margin: 0 14px 10px; }
+    .stat-card {
+      flex: 1; border-radius: 18px; padding: 12px 14px;
+      box-shadow: 0 1px 3px rgba(30,27,46,0.06), 0 6px 20px rgba(30,27,46,0.07);
+    }
+    .stat-card.light { background: #fff; }
+    .stat-card.dark  { background: #1E1B2E; }
+    .stat-lbl  { font-size: 9px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+    .stat-card.light .stat-lbl { color: rgba(30,27,46,0.32); }
+    .stat-card.dark  .stat-lbl { color: rgba(255,255,255,0.35); }
+    .stat-val  { font-family: var(--ff-display); font-size: 24px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 2px; }
+    .stat-card.light .stat-val { color: #1E1B2E; }
+    .stat-card.dark  .stat-val { color: #FFD60A; }
+    .stat-sub  { font-size: 9px; }
+    .stat-card.light .stat-sub { color: rgba(30,27,46,0.32); }
+    .stat-card.dark  .stat-sub { color: rgba(255,255,255,0.35); }
+
+    /* Schedule card */
+    .sched-card {
+      margin: 0 14px 10px;
+      background: #fff; border-radius: 18px;
+      box-shadow: 0 1px 3px rgba(30,27,46,0.06), 0 6px 20px rgba(30,27,46,0.07);
+      overflow: hidden;
+    }
+    .sched-header {
+      padding: 12px 14px 10px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 0.5px solid rgba(30,27,46,0.08);
+    }
+    .sched-title { font-size: 13px; font-weight: 600; color: #1E1B2E; }
+    .sched-see   { font-size: 11px; color: #0071E3; }
+
+    .sched-row {
+      padding: 8px 14px;
       display: flex; align-items: center; gap: 10px;
+      border-bottom: 0.5px solid rgba(30,27,46,0.06);
     }
+    .sched-row:last-child { border-bottom: none; }
 
-    .job-dot {
-      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-    }
-    .dot-green  { background: #4ade80; box-shadow: 0 0 6px rgba(74,222,128,0.5); }
-    .dot-blue   { background: #60a5fa; box-shadow: 0 0 6px rgba(96,165,250,0.5); }
-    .dot-amber  { background: #fbbf24; box-shadow: 0 0 6px rgba(251,191,36,0.5); }
-    .dot-purple { background: #a78bfa; box-shadow: 0 0 6px rgba(167,139,250,0.5); }
+    .sched-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .d-blue   { background: #0071E3; }
+    .d-orange { background: #FF9500; }
+    .d-green  { background: #1A9E3F; }
 
-    .job-info { flex: 1; min-width: 0; }
-    .job-name {
-      font-size: 12px; font-weight: 500;
-      color: rgba(255,255,255,0.88);
-      letter-spacing: -0.2px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .job-appliance {
-      font-size: 10px; color: rgba(255,255,255,0.35);
-      margin-top: 1px;
-    }
-    .job-amt {
-      font-family: var(--ff-display);
-      font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,0.70);
-      flex-shrink: 0;
-    }
+    .sched-info { flex: 1; }
+    .sched-name { font-size: 11px; font-weight: 500; color: rgba(30,27,46,0.85); }
+    .sched-sub  { font-size: 10px; color: rgba(30,27,46,0.32); margin-top: 1px; }
+    .sched-right { text-align: right; }
+    .sched-time { font-size: 10px; color: rgba(30,27,46,0.32); }
+    .sched-amt  { font-size: 11px; color: rgba(30,27,46,0.55); }
 
     /* Tab bar */
     .tab-bar {
       position: absolute; bottom: 0; left: 0; right: 0;
-      height: 80px;
-      background: rgba(18,16,30,0.96);
-      border-top: 0.5px solid rgba(255,255,255,0.09);
+      height: 72px;
+      background: rgba(250,247,242,0.96);
+      backdrop-filter: blur(12px);
+      border-top: 0.5px solid rgba(30,27,46,0.08);
       display: flex; align-items: flex-start;
       justify-content: space-around;
-      padding: 12px 0 0;
+      padding: 10px 0 0;
     }
-
     .tab-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px;
-      flex: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1;
     }
-    .tab-item svg { width: 22px; height: 22px; color: rgba(255,255,255,0.30); }
-    .tab-item.active svg { color: var(--yellow); }
-    .tab-label { font-size: 9px; color: rgba(255,255,255,0.28); }
-    .tab-item.active .tab-label { color: var(--yellow); }
+    .tab-item svg { width: 20px; height: 20px; color: rgba(30,27,46,0.28); }
+    .tab-item.active svg { color: #1E1B2E; }
+    .tab-label { font-size: 9px; color: rgba(30,27,46,0.30); }
+    .tab-item.active .tab-label { color: #1E1B2E; font-weight: 600; }
 
     /* ── LOGOS / SOCIAL PROOF ─────────────────────────── */
     .proof {
@@ -1150,6 +1206,7 @@
           <div class="island"></div>
           <div class="screen">
 
+            <div class="screen-scroll">
             <!-- Status bar -->
             <div class="status-bar">
               <span class="status-time">9:41</span>
@@ -1160,56 +1217,106 @@
 
             <!-- Header -->
             <div class="app-header">
-              <div class="app-title">Dashboard</div>
-              <div class="app-date">Friday, April 3 &middot; Irvine, CA</div>
+              <div>
+                <div class="app-title">Home</div>
+                <div class="app-date">Good morning, Oleksandr</div>
+              </div>
+              <div class="nav-icons">
+                <div class="nav-icon-dot"></div>
+                <div class="nav-icon-dot"></div>
+                <div class="nav-icon-dot"></div>
+              </div>
             </div>
 
-            <!-- Revenue -->
+            <!-- Revenue card -->
             <div class="rev-card">
-              <div class="rev-label">Today&rsquo;s Revenue</div>
-              <div class="rev-amount">$2,340</div>
-              <div class="rev-meta">
-                <span class="rev-tag">+18% vs last Fri</span>
+              <div class="rev-label">Collected this month</div>
+              <div class="rev-amount">$4,820</div>
+              <div class="rev-growth">&uarr; 23% vs last month</div>
+              <span class="rev-pending">$1,200 pending</span>
+              <div class="rev-bars">
+                <div class="rev-bar" style="height:38%"></div>
+                <div class="rev-bar" style="height:52%"></div>
+                <div class="rev-bar" style="height:32%"></div>
+                <div class="rev-bar" style="height:68%"></div>
+                <div class="rev-bar" style="height:58%"></div>
+                <div class="rev-bar" style="height:82%"></div>
+                <div class="rev-bar hi" style="height:100%"></div>
               </div>
             </div>
 
-            <div class="job-section-label">Today&rsquo;s Jobs &middot; Orange County</div>
-
-            <div class="job-card">
-              <div class="job-dot dot-green"></div>
-              <div class="job-info">
-                <div class="job-name">Jake Martinez &middot; Newport Beach</div>
-                <div class="job-appliance">Samsung Washer &middot; Drum bearing</div>
+            <!-- Alert strip -->
+            <div class="alert-strip">
+              <div>
+                <div class="alert-text-main">2 overdue invoices</div>
+                <div class="alert-text-sub">$680 outstanding</div>
               </div>
-              <div class="job-amt">$480</div>
+              <div class="alert-btn">Remind</div>
             </div>
 
-            <div class="job-card">
-              <div class="job-dot dot-blue"></div>
-              <div class="job-info">
-                <div class="job-name">Emily Chen &middot; Irvine</div>
-                <div class="job-appliance">LG Fridge &middot; Compressor</div>
-              </div>
-              <div class="job-amt">$640</div>
+            <!-- Quick actions -->
+            <div class="quick-actions">
+              <div class="qa-item"><div class="qa-dot"></div><div class="qa-label">New job</div></div>
+              <div class="qa-item"><div class="qa-dot"></div><div class="qa-label">Client</div></div>
+              <div class="qa-item"><div class="qa-dot"></div><div class="qa-label">Invoice</div></div>
+              <div class="qa-item"><div class="qa-dot yellow"></div><div class="qa-label">Schedule</div></div>
             </div>
 
-            <div class="job-card">
-              <div class="job-dot dot-amber"></div>
-              <div class="job-info">
-                <div class="job-name">David Park &middot; Laguna Hills</div>
-                <div class="job-appliance">Whirlpool Dryer &middot; 2:30pm</div>
+            <!-- Stats row -->
+            <div class="stats-row">
+              <div class="stat-card light">
+                <div class="stat-lbl">Active</div>
+                <div class="stat-val">8</div>
+                <div class="stat-sub">3 in progress</div>
               </div>
-              <div class="job-amt">$320</div>
+              <div class="stat-card dark">
+                <div class="stat-lbl">Paid rate</div>
+                <div class="stat-val">87%</div>
+                <div class="stat-sub">this month</div>
+              </div>
             </div>
 
-            <div class="job-card">
-              <div class="job-dot dot-purple"></div>
-              <div class="job-info">
-                <div class="job-name">Sofia Reyes &middot; Huntington Beach</div>
-                <div class="job-appliance">Bosch Dishwasher &middot; Invoice sent</div>
+            <!-- Schedule -->
+            <div class="sched-card">
+              <div class="sched-header">
+                <span class="sched-title">Schedule</span>
+                <span class="sched-see">See all</span>
               </div>
-              <div class="job-amt">$900</div>
+              <div class="sched-row">
+                <div class="sched-dot d-blue"></div>
+                <div class="sched-info">
+                  <div class="sched-name">Refrigerator Repair</div>
+                  <div class="sched-sub">Jake M. &middot; Newport Beach</div>
+                </div>
+                <div class="sched-right">
+                  <div class="sched-time">10:00</div>
+                  <div class="sched-amt">$320</div>
+                </div>
+              </div>
+              <div class="sched-row">
+                <div class="sched-dot d-orange"></div>
+                <div class="sched-info">
+                  <div class="sched-name">Washer Repair</div>
+                  <div class="sched-sub">Emily C. &middot; Irvine</div>
+                </div>
+                <div class="sched-right">
+                  <div class="sched-time">1:00</div>
+                  <div class="sched-amt">$185</div>
+                </div>
+              </div>
+              <div class="sched-row">
+                <div class="sched-dot d-green"></div>
+                <div class="sched-info">
+                  <div class="sched-name">Dryer Repair</div>
+                  <div class="sched-sub">David P. &middot; Laguna Hills</div>
+                </div>
+                <div class="sched-right">
+                  <div class="sched-time">3:30</div>
+                  <div class="sched-amt">$145</div>
+                </div>
+              </div>
             </div>
+          </div>
 
           </div>
 
