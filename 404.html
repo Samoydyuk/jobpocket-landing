@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JobPocket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      // GitHub Pages doesn't rewrite clean URLs, so /r/<code> requests
+      // land here. Forward referral links to /r/?code=<code> so the
+      // real handler at /r/index.html can pick them up.
+      var path = window.location.pathname;
+      var refMatch = path.match(/^\/r\/([A-Za-z0-9-]{3,20})\/?$/);
+      if (refMatch) {
+        var query = '?code=' + encodeURIComponent(refMatch[1]) + window.location.hash;
+        window.location.replace('/r/' + query);
+        return;
+      }
+      // Anything else — bounce home.
+      window.location.replace('/');
+    })();
+  </script>
+  <style>
+    body { font-family: -apple-system, sans-serif; padding: 40px; text-align: center; color: #1E1B2E; }
+  </style>
+</head>
+<body>
+  <p>Loading…</p>
+</body>
+</html>
