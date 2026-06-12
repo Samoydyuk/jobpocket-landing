@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're invited to JobPocket</title>
+  <meta name="description" content="Join JobPocket — the iOS app for home service contractors.">
+  <meta name="apple-itunes-app" content="app-id=jobpocket.app">
+  <link rel="icon" href="/favicon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      background: #FAF7F2;
+      color: #1E1B2E;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .badge {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #FFD60A 0%, #F0C38E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(30, 27, 46, 0.10);
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+    }
+    .referrer {
+      font-size: 17px;
+      color: rgba(30, 27, 46, 0.65);
+      margin-bottom: 28px;
+    }
+    .code {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 12px 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(30, 27, 46, 0.06);
+      margin-bottom: 36px;
+    }
+    .cta {
+      display: inline-block;
+      padding: 16px 32px;
+      background: #1E1B2E;
+      color: #FFD60A;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(30, 27, 46, 0.18);
+      transition: transform 0.15s;
+    }
+    .cta:active { transform: scale(0.97); }
+    .small {
+      margin-top: 18px;
+      font-size: 13px;
+      color: rgba(30, 27, 46, 0.45);
+    }
+    .perk {
+      max-width: 420px;
+      margin-top: 32px;
+      padding: 18px;
+      background: white;
+      border-radius: 14px;
+      font-size: 14px;
+      color: rgba(30, 27, 46, 0.65);
+      box-shadow: 0 4px 14px rgba(30, 27, 46, 0.05);
+    }
+    .perk strong { color: #1E1B2E; }
+  </style>
+</head>
+<body>
+  <div class="badge">🎁</div>
+  <h1>You're invited to JobPocket</h1>
+  <div class="referrer" id="referrer">Loading…</div>
+  <div class="code" id="code">—</div>
+  <a class="cta" id="cta" href="#">Open in JobPocket</a>
+  <div class="small">App not installed? You'll be redirected to the App Store.</div>
+  <div class="perk">
+    JobPocket helps contractors manage jobs, send invoices, and get paid.<br>
+    <strong>Run your business from your iPhone.</strong>
+  </div>
+
+  <script>
+    (function () {
+      // Extract code from /r/CODE or ?code=CODE
+      const pathMatch = window.location.pathname.match(/^\/r\/([A-Za-z0-9-]{3,20})\/?$/);
+      const queryCode = new URLSearchParams(window.location.search).get('code');
+      const rawCode = (pathMatch ? pathMatch[1] : queryCode || '').toUpperCase();
+
+      const codeEl = document.getElementById('code');
+      const referrerEl = document.getElementById('referrer');
+      const ctaEl = document.getElementById('cta');
+
+      if (!rawCode) {
+        codeEl.textContent = 'No code';
+        referrerEl.textContent = 'Open the app to enter a code manually.';
+        ctaEl.href = 'https://jobpocket.app';
+        return;
+      }
+
+      codeEl.textContent = rawCode;
+
+      // Remember the code so the app can pick it up after install via clipboard / a paste
+      try { localStorage.setItem('jp_ref', rawCode); } catch (e) {}
+
+      // Resolve who invited us
+      fetch('https://jobpocket-ios-api-production.up.railway.app/referrals/validate-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: rawCode })
+      })
+        .then(r => r.ok ? r.json() : null)
+        .then(json => {
+          if (json && json.ok && json.referrerDisplayName) {
+            referrerEl.textContent = 'Invited by ' + json.referrerDisplayName;
+          } else {
+            referrerEl.textContent = 'Sign up to claim this invitation.';
+          }
+        })
+        .catch(() => { referrerEl.textContent = 'Sign up to claim this invitation.'; });
+
+      // Universal Link CTA — iOS will open the app if installed, otherwise stays on this page.
+      const ulHref = window.location.pathname.startsWith('/r/')
+        ? window.location.href.split('?')[0]
+        : 'https://jobpocket.app/r/' + rawCode;
+      ctaEl.href = ulHref;
+
+      // Auto-redirect on iOS after a short delay to give the page time to render.
+      // Stop the auto-redirect if the user has already tapped — avoids App Store
+      // fallback firing while they're mid-decision.
+      let userActed = false;
+      ctaEl.addEventListener('click', () => { userActed = true; });
+
+      if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        setTimeout(() => {
+          if (!userActed) ctaEl.click();
+        }, 800);
+
+        // Fallback to App Store after Universal Link attempt.
+        setTimeout(() => {
+          if (document.visibilityState === 'visible') {
+            // App didn't open — send to App Store search.
+            window.location.href = 'https://apps.apple.com/app/jobpocket/id';
+          }
+        }, 2500);
+      }
+    })();
+  </script>
+</body>
+</html>

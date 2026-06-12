@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["B4NW3NRH3V.jobpocket.app"],
+        "components": [
+          { "/": "/r/*", "comment": "Referral links" },
+          { "/": "/r/c/*", "comment": "Client referral links" }
+        ]
+      }
+    ]
+  }
+}
